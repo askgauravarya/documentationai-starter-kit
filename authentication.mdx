@@ -1,0 +1,135 @@
+---
+title: Authentication
+description: Learn how to secure your API requests with API keys, tokens, and proper headers for Deepvue services.
+---
+
+## Overview
+
+Deepvue APIs use API keys and OAuth 2.0 for secure access. Generate your API key from the dashboard and include it in the `Authorization` header for all requests. OAuth 2.0 supports token-based authentication for advanced integrations.
+
+<Callout kind="alert" title="Security Best Practices">
+Never expose your API keys or tokens in client-side code or public repositories. Rotate keys regularly and use environment variables for storage.
+</Callout>
+
+## Generating API Keys
+
+Create API keys in your Deepvue dashboard.
+
+<Steps>
+  <Step title="Log In" icon="log-in">
+    Visit [https://dashboard.deepvue.tech](https://dashboard.deepvue.tech/) and sign in to your account.
+  </Step>
+  <Step title="Navigate to Keys" icon="key">
+    Go to the **API Keys** section in the sidebar.
+  </Step>
+  <Step title="Create Key" icon="plus">
+    Click **Generate New Key**, add a name, and copy the key immediately.
+  </Step>
+</Steps>
+
+Store the key securely as `YOUR_API_KEY`.
+
+## Authentication Methods
+
+Choose the method that fits your use case.
+
+<Tabs>
+  <Tab title="API Key" icon="key">
+    Use a simple bearer token for most requests.
+
+    <ParamField header="Authorization" param-type="string" required="true">
+      Format: `Bearer YOUR_API_KEY`
+    </ParamField>
+
+    All requests to `https://production.deepvue.tech` require this header.
+  </Tab>
+  <Tab title="OAuth 2.0" icon="shield">
+    For delegated access, use OAuth 2.0 flows.
+
+    ```mermaid
+    sequenceDiagram
+        Client->>Auth Server: Authorization Request
+        Auth Server->>Client: Auth Code
+        Client->>Auth Server: Token Request
+        Auth Server->>Client: Access Token
+        Client->>API: Use Token
+    ```
+
+    Start at `https://auth.deepvue.tech/oauth/authorize`.
+  </Tab>
+</Tabs>
+
+## Making Authenticated Requests
+
+Include the `Authorization` header in every API call.
+
+<CodeGroup tabs="cURL,JavaScript,Python">
+  ````bash
+  curl https://production.deepvue.tech/v1/users \
+    -H "Authorization: Bearer YOUR_API_KEY" \
+    -H "Content-Type: application/json"
+  ````
+
+  ````javascript
+  const response = await fetch('https://production.deepvue.tech/v1/users', {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer YOUR_API_KEY',
+      'Content-Type': 'application/json'
+    }
+  });
+  const data = await response.json();
+  ````
+
+  ````python
+  import requests
+
+  headers = {
+      'Authorization': 'Bearer YOUR_API_KEY',
+      'Content-Type': 'application/json'
+  }
+  response = requests.get('https://production.deepvue.tech/v1/users', headers=headers)
+  data = response.json()
+  ````
+</CodeGroup>
+
+## Token Expiration and Renewal
+
+<Expandable title="Advanced: Handling Token Expiry" default-open="false">
+Access tokens expire after 1 hour. Use refresh tokens to get new ones without re-authentication.
+
+<ParamField header="Authorization" param-type="string" required="true">
+  Refresh endpoint: POST `https://auth.deepvue.tech/oauth/token`
+</ParamField>
+
+```javascript
+const refreshResponse = await fetch('https://auth.deepvue.tech/oauth/token', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body: new URLSearchParams({
+    grant_type: 'refresh_token',
+    refresh_token: 'YOUR_REFRESH_TOKEN',
+    client_id: 'YOUR_CLIENT_ID'
+  })
+});
+```
+
+Check for `401 Unauthorized` and refresh proactively.
+</Expandable>
+
+## Common Authentication Errors
+
+| Error Code | Message | Solution |
+|------------|---------|----------|
+| 401 | Unauthorized | Verify `Authorization` header format and key validity. |
+| 403 | Forbidden | Check scopes and permissions for your key. |
+| 429 | Rate Limited | Reduce request frequency or upgrade your plan. |
+
+<Columns cols={2}>
+  <Card title="Quickstart" icon="zap" href="/quickstart">
+    Run your first API call.
+  </Card>
+  <Card title="API Reference" icon="book-open" href="/introduction">
+    Explore all endpoints.
+  </Card>
+</Columns>

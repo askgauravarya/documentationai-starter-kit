@@ -1,0 +1,223 @@
+---
+title: Error Handling
+description: Understand Deepvue API error codes, response formats, and troubleshooting steps for common issues.
+---
+
+## Overview
+
+Deepvue APIs return standard HTTP status codes to indicate the success or failure of requests. Errors include detailed information in JSON format to help you identify and resolve issues quickly. Always check the response body for specific error messages, codes, and details.
+
+<Callout kind="tip">
+Review your request parameters and authentication before debugging. Most issues stem from invalid tokens or malformed payloads.
+</Callout>
+
+## HTTP Status Codes
+
+Deepvue uses conventional HTTP response codes to communicate status and errors.
+
+| Status Code | Meaning | Description |
+|-------------|---------|-------------|
+| `200` | OK | Successful request. |
+| `201` | Created | Resource created successfully. |
+| `400` | Bad Request | Invalid request parameters or body. |
+| `401` | Unauthorized | Authentication failed. Check your API key. |
+| `403` | Forbidden | Access denied due to insufficient permissions. |
+| `404` | Not Found | Endpoint or resource does not exist. |
+| `429` | Too Many Requests | Rate limit exceeded. |
+| `500` | Internal Server Error | Server-side issue. Contact support if persistent. |
+| `502` | Bad Gateway | Upstream service unavailable. |
+
+## Error Response Structure
+
+All error responses follow a consistent JSON structure:
+
+<Response tabs="400,401,429" show-lines="false">
+```json
+{
+  "error": {
+    "code": "INVALID_PARAMETER",
+    "message": "The 'account_id' parameter is required.",
+    "details": {
+      "field": "account_id",
+      "value": null
+    }
+  }
+}
+```
+
+```json
+{
+  "error": {
+    "code": "AUTH_FAILED",
+    "message": "Invalid API key provided.",
+    "details": {}
+  }
+}
+```
+
+```json
+{
+  "error": {
+    "code": "RATE_LIMIT_EXCEEDED",
+    "message": "Too many requests. Retry after 60 seconds.",
+    "details": {
+      "retry_after": 60,
+      "limit": 100
+    }
+  }
+}
+```
+</Response>
+
+<ResponseField name="error.code" field-type="string">
+Unique error identifier for programmatic handling.
+</ResponseField>
+
+<ResponseField name="error.message" field-type="string">
+Human-readable description of the error.
+</ResponseField>
+
+<ResponseField name="error.details" field-type="object">
+Additional context, such as invalid fields or retry timing.
+</ResponseField>
+
+## Common Errors and Fixes
+
+<Columns cols={2}>
+  <Card title="Authentication Errors" icon="lock" horizontal>
+    Verify your API key from the [Deepvue Dashboard](https://dashboard.deepvue.tech/). Ensure the `Authorization` header uses `Bearer {YOUR_API_KEY}`.
+  </Card>
+  <Card title="Rate Limiting" icon="zap" horizontal>
+    Exceeded request limits. Implement exponential backoff and check response `retry_after`.
+  </Card>
+</Columns>
+
+## Handling Rate Limits
+
+Deepvue enforces rate limits to ensure fair usage. Limits vary by endpoint and plan.
+
+<CodeGroup tabs="Node.js,Python">
+```javascript
+const axios = require('axios');
+
+async function makeRequest() {
+  try {
+    const response = await axios.get('https://production.deepvue.tech/v1/accounts', {
+      headers: { Authorization: `Bearer ${YOUR_API_KEY}` }
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response?.status === 429) {
+      const retryAfter = error.response.data.error.details.retry_after;
+      console.log(`Rate limited. Retry after ${retryAfter}s`);
+      await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
+      return makeRequest(); // Retry
+    }
+    throw error;
+  }
+}
+```
+
+```python
+import requests
+import time
+
+def make_request():
+    try:
+        response = requests.get(
+            'https://production.deepvue.tech/v1/accounts',
+            headers={'Authorization': f'Bearer {YOUR_API_KEY}'}
+        )
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.HTTPError as e:
+        if e.response.status_code == 429:
+            retry_after = e.response.json()['error']['details']['retry_after']
+            print(f"Rate limited. Retry after {retry_after}s")
+            time.sleep(retry_after)
+            return make_request()  # Retry
+        raise
+```
+</CodeGroup>
+
+## Debugging Integration Failures
+
+Follow these steps to diagnose issues systematically.
+
+<Steps>
+  <Step title="Verify Authentication" icon="shield">
+    Test your API key with a simple GET request to `https://production.deepvue.tech/v1/ping`.
+  </Step>
+  <Step title="Check Logs" icon="file-text">
+    Enable verbose logging in your client library to capture full request/response details.
+  </Step>
+  <Step title="Validate Payload" icon="check-circle">
+    Use tools like Postman or the [Deepvue Postman collection](https://hi.deepvue.tech/postman) to replicate the request.
+  </Step>
+  <Step title="Contact Support" icon="mail">
+    If unresolved, provide error code, request ID, and payload to support@deepvue.tech.
+  </Step>
+</Steps>
+
+<Expandable title="Advanced Debugging Tips" default-open="false">
+
+- Enable request tracing in your environment.
+- Compare against successful requests from the dashboard.
+- Use network inspectors to confirm headers and payloads.
+
+</Expandable>
+
+## Best Practices for Error Logging
+
+<Tabs>
+  <Tab title="Node.js" icon="nodejs">
+````javascript
+const winston = require('winston');
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  transports: [new winston.transports.File({ filename: 'errors.log' })]
+});
+
+try {
+  // API call
+} catch (error) {
+  logger.error('Deepvue API Error', {
+    code: error.response?.data?.error?.code,
+    message: error.response?.data?.error?.message,
+    status: error.response?.status,
+    requestId: error.response?.headers?.['x-request-id']
+  });
+}
+````
+  </Tab>
+  <Tab title="Python" icon="python">
+````python
+import logging
+import json
+
+logging.basicConfig(filename='errors.log', level=logging.ERROR)
+logger = logging.getLogger(__name__)
+
+try:
+    # API call
+    pass
+except Exception as e:
+    error_data = e.response.json() if hasattr(e, 'response') else {}
+    logger.error(
+        'Deepvue API Error',
+        extra={
+            'code': error_data.get('error', {}).get('code'),
+            'message': error_data.get('error', {}).get('message'),
+            'status': getattr(e.response, 'status_code', None),
+            'request_id': e.response.headers.get('x-request-id')
+        }
+    )
+````
+  </Tab>
+</Tabs>
+
+<Callout kind="success">
+Implement structured logging with error codes to speed up issue resolution during production incidents.
+</Callout>

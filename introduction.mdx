@@ -1,0 +1,129 @@
+---
+title: Introduction to Deepvue
+description: Discover Deepvue's REST API infrastructure for financial integrations, including identity verification, banking, and credit services to accelerate product launches.
+---
+
+<Callout kind="info" title="Starter Kit Template">
+  This documentation was generated as a starter kit template based on your brand. Please review and customize the content to accurately reflect your product's features, APIs, and capabilities.
+</Callout>
+
+## Overview
+
+Deepvue provides a robust REST API infrastructure designed for financial integrations and insights. You can launch financial products 10x faster with APIs covering identity verification, banking, credit scoring, and more. These APIs follow REST conventions with predictable, resource-oriented URLs, JSON responses, standard HTTP status codes, and secure authentication.
+
+Whether you build fintech apps, compliance tools, or banking platforms, Deepvue handles the heavy lifting. Start with your [dashboard](https://dashboard.example.com) to generate API keys—no code required initially.
+
+<Callout kind="tip">
+  New to APIs? Check our [Postman collection](https://www.postman.com/your-workspace/collection/your-collection) for ready-to-use requests.
+</Callout>
+
+## Key Features
+
+Deepvue offers specialized APIs to meet diverse financial needs. Explore these core capabilities:
+
+<Columns cols={3}>
+  <Card title="Identity Verification" icon="shield" href="/authentication">
+    Perform KYC checks with document and biometric verification for secure onboarding.
+  </Card>
+  <Card title="Banking APIs" icon="credit-card" href="/banking">
+    Access account balances, transactions, and payment initiation across global banks.
+  </Card>
+  <Card title="Credit Insights" icon="trending-up" href="/credit">
+    Retrieve credit scores, reports, and risk assessments to inform lending decisions.
+  </Card>
+</Columns>
+
+## REST API Conventions
+
+All endpoints use HTTPS and return JSON. Use standard HTTP methods: `GET` for reads, `POST` for creates, `PUT`/`PATCH` for updates, `DELETE` for removals.
+
+**Base URL:** `https://api.example.com/v1`
+
+Authentication requires a Bearer token in the `Authorization` header. Responses include consistent error formats:
+
+```json
+{
+  "error": {
+    "code": "invalid_request",
+    "message": "Invalid API key"
+  }
+}
+```
+
+## First API Call
+
+Test connectivity with a simple health check. Replace `{YOUR_API_KEY}` with your key from the dashboard.
+
+<CodeGroup tabs="cURL,Python,Node.js">
+  ```bash
+  curl -X GET https://api.example.com/v1/health \
+    -H "Authorization: Bearer YOUR_API_KEY"
+  ```
+
+  ```python
+  import requests
+
+  headers = {
+      "Authorization": "Bearer YOUR_API_KEY"
+  }
+  response = requests.get("https://api.example.com/v1/health", headers=headers)
+  print(response.json())
+  ```
+
+  ```javascript
+  const response = await fetch("https://api.example.com/v1/health", {
+    headers: {
+      "Authorization": "Bearer YOUR_API_KEY"
+    }
+  });
+  const data = await response.json();
+  console.log(data);
+  ```
+</CodeGroup>
+
+Expected response:
+
+```json
+{
+  "status": "healthy",
+  "version": "1.0.0"
+}
+```
+
+## Quick Start Steps
+
+Get up and running in minutes:
+
+<Steps>
+  <Step title="Create Account" icon="user-plus">
+    Sign up at [https://dashboard.example.com](https://dashboard.example.com) and verify your email.
+  </Step>
+  <Step title="Generate API Key" icon="key">
+    Navigate to API settings and create a new key. Copy it securely.
+  </Step>
+  <Step title="Make First Request" icon="play">
+    Use the example above or import our Postman collection.
+  </Step>
+  <Step title="Explore Endpoints" icon="book-open">
+    Review [authentication](/authentication) and dive into specific APIs.
+  </Step>
+</Steps>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Quickstart Guide" icon="rocket" href="/quickstart">
+    Build your first integration end-to-end.
+  </Card>
+  <Card title="Authentication" icon="lock" href="/authentication">
+    Secure your API calls properly.
+  </Card>
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Full endpoint documentation.
+  </Card>
+  <Card title="Changelog" icon="git-branch" href="/changelog">
+    Stay updated with releases.
+  </Card>
+</Columns>
+
+Ready to integrate? Head to the [quickstart](/quickstart) or browse the full docs.
