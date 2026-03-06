@@ -72,40 +72,6 @@
             "icon": "folder",
             "pages": [
               {
-                "group": "Digilocker",
-                "pages": [
-                  {
-                    "title": "Introduction",
-                    "path": "reference/digilocker-kyc/digilocker/introduction"
-                  },
-                  {
-                    "title": "Initiate Session",
-                    "path": "reference/digilocker-kyc/digilocker/initiate-session",
-                    "openapi": "api-reference/openapi.json POST /v1/kyc/digilocker/initiate-session"
-                  },
-                  {
-                    "title": "Access Token",
-                    "path": "reference/digilocker-kyc/digilocker/access-token",
-                    "openapi": "api-reference/openapi.json POST /v1/kyc/digilocker/access-token"
-                  },
-                  {
-                    "title": "Issued Files",
-                    "path": "reference/digilocker-kyc/digilocker/issued-files",
-                    "openapi": "api-reference/openapi.json POST /v1/kyc/digilocker/issued-files"
-                  },
-                  {
-                    "title": "e-Aadhaar",
-                    "path": "reference/digilocker-kyc/digilocker/e-aadhaar",
-                    "openapi": "api-reference/openapi.json POST /v1/kyc/digilocker/eaadhaar"
-                  },
-                  {
-                    "title": "Download File",
-                    "path": "reference/digilocker-kyc/digilocker/download-file",
-                    "openapi": "api-reference/openapi.json POST /v1/kyc/digilocker/file"
-                  }
-                ]
-              },
-              {
                 "group": "Offline Aadhaar eKYC V1",
                 "pages": [
                   {
@@ -152,6 +118,40 @@
                     "openapi": "api-reference/openapi.json POST /v2/ekyc/aadhaar/verify-otp"
                   }
                 ]
+              },
+              {
+                "group": "Digilocker",
+                "pages": [
+                  {
+                    "title": "Introduction",
+                    "path": "reference/digilocker-kyc/digilocker/introduction"
+                  },
+                  {
+                    "title": "Initiate Session",
+                    "path": "reference/digilocker-kyc/digilocker/initiate-session",
+                    "openapi": "api-reference/openapi.json POST /v1/kyc/digilocker/initiate-session"
+                  },
+                  {
+                    "title": "Access Token",
+                    "path": "reference/digilocker-kyc/digilocker/access-token",
+                    "openapi": "api-reference/openapi.json POST /v1/kyc/digilocker/access-token"
+                  },
+                  {
+                    "title": "e-Aadhaar",
+                    "path": "reference/digilocker-kyc/digilocker/e-aadhaar",
+                    "openapi": "api-reference/openapi.json POST /v1/kyc/digilocker/eaadhaar"
+                  },
+                  {
+                    "title": "Issued Files",
+                    "path": "reference/digilocker-kyc/digilocker/issued-files",
+                    "openapi": "api-reference/openapi.json POST /v1/kyc/digilocker/issued-files"
+                  },
+                  {
+                    "title": "Download File",
+                    "path": "reference/digilocker-kyc/digilocker/download-file",
+                    "openapi": "api-reference/openapi.json POST /v1/kyc/digilocker/file"
+                  }
+                ]
               }
             ]
           },
@@ -178,11 +178,6 @@
                     "openapi": "api-reference/openapi.json GET /v2/verification/pan-plus"
                   },
                   {
-                    "title": "PAN KRA Verification",
-                    "path": "reference/kyc/pan/pan-kra-verification",
-                    "openapi": "api-reference/openapi.json GET /v1/verification/pan-kra-status"
-                  },
-                  {
                     "title": "PAN Aadhaar Link Status",
                     "path": "reference/kyc/pan/pan-aadhaar-link-status",
                     "openapi": "api-reference/openapi.json GET /v1/verification/pan-aadhaar-link-status"
@@ -196,6 +191,11 @@
                     "title": "PAN to Employment Status",
                     "path": "reference/kyc/pan/pan-to-employment-status",
                     "openapi": "api-reference/openapi.json GET /v1/verification/pan-to-employment-status"
+                  },
+                  {
+                    "title": "PAN KRA Verification",
+                    "path": "reference/kyc/pan/pan-kra-verification",
+                    "openapi": "api-reference/openapi.json GET /v1/verification/pan-kra-status"
                   }
                 ]
               },
@@ -215,6 +215,41 @@
                 ]
               },
               {
+                "group": "Async KYC",
+                "pages": [
+                  {
+                    "title": "Create DL Verification",
+                    "path": "reference/kyc/async/create-driver-license-verification",
+                    "openapi": "api-reference/openapi.json POST /v1/verification/post-driving-license"
+                  },
+                  {
+                    "title": "Get DL Verification Result",
+                    "path": "reference/kyc/async/result-driver-license-verification",
+                    "openapi": "api-reference/openapi.json GET /v1/verification/get-driving-license"
+                  },
+                  {
+                    "title": "Create Voter ID Verification",
+                    "path": "reference/kyc/async/create-voter-id-verification",
+                    "openapi": "api-reference/openapi.json POST /v1/verification/post-voter-id"
+                  },
+                  {
+                    "title": "Get Voter ID Result",
+                    "path": "reference/kyc/async/result-voter-id-verification",
+                    "openapi": "api-reference/openapi.json GET /v1/verification/get-voter-id"
+                  },
+                  {
+                    "title": "Create Vehicle RC Verification",
+                    "path": "reference/kyc/async/create-vehicle-rc-basic",
+                    "openapi": "api-reference/openapi.json POST /v1/verification/post-vehicle-rc"
+                  },
+                  {
+                    "title": "Get Vehicle RC Result",
+                    "path": "reference/kyc/async/result-vehicle-rc-basic",
+                    "openapi": "api-reference/openapi.json GET /v1/verification/get-vehicle-rc"
+                  }
+                ]
+              },
+              {
                 "group": "Bank Aadhaar Seeding Status",
                 "pages": [
                   {
@@ -230,51 +265,6 @@
                 ]
               },
               {
-                "group": "Async KYC",
-                "pages": [
-                  {
-                    "title": "Create DL Verification",
-                    "path": "reference/kyc/async/create-driver-license-verification",
-                    "openapi": "api-reference/openapi.json POST /v1/verification/post-driving-license"
-                  },
-                  {
-                    "title": "Get DL Verification Result",
-                    "path": "reference/kyc/async/result-driver-license-verification",
-                    "openapi": "api-reference/openapi.json GET /v1/verification/get-driving-license"
-                  },
-                  {
-                    "title": "Create Vehicle RC Verification",
-                    "path": "reference/kyc/async/create-vehicle-rc-basic",
-                    "openapi": "api-reference/openapi.json POST /v1/verification/post-vehicle-rc"
-                  },
-                  {
-                    "title": "Get Vehicle RC Result",
-                    "path": "reference/kyc/async/result-vehicle-rc-basic",
-                    "openapi": "api-reference/openapi.json GET /v1/verification/get-vehicle-rc"
-                  },
-                  {
-                    "title": "Create Voter ID Verification",
-                    "path": "reference/kyc/async/create-voter-id-verification",
-                    "openapi": "api-reference/openapi.json POST /v1/verification/post-voter-id"
-                  },
-                  {
-                    "title": "Get Voter ID Result",
-                    "path": "reference/kyc/async/result-voter-id-verification",
-                    "openapi": "api-reference/openapi.json GET /v1/verification/get-voter-id"
-                  }
-                ]
-              },
-              {
-                "title": "Name Match",
-                "path": "reference/kyc/name-match",
-                "openapi": "api-reference/openapi.json GET /v1/name-match"
-              },
-              {
-                "title": "UPI Verification",
-                "path": "reference/kyc/upi-verification",
-                "openapi": "api-reference/openapi.json GET /v1/verification/upi"
-              },
-              {
                 "title": "Passport Verification",
                 "path": "reference/kyc/passport-verification",
                 "openapi": "api-reference/openapi.json GET /v1/verification/passport"
@@ -288,6 +278,16 @@
                 "title": "RC Challan Details",
                 "path": "reference/kyc/rc-challan-details",
                 "openapi": "api-reference/openapi.json GET /v1/verification/rc-challan-details"
+              },
+              {
+                "title": "Name Match",
+                "path": "reference/kyc/name-match",
+                "openapi": "api-reference/openapi.json GET /v1/name-match"
+              },
+              {
+                "title": "UPI Verification",
+                "path": "reference/kyc/upi-verification",
+                "openapi": "api-reference/openapi.json GET /v1/verification/upi"
               }
             ]
           },
@@ -313,14 +313,14 @@
                     "openapi": "api-reference/openapi.json POST /v1/documents/extraction/ind_pancard"
                   },
                   {
-                    "title": "Voter ID OCR",
-                    "path": "reference/document-ocr/india/voter-id",
-                    "openapi": "api-reference/openapi.json POST /v1/documents/extraction/ind_voter_id"
-                  },
-                  {
                     "title": "Driving License OCR",
                     "path": "reference/document-ocr/india/driver-license",
                     "openapi": "api-reference/openapi.json POST /v1/documents/extraction/ind_driving_license"
+                  },
+                  {
+                    "title": "Voter ID OCR",
+                    "path": "reference/document-ocr/india/voter-id",
+                    "openapi": "api-reference/openapi.json POST /v1/documents/extraction/ind_voter_id"
                   },
                   {
                     "title": "Passport OCR",
@@ -328,14 +328,14 @@
                     "openapi": "api-reference/openapi.json POST /v1/documents/extraction/ind_passport"
                   },
                   {
-                    "title": "GST Certificate OCR",
-                    "path": "reference/document-ocr/india/gst-certificate",
-                    "openapi": "api-reference/openapi.json POST /v1/documents/extraction/gstin-certificate"
-                  },
-                  {
                     "title": "Bank Cheque OCR",
                     "path": "reference/document-ocr/india/bank-cheque",
                     "openapi": "api-reference/openapi.json POST /v1/documents/extraction/ind_bank_cheque"
+                  },
+                  {
+                    "title": "GST Certificate OCR",
+                    "path": "reference/document-ocr/india/gst-certificate",
+                    "openapi": "api-reference/openapi.json POST /v1/documents/extraction/gstin-certificate"
                   }
                 ]
               }
@@ -410,6 +410,16 @@
                 "path": "reference/forensics/introduction"
               },
               {
+                "group": "Document",
+                "pages": [
+                  {
+                    "title": "Aadhaar Masking",
+                    "path": "reference/forensics/document/aadhaar-masking",
+                    "openapi": "api-reference/openapi.json POST /v1/documents/aadhaar-masking"
+                  }
+                ]
+              },
+              {
                 "group": "Face",
                 "pages": [
                   {
@@ -426,16 +436,6 @@
                     "title": "Face Liveness Check",
                     "path": "reference/forensics/face/face-liveness-check",
                     "openapi": "api-reference/openapi.json POST /v1/liveness-check"
-                  }
-                ]
-              },
-              {
-                "group": "Document",
-                "pages": [
-                  {
-                    "title": "Aadhaar Masking",
-                    "path": "reference/forensics/document/aadhaar-masking",
-                    "openapi": "api-reference/openapi.json POST /v1/documents/aadhaar-masking"
                   }
                 ]
               }
@@ -459,14 +459,14 @@
                     "openapi": "api-reference/openapi.json GET /v1/verification/gstin-advanced"
                   },
                   {
-                    "title": "Track GST Return Status",
-                    "path": "reference/kyb/gst/gst-return-status",
-                    "openapi": "api-reference/openapi.json GET /v1/verification/gstin/track-gstr"
-                  },
-                  {
                     "title": "Search Taxpayer by PAN",
                     "path": "reference/kyb/gst/pan-to-gst",
                     "openapi": "api-reference/openapi.json GET /v1/verification/gstin/gstin-by-pan"
+                  },
+                  {
+                    "title": "Track GST Return Status",
+                    "path": "reference/kyb/gst/gst-return-status",
+                    "openapi": "api-reference/openapi.json GET /v1/verification/gstin/track-gstr"
                   }
                 ]
               },
@@ -531,16 +531,6 @@
                 ]
               },
               {
-                "title": "FSSAI Verification",
-                "path": "reference/kyb/fssai-verification",
-                "openapi": "api-reference/openapi.json GET /v1/business-compliance/fssai-verification"
-              },
-              {
-                "title": "Shop Establishment Certificate",
-                "path": "reference/kyb/shop-establishment-certificate",
-                "openapi": "api-reference/openapi.json GET /v1/business-compliance/shop-establishment-certificate"
-              },
-              {
                 "title": "TAN Verification",
                 "path": "reference/kyb/tan-verification",
                 "openapi": "api-reference/openapi.json GET /v1/verification/tax-payer/tan"
@@ -549,6 +539,16 @@
                 "title": "TDS 206 Compliance",
                 "path": "reference/kyb/tds-206-compliance",
                 "openapi": "api-reference/openapi.json GET /v1/verification/tax-payer/tds/206-ab"
+              },
+              {
+                "title": "FSSAI Verification",
+                "path": "reference/kyb/fssai-verification",
+                "openapi": "api-reference/openapi.json GET /v1/business-compliance/fssai-verification"
+              },
+              {
+                "title": "Shop Establishment Certificate",
+                "path": "reference/kyb/shop-establishment-certificate",
+                "openapi": "api-reference/openapi.json GET /v1/business-compliance/shop-establishment-certificate"
               }
             ]
           },
@@ -567,14 +567,14 @@
                 "openapi": "api-reference/openapi.json POST /v1/verification/itr/itr-download"
               },
               {
-                "title": "ITR Details",
-                "path": "reference/itr/itr-details",
-                "openapi": "api-reference/openapi.json GET /v1/verification/itr/get-itr-details"
-              },
-              {
                 "title": "Download 26AS",
                 "path": "reference/itr/download-26as",
                 "openapi": "api-reference/openapi.json POST /v1/verification/itr/26as-download"
+              },
+              {
+                "title": "ITR Details",
+                "path": "reference/itr/itr-details",
+                "openapi": "api-reference/openapi.json GET /v1/verification/itr/get-itr-details"
               },
               {
                 "title": "26AS Details",
@@ -602,25 +602,6 @@
                 "path": "reference/financial-services/introduction"
               },
               {
-                "group": "Bank Statement Analysis",
-                "pages": [
-                  {
-                    "title": "Introduction",
-                    "path": "reference/financial-services/analysis/bank-statement/introduction"
-                  },
-                  {
-                    "title": "Upload",
-                    "path": "reference/financial-services/analysis/bank-statement/upload",
-                    "openapi": "api-reference/openapi.json POST /v1/bsa/upload"
-                  },
-                  {
-                    "title": "Download Report",
-                    "path": "reference/financial-services/analysis/bank-statement/download-report",
-                    "openapi": "api-reference/openapi.json GET /v1/bsa/download-report"
-                  }
-                ]
-              },
-              {
                 "group": "Equifax Credit Bureau",
                 "pages": [
                   {
@@ -636,6 +617,25 @@
                     "title": "Download Report",
                     "path": "reference/financial-services/credit-bureau/equifax/download-report",
                     "openapi": "api-reference/openapi.json GET /v2/financial-services/credit-bureau/credit-report/sdk/report"
+                  }
+                ]
+              },
+              {
+                "group": "Bank Statement Analysis",
+                "pages": [
+                  {
+                    "title": "Introduction",
+                    "path": "reference/financial-services/analysis/bank-statement/introduction"
+                  },
+                  {
+                    "title": "Upload",
+                    "path": "reference/financial-services/analysis/bank-statement/upload",
+                    "openapi": "api-reference/openapi.json POST /v1/bsa/upload"
+                  },
+                  {
+                    "title": "Download Report",
+                    "path": "reference/financial-services/analysis/bank-statement/download-report",
+                    "openapi": "api-reference/openapi.json GET /v1/bsa/download-report"
                   }
                 ]
               }
@@ -667,21 +667,6 @@
             "icon": "shield-check",
             "pages": [
               {
-                "group": "FIR Check",
-                "pages": [
-                  {
-                    "title": "Create FIR Check",
-                    "path": "reference/background-verification/fir-check/create",
-                    "openapi": "api-reference/openapi.json POST /v1/background-verification/fir-check"
-                  },
-                  {
-                    "title": "Get FIR Check Result",
-                    "path": "reference/background-verification/fir-check/result",
-                    "openapi": "api-reference/openapi.json GET /v1/background-verification/fir-check/{transaction_id}"
-                  }
-                ]
-              },
-              {
                 "group": "Court Record Check",
                 "pages": [
                   {
@@ -695,6 +680,21 @@
                     "openapi": "api-reference/openapi.json GET /v1/background-verification/court-record-check/{transaction_id}"
                   }
                 ]
+              },
+              {
+                "group": "FIR Check",
+                "pages": [
+                  {
+                    "title": "Create FIR Check",
+                    "path": "reference/background-verification/fir-check/create",
+                    "openapi": "api-reference/openapi.json POST /v1/background-verification/fir-check"
+                  },
+                  {
+                    "title": "Get FIR Check Result",
+                    "path": "reference/background-verification/fir-check/result",
+                    "openapi": "api-reference/openapi.json GET /v1/background-verification/fir-check/{transaction_id}"
+                  }
+                ]
               }
             ]
           },
@@ -702,36 +702,6 @@
             "group": "Bulk Verification",
             "icon": "layers",
             "pages": [
-              {
-                "title": "Bank Account",
-                "path": "reference/bulk-verification/bank-account",
-                "openapi": "api-reference/openapi.json POST /v1/verification/bankaccount/batch"
-              },
-              {
-                "title": "CIN",
-                "path": "reference/bulk-verification/cin",
-                "openapi": "api-reference/openapi.json POST /v1/verification/mca/cin/batch"
-              },
-              {
-                "title": "Employment History",
-                "path": "reference/bulk-verification/employment-history",
-                "openapi": "api-reference/openapi.json POST /v1/verification/epfo/uan-to-employment-history/batch"
-              },
-              {
-                "title": "GST Advanced",
-                "path": "reference/bulk-verification/gst-advanced",
-                "openapi": "api-reference/openapi.json POST /v1/verification/gstin-advanced/batch"
-              },
-              {
-                "title": "GST Basic",
-                "path": "reference/bulk-verification/gst-basic",
-                "openapi": "api-reference/openapi.json POST /v1/verification/gstinlite/batch"
-              },
-              {
-                "title": "Mobile to PAN",
-                "path": "reference/bulk-verification/mobile-to-pan",
-                "openapi": "api-reference/openapi.json POST /v1/mobile-intelligence/mobile-to-pan/batch"
-              },
               {
                 "title": "PAN Basic",
                 "path": "reference/bulk-verification/pan-basic",
@@ -743,9 +713,34 @@
                 "openapi": "api-reference/openapi.json POST /v1/verification/pan-plus/batch"
               },
               {
+                "title": "Mobile to PAN",
+                "path": "reference/bulk-verification/mobile-to-pan",
+                "openapi": "api-reference/openapi.json POST /v1/mobile-intelligence/mobile-to-pan/batch"
+              },
+              {
+                "title": "Bank Account",
+                "path": "reference/bulk-verification/bank-account",
+                "openapi": "api-reference/openapi.json POST /v1/verification/bankaccount/batch"
+              },
+              {
+                "title": "UPI",
+                "path": "reference/bulk-verification/upi",
+                "openapi": "api-reference/openapi.json POST /v1/verification/upi-basic/batch"
+              },
+              {
                 "title": "Search Taxpayer by PAN",
                 "path": "reference/bulk-verification/search-taxpayer-by-pan",
                 "openapi": "api-reference/openapi.json POST /v1/verification/gstin/gstin-by-pan/batch"
+              },
+              {
+                "title": "GST Basic",
+                "path": "reference/bulk-verification/gst-basic",
+                "openapi": "api-reference/openapi.json POST /v1/verification/gstinlite/batch"
+              },
+              {
+                "title": "GST Advanced",
+                "path": "reference/bulk-verification/gst-advanced",
+                "openapi": "api-reference/openapi.json POST /v1/verification/gstin-advanced/batch"
               },
               {
                 "title": "Udyam",
@@ -758,9 +753,14 @@
                 "openapi": "api-reference/openapi.json POST /v1/verification/async/udyog-details/batch"
               },
               {
-                "title": "UPI",
-                "path": "reference/bulk-verification/upi",
-                "openapi": "api-reference/openapi.json POST /v1/verification/upi-basic/batch"
+                "title": "Employment History",
+                "path": "reference/bulk-verification/employment-history",
+                "openapi": "api-reference/openapi.json POST /v1/verification/epfo/uan-to-employment-history/batch"
+              },
+              {
+                "title": "CIN",
+                "path": "reference/bulk-verification/cin",
+                "openapi": "api-reference/openapi.json POST /v1/verification/mca/cin/batch"
               },
               {
                 "title": "Result",
