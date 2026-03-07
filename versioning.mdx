@@ -1,0 +1,105 @@
+---
+title: Versioning
+description: Understand Deepvue API versioning, differences between V1 and V2 endpoints, and how to migrate to newer versions.
+---
+
+## Overview
+
+Deepvue uses URL-based versioning for its APIs. The version is included in the endpoint path (e.g., `/v1/` or `/v2/`). When a new version of an endpoint is released, the previous version continues to work — allowing you to migrate at your own pace.
+
+## Version format
+
+```
+https://production.deepvue.tech/{version}/{endpoint}
+```
+
+| Version | Status | Description |
+|---------|--------|-------------|
+| `v1` | Stable | Original release — fully supported |
+| `v2` | Stable | Enhanced version with improved response data or simplified flows |
+| `v3` | Stable | Latest version available for select endpoints |
+
+## Endpoints with multiple versions
+
+The following endpoints have newer versions available. We recommend using the latest version for new integrations.
+
+### Aadhaar eKYC
+
+| Feature | V1 | V2 (Recommended) |
+|---------|-----|-----|
+| **Captcha requirement** | Yes — requires captcha solve | No — captcha removed |
+| **Steps to verify** | 4 (initiate → captcha → OTP → verify) | 2 (generate OTP → verify) |
+| **Endpoints** | [V1 docs](/reference/digilocker-kyc/v1/introduction) | [V2 docs](/reference/digilocker-kyc/v2/introduction) |
+
+<Callout kind="tip">
+  Use V2 for new integrations. It reduces friction by removing the captcha step, resulting in fewer API calls and a simpler integration.
+</Callout>
+
+### PAN Verification Plus
+
+| Feature | V1 | V2 (Recommended) |
+|---------|-----|-----|
+| **Endpoint** | `GET /v1/verification/pan-plus` | `GET /v2/verification/pan-plus` |
+| **Response data** | Standard PAN details | Enhanced response with additional fields |
+| **Docs** | [PAN Plus V1](/reference/kyc/pan/pan-verification-plus) | [PAN Plus V2](/reference/kyc/pan/pan-verification-plus-v2) |
+
+<Callout kind="tip">
+  V2 returns richer data in the response. Use V2 unless you have an existing integration that depends on the V1 response structure.
+</Callout>
+
+### Face Match
+
+| Feature | V1 | V2 (Recommended) |
+|---------|-----|-----|
+| **Endpoint** | `POST /v1/facematch` | `POST /v2/facematch` |
+| **Docs** | [Face Match V1](/reference/forensics/face/face-match) | [Face Match V2](/reference/forensics/face/face-match-v2) |
+
+### Equifax Credit Bureau
+
+| Feature | V2 | V3 (Latest) |
+|---------|-----|-----|
+| **Session endpoint** | — | `POST /v3/financial-services/credit-bureau/equifax/credit-report/sdk/session` |
+| **Report endpoint** | `GET /v2/financial-services/credit-bureau/credit-report/sdk/report` | Same |
+| **Docs** | [Equifax docs](/reference/financial-services/credit-bureau/equifax/introduction) | Same |
+
+### Employment History
+
+| Feature | V1 | V2 (Recommended) |
+|---------|-----|-----|
+| **Endpoint** | `GET /v1/verification/epfo/uan-to-employment-history` | `GET /v2/verification/epfo/uan-to-employment-history` |
+| **Docs** | — | [Employment History V2](/reference/employment-verification/epfo/uan-to-employment-history-v2) |
+
+## Migration guidelines
+
+<Steps>
+  <Step title="Check version differences" icon="git-compare" titleType="h3">
+    Review the comparison tables above and the API reference for the specific endpoint. Pay attention to changes in request parameters, response structure, and required headers.
+  </Step>
+
+  <Step title="Update your endpoint URLs" icon="link" titleType="h3">
+    Change the version prefix in your API calls from `/v1/` to `/v2/` (or the appropriate version).
+
+    ```diff
+    - https://production.deepvue.tech/v1/verification/pan-plus
+    + https://production.deepvue.tech/v2/verification/pan-plus
+    ```
+  </Step>
+
+  <Step title="Update your response parsing" icon="braces" titleType="h3">
+    Newer versions may return additional fields or restructure existing ones. Update your response parsing logic to handle the new format.
+  </Step>
+
+  <Step title="Test with your credentials" icon="play" titleType="h3">
+    Test the updated endpoint with your production credentials. Deepvue does not have a separate sandbox — your trial or live keys work with all API versions.
+
+    <Callout kind="info">
+      Both old and new versions use the same authentication. No credential changes are needed when migrating.
+    </Callout>
+  </Step>
+</Steps>
+
+## Deprecation policy
+
+- Deepvue does not currently deprecate older API versions. V1 endpoints continue to function alongside V2 and V3.
+- If an API version is ever scheduled for deprecation, affected customers will be notified via email with at least 90 days advance notice.
+- Monitor the [Deepvue Dashboard](https://dashboard.deepvue.tech) and documentation for version-related announcements.

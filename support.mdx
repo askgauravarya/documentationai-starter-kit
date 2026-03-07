@@ -1,0 +1,84 @@
+---
+title: Support
+description: Get help with your Deepvue integration — contact support, understand SLA expectations, and learn how to escalate issues.
+---
+
+## Contact support
+
+<Columns cols="2">
+  <Card title="Email Support" icon="mail" href="mailto:support@deepvue.tech">
+    support@deepvue.tech — for technical questions, account issues, and integration help.
+  </Card>
+
+  <Card title="Dashboard" icon="layout-dashboard" href="https://dashboard.deepvue.tech">
+    View request logs, monitor usage, and manage your account.
+  </Card>
+</Columns>
+
+## What to include in a support request
+
+To help us resolve your issue quickly, include the following details:
+
+| Field | Example |
+|-------|---------|
+| **Your client_id** | `live_org123_abc` (never send your `client_secret`) |
+| **Endpoint** | `GET /v1/verification/panbasic` |
+| **Transaction ID** | `ece94d5e2749482faa10184962e9e34a` |
+| **HTTP status code** | `401`, `500`, etc. |
+| **Error message** | The `detail` value from the response |
+| **Timestamp** | When the issue occurred (with timezone) |
+| **Request parameters** | The parameters you sent (mask sensitive data like PAN/Aadhaar numbers) |
+
+<Callout kind="info">
+  Always include the `transaction_id` from your API response. This allows our team to trace your exact request through our systems.
+</Callout>
+
+## Response time expectations
+
+| Priority | Description | Target response time |
+|----------|-------------|---------------------|
+| **Critical** | Production down, all API calls failing | Within 2 hours |
+| **High** | Specific endpoint returning errors, impacting live users | Within 4 hours |
+| **Medium** | Intermittent issues, non-blocking questions | Within 1 business day |
+| **Low** | Feature requests, general questions, documentation feedback | Within 2 business days |
+
+<Callout kind="tip">
+  For critical production issues, include **"URGENT"** in your email subject line to ensure priority routing.
+</Callout>
+
+## Self-service troubleshooting
+
+Before contacting support, check these common resources:
+
+<Steps>
+  <Step title="Check the API Status page" icon="activity" titleType="h3">
+    Visit [status.deepvue.ai](https://status.deepvue.ai) to see if there are any ongoing incidents or scheduled maintenance affecting the API.
+  </Step>
+
+  <Step title="Review the error response" icon="alert-circle" titleType="h3">
+    Check the [Error Handling](/errors) guide for your specific error code. Most `400`, `401`, and `403` errors can be resolved by verifying your credentials and request format.
+  </Step>
+
+  <Step title="Verify your credentials" icon="key" titleType="h3">
+    Log in to the [Dashboard](https://dashboard.deepvue.tech) and confirm your `client_id` is active. Generate a fresh access token if your current one may have expired.
+  </Step>
+
+  <Step title="Check rate limits" icon="gauge" titleType="h3">
+    If you are receiving `429` responses, review your [rate limits](/rate-limits) and implement request throttling.
+  </Step>
+</Steps>
+
+## Escalation path
+
+If your issue is not resolved within the expected timeframe:
+
+1. **Reply to your existing support ticket** with additional context and the urgency level
+2. **Email escalation** — Contact [escalation@deepvue.tech](mailto:escalation@deepvue.tech) referencing your original ticket
+3. **Account manager** — Enterprise customers can reach out to their dedicated account manager directly
+
+## Feature requests and feedback
+
+We value your feedback on the API and documentation:
+
+- **API feature requests** — Email [support@deepvue.tech](mailto:support@deepvue.tech) with the subject "Feature Request" and describe your use case
+- **Documentation feedback** — If you find errors, unclear instructions, or missing information, let us know at [support@deepvue.tech](mailto:support@deepvue.tech)

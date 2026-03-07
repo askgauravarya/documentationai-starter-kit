@@ -82,6 +82,21 @@
                 "title": "Consent & Compliance",
                 "path": "consent-and-compliance",
                 "icon": "shield-check"
+              },
+              {
+                "title": "Versioning",
+                "path": "versioning",
+                "icon": "git-branch"
+              },
+              {
+                "title": "IP Whitelisting & Security",
+                "path": "ip-whitelisting",
+                "icon": "shield"
+              },
+              {
+                "title": "Support",
+                "path": "support",
+                "icon": "life-buoy"
               }
             ]
           }

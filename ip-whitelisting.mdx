@@ -1,0 +1,116 @@
+---
+title: IP Whitelisting & Security
+description: Secure your Deepvue API integration with IP whitelisting, HTTPS enforcement, credential management, and production security best practices.
+---
+
+## Overview
+
+Deepvue provides multiple layers of security to protect your API integration. This page covers IP whitelisting, transport security, credential management, and recommended practices for production environments.
+
+## IP whitelisting
+
+Deepvue supports IP whitelisting to restrict API access to specific IP addresses. When enabled, only requests from your whitelisted IPs will be accepted — all other requests are rejected with a `403 Forbidden` response.
+
+<Steps>
+  <Step title="Identify your server IPs" icon="server" titleType="h3">
+    Determine the static IP addresses of the servers that will call Deepvue APIs. If you use cloud infrastructure (AWS, GCP, Azure), use NAT gateway or elastic IPs to ensure a consistent outbound IP.
+
+    <Callout kind="alert">
+      Do not whitelist dynamic IPs. If your server IP changes, API calls will be blocked until the new IP is added.
+    </Callout>
+  </Step>
+
+  <Step title="Configure in the Dashboard" icon="settings" titleType="h3">
+    Log in to the [Deepvue Dashboard](https://dashboard.deepvue.tech) and navigate to the security settings. Add your server IP addresses to the whitelist.
+  </Step>
+
+  <Step title="Test connectivity" icon="check-circle" titleType="h3">
+    After configuring, make a test API call from your whitelisted server to confirm access works. Then verify that requests from non-whitelisted IPs are correctly blocked.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  IP whitelisting is optional but strongly recommended for production environments. Contact [support@deepvue.tech](mailto:support@deepvue.tech) if you need help configuring it.
+</Callout>
+
+## Transport security
+
+All Deepvue API communication is secured with TLS/HTTPS:
+
+| Requirement | Details |
+|-------------|---------|
+| **Protocol** | HTTPS required for all API calls |
+| **HTTP requests** | Rejected — unencrypted requests will fail |
+| **TLS version** | TLS 1.2 or higher |
+| **Certificate** | Valid SSL certificate on `production.deepvue.tech` |
+
+<Callout kind="danger">
+  Never make API calls over plain HTTP. Credentials and personal data would be transmitted in cleartext, violating compliance requirements.
+</Callout>
+
+## Credential security
+
+### API key types
+
+| Key type | Prefix | Usage |
+|----------|--------|-------|
+| **Trial** | `free_tier` | Testing and development with limited credits |
+| **Live** | `live` + org ID | Production use with full access |
+
+### Best practices
+
+<ExpandableGroup>
+  <Expandable title="Store credentials securely" default-open="true">
+    - Use environment variables or a secrets manager (e.g., AWS Secrets Manager, HashiCorp Vault, GCP Secret Manager)
+    - Never hardcode `client_id` or `client_secret` in source code
+    - Never commit credentials to version control
+
+    ```bash
+    # Good — use environment variables
+    export DEEPVUE_CLIENT_ID="your_client_id"
+    export DEEPVUE_CLIENT_SECRET="your_client_secret"
+    ```
+
+    ```python
+    import os
+    client_id = os.environ["DEEPVUE_CLIENT_ID"]
+    client_secret = os.environ["DEEPVUE_CLIENT_SECRET"]
+    ```
+  </Expandable>
+
+  <Expandable title="Rotate credentials periodically" default-open="false">
+    - Rotate your `client_secret` on a regular schedule (e.g., quarterly)
+    - Regenerate credentials immediately if you suspect a leak
+    - Update all services that use the old credentials before deactivation
+    - Contact [support@deepvue.tech](mailto:support@deepvue.tech) to rotate production credentials
+  </Expandable>
+
+  <Expandable title="Limit credential exposure" default-open="false">
+    - Only share credentials with team members who need API access
+    - Use separate credentials for development and production where possible
+    - Never expose credentials in client-side code (browser, mobile apps)
+    - Monitor credential usage through the [Dashboard](https://dashboard.deepvue.tech) logs
+  </Expandable>
+</ExpandableGroup>
+
+## Token security
+
+Access tokens returned by the `/v1/authorize` endpoint are valid for **24 hours**. Follow these practices:
+
+- **Cache tokens** — Reuse the same token for multiple requests within its validity period instead of generating a new one per request.
+- **Refresh proactively** — Generate a new token before the 24-hour window expires to avoid failed requests.
+- **Don't log tokens** — Exclude access tokens from application logs and error reports.
+- **Server-side only** — Never expose access tokens to client-side applications.
+
+## Production security checklist
+
+Use this checklist before going live:
+
+- [ ] All API calls use HTTPS
+- [ ] Credentials stored in environment variables or secrets manager
+- [ ] No credentials in source code or version control
+- [ ] IP whitelisting configured for production servers
+- [ ] Access tokens cached and refreshed proactively
+- [ ] API usage monitoring enabled in the Dashboard
+- [ ] Team access to credentials limited to authorized personnel
+- [ ] Incident response plan in place for credential leaks
