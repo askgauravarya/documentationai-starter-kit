@@ -3,72 +3,191 @@ title: Introduction
 description: Deepvue provides API infrastructure for financial integrations and insights, covering identity verification, banking, credit, and more.
 ---
 
-## Overview
+## Build financial products 10X faster
 
-Deepvue offers API infrastructure for financial integrations and insights. Launch financial products 10X faster with APIs covering identity verification, banking, credit, and more.
-
-The Deepvue APIs follow REST conventions with resource-oriented URLs, support for query parameters and form-encoded requests, JSON responses, and standard HTTP status codes and authentication methods.
-
-**Base URL:**
-
-```
-https://production.deepvue.tech
-```
-
-## Get started
+Deepvue provides 150+ REST APIs for identity verification, business compliance, financial data, and document intelligence — all through a single integration.
 
 <Columns cols="3">
-  <Card title="API Dashboard" icon="layout-dashboard" href="https://dashboard.deepvue.tech">
-    Access the Deepvue Dashboard to get your API credentials. No code required to get started.
+  <Card title="Quickstart" icon="zap" href="/quickstart">
+    Make your first API call in under 5 minutes.
+  </Card>
+
+  <Card title="API Reference" icon="code" href="/reference/overview">
+    Explore all 150+ endpoints across 13 product categories.
   </Card>
 
   <Card title="Postman Collection" icon="send" href="https://hi.deepvue.tech/postman">
-    Use our ready-to-use Postman collection for quick API testing and integration.
-  </Card>
-
-  <Card title="Documentation Index" icon="file-text" href="https://docs.deepvue.ai/llms.txt">
-    Fetch the complete documentation index to discover all available pages.
+    Import our ready-to-use collection and start testing instantly.
   </Card>
 </Columns>
 
-## Supported languages
+## Make your first API call
 
-Deepvue API supports integration with any language that can make HTTP requests. Code examples are available in:
+<Steps>
+  <Step title="Get your API credentials" icon="key" titleType="h3">
+    Sign up on the [Deepvue Dashboard](https://dashboard.deepvue.tech) and copy your `client_id` and `client_secret` from the credentials section.
 
-- cURL
-- Ruby
-- Python
-- PHP
-- Java
-- Node.js
-- Go
+    <Callout kind="info">
+      Trial keys are prefixed with **free_tier**. Live keys are prefixed with **live** followed by your organization ID.
+    </Callout>
+  </Step>
 
-## Explore the API
+  <Step title="Generate an access token" icon="lock" titleType="h3">
+    Authenticate with your credentials to get a bearer token valid for 24 hours.
+
+    <CodeGroup tabs="cURL,Python,Node.js">
+      ```bash
+      curl -X POST https://production.deepvue.tech/v1/authorize \
+        -d "client_id=YOUR_CLIENT_ID" \
+        -d "client_secret=YOUR_CLIENT_SECRET"
+      ```
+
+      ```python
+      import requests
+
+      response = requests.post(
+          "https://production.deepvue.tech/v1/authorize",
+          data={
+              "client_id": "YOUR_CLIENT_ID",
+              "client_secret": "YOUR_CLIENT_SECRET"
+          }
+      )
+      token = response.json()["access_token"]
+      ```
+
+      ```javascript
+      const response = await fetch("https://production.deepvue.tech/v1/authorize", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          client_id: "YOUR_CLIENT_ID",
+          client_secret: "YOUR_CLIENT_SECRET"
+        })
+      });
+      const { access_token } = await response.json();
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Verify a PAN number" icon="shield" titleType="h3">
+    Use your token to make a real API call — here we verify a PAN number.
+
+    <CodeGroup tabs="cURL,Python,Node.js">
+      ```bash
+      curl -X GET "https://production.deepvue.tech/v1/verification/panbasic?pan_number=AXXPX1234X&consent=Y&reason=KYC" \
+        -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+        -H "x-api-key: YOUR_CLIENT_SECRET"
+      ```
+
+      ```python
+      response = requests.get(
+          "https://production.deepvue.tech/v1/verification/panbasic",
+          params={"pan_number": "AXXPX1234X", "consent": "Y", "reason": "KYC"},
+          headers={
+              "Authorization": f"Bearer {token}",
+              "x-api-key": "YOUR_CLIENT_SECRET"
+          }
+      )
+      print(response.json())
+      ```
+
+      ```javascript
+      const result = await fetch(
+        "https://production.deepvue.tech/v1/verification/panbasic?pan_number=AXXPX1234X&consent=Y&reason=KYC",
+        {
+          headers: {
+            "Authorization": `Bearer ${access_token}`,
+            "x-api-key": "YOUR_CLIENT_SECRET"
+          }
+        }
+      );
+      console.log(await result.json());
+      ```
+    </CodeGroup>
+  </Step>
+</Steps>
+
+## Explore by product
 
 <Columns cols="3">
-  <Card title="KYC Verification" icon="shield" href="/reference/kyc/pan/pan-verification-basic">
-    Verify identities with PAN, Aadhaar, bank account, voter ID, passport, and more.
+  <Card title="KYC Verification" icon="shield" href="/reference/kyc/introduction">
+    PAN, Aadhaar, bank account, passport, driving license, and voter ID verification.
   </Card>
 
-  <Card title="Document OCR" icon="file-text" href="/reference/document-ocr/introduction">
-    Extract structured data from identity documents like Aadhaar, PAN, driving license, and passport.
+  <Card title="KYB Verification" icon="building" href="/reference/kyb/introduction">
+    GST, MCA, MSME, TAN, FSSAI, and shop establishment checks.
   </Card>
 
-  <Card title="Forensics" icon="search" href="/reference/forensics/introduction">
-    Face matching, liveness detection, and Aadhaar masking for fraud prevention.
+  <Card title="Aadhaar eKYC" icon="fingerprint" href="/reference/digilocker-kyc/introduction">
+    OTP-based Aadhaar verification and DigiLocker document retrieval.
   </Card>
 </Columns>
 
 <Columns cols="3">
-  <Card title="KYB" icon="building" href="/reference/kyb/gst/gst-basic">
-    Business verification with GST, MCA, MSME, TAN, and FSSAI checks.
+  <Card title="Document OCR" icon="scan" href="/reference/document-ocr/introduction">
+    Extract structured data from Aadhaar, PAN, driving license, passport, and more.
   </Card>
 
-  <Card title="Financial Services" icon="credit-card" href="/reference/financial-services/introduction">
-    Credit bureau reports from Equifax and bank statement analysis.
+  <Card title="Forensics" icon="scan-face" href="/reference/forensics/introduction">
+    Face matching, liveness detection, and Aadhaar masking.
   </Card>
 
   <Card title="Mobile Intelligence" icon="smartphone" href="/reference/mobile-number-intelligence/introduction">
-    Find, verify, and fetch data points associated with a mobile number.
+    Fetch name, PAN, UPI, UAN, and network details from a mobile number.
+  </Card>
+</Columns>
+
+<Columns cols="3">
+  <Card title="Financial Services" icon="credit-card" href="/reference/financial-services/introduction">
+    Equifax credit bureau reports and bank statement analysis.
+  </Card>
+
+  <Card title="ITR" icon="file" href="/reference/itr/introduction">
+    Income tax returns, 26AS, and AIS data retrieval.
+  </Card>
+
+  <Card title="Employment" icon="briefcase" href="/reference/employment-verification/introduction">
+    EPFO-based employment history and UAN verification.
+  </Card>
+</Columns>
+
+<Columns cols="3">
+  <Card title="Background Checks" icon="shield-check" href="/reference/background-verification/introduction">
+    Court record and FIR checks for individuals.
+  </Card>
+
+  <Card title="Bulk Validations" icon="layers" href="/reference/bulk-verification/introduction">
+    High-volume batch processing for PAN, bank accounts, GST, and more.
+  </Card>
+
+  <Card title="Utilities" icon="settings" href="/reference/utilities/introduction">
+    Usage reports and wallet balance monitoring.
+  </Card>
+</Columns>
+
+## Platform essentials
+
+| Feature | Details |
+|---------|---------|
+| **Base URL** | `https://production.deepvue.tech` |
+| **Protocol** | HTTPS required, REST conventions |
+| **Auth** | Bearer token + API key ([details](/authentication)) |
+| **Response format** | JSON with `code`, `timestamp`, `transaction_id`, `data` |
+| **Rate limits** | Plan-based — 1 to 17 RPS ([details](/rate-limits)) |
+| **Error handling** | Standard HTTP codes with `detail` field ([details](/errors)) |
+
+## Resources
+
+<Columns cols="3">
+  <Card title="API Dashboard" icon="layout-dashboard" href="https://dashboard.deepvue.tech">
+    Manage credentials, monitor usage, and view request logs.
+  </Card>
+
+  <Card title="API Status" icon="activity" href="https://status.deepvue.ai">
+    Real-time uptime monitoring for all Deepvue services.
+  </Card>
+
+  <Card title="Documentation Index" icon="file-text" href="https://docs.deepvue.ai/llms.txt">
+    Machine-readable index of all documentation pages.
   </Card>
 </Columns>

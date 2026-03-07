@@ -45,11 +45,6 @@
                 "title": "Quickstart",
                 "path": "quickstart",
                 "icon": "zap"
-              },
-              {
-                "title": "Introduction V2",
-                "path": "introduction-v2",
-                "icon": "sparkles"
               }
             ]
           },
