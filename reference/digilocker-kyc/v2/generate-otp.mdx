@@ -2,3 +2,20 @@
 title: Generate OTP V2
 description: "Generate OTP for Aadhaar eKYC V2 verification without captcha."
 ---
+
+## Overview
+
+This API triggers OTP delivery through UIDAI to the mobile number linked with an Aadhaar account. It is part of the Offline Aadhaar eKYC V2 workflow where you provide the 12-digit Aadhaar number along with mandatory consent confirmation and regulatory purpose details. The system then instructs UIDAI to send a one-time password to the registered mobile number associated with that Aadhaar.
+
+## Integration flow
+
+1. **Generate OTP** -- Submit the Aadhaar number to trigger OTP delivery to the linked mobile number.
+2. **Verify OTP** -- Submit the OTP to retrieve the customer's Aadhaar information from UIDAI.
+
+<Callout kind="info">
+  OTP generation requests for the same Aadhaar within a certain timeframe may trigger a conflict response. The system validates Aadhaar format and mobile linking status before processing. UIDAI service unavailability may cause temporary failures.
+</Callout>
+
+<Callout kind="alert">
+  Per UIDAI regulations, service providers cannot share, publish, or display Aadhaar numbers, share codes, or XML contents with third parties. Non-compliance invites penalties under the Aadhaar Act and related regulations. You must store customer consent documentation before proceeding with verification.
+</Callout>

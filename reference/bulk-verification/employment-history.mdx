@@ -2,3 +2,13 @@
 title: Bulk Employment History
 description: "Submit a batch of UANs for bulk employment history verification."
 ---
+
+## Overview
+
+This API enables bulk verification of Universal Account Number (UAN) records to retrieve associated employment history data. You submit a batch file containing UAN numbers, and the system queues the request for processing. Once completed, results are delivered to your registered webhook endpoint.
+
+You can optionally specify a webhook URL as a query parameter to override the default registered endpoint.
+
+<Callout kind="alert">
+  Input files must contain fewer than 1,000 records and use `uan_number` as the sole column header.
+</Callout>

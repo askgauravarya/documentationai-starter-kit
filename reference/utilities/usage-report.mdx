@@ -2,3 +2,13 @@
 title: Usage Report
 description: "Retrieve your API usage report filtered by date range and product."
 ---
+
+## Overview
+
+This API enables you to generate and retrieve detailed usage reports documenting all API transactions associated with your account. The report captures comprehensive transaction data including transaction identifiers, timestamps, product names, response statuses, result messages, and associated charges for each API call made within a specified timeframe.
+
+The API supports dual response formats -- you can return usage data directly as JSON objects or generate downloadable Excel files via the `generate_excel` parameter for offline analysis and record-keeping.
+
+<Callout kind="alert">
+  The maximum allowed date range is 7 days. Requests exceeding this window are rejected with a 400 error.
+</Callout>

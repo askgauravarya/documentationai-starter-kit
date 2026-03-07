@@ -2,3 +2,13 @@
 title: Get Voter ID Result
 description: "Retrieve the result of an asynchronous voter ID verification request."
 ---
+
+## Overview
+
+This API returns the complete result and verification details for a voter ID verification request. It accepts the `request_id` received from the [Create Voter ID Verification](/reference/kyc/async/create-voter-id-verification) endpoint and returns the corresponding verification outcome.
+
+The Async KYC APIs operate asynchronously — they return a request ID upon initiation and use a webhook mechanism to deliver responses back to your servers. You can use this GET endpoint with the request ID to retrieve the verification response at any time.
+
+<Callout kind="info">
+The response includes the verification status along with extracted voter ID details from government records.
+</Callout>

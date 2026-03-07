@@ -2,3 +2,11 @@
 title: Bulk Mobile to PAN
 description: "Submit a batch of mobile numbers for bulk PAN lookup."
 ---
+
+## Overview
+
+This API fetches the PAN details of users linked with their phone numbers in bulk. It is an asynchronous verification request where you submit a batch file containing mobile numbers and receive a request ID. Once processing completes, results are sent to a webhook registered for your account.
+
+<Callout kind="alert">
+  Input files must contain fewer than 1,000 records and use `mobile_number` as the sole column header.
+</Callout>

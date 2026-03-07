@@ -2,3 +2,11 @@
 title: Get Udyam Aadhaar Result
 description: "Retrieve the result of an asynchronous Udyam Aadhaar verification."
 ---
+
+## Overview
+
+This API gives you back the complete result and verification details against your request ID received in the previous step. The endpoint retrieves asynchronous Udyam Aadhaar verification results using a previously obtained request identifier from an initial verification submission.
+
+<Callout kind="info">
+These are asynchronous endpoints that return a request ID and employ webhook mechanisms to deliver responses to your servers. The request ID can subsequently be used with the GET API to retrieve the verification outcome.
+</Callout>

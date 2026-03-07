@@ -2,3 +2,17 @@
 title: Shop Establishment Certificate
 description: "Verify a Shop and Establishment Certificate registration."
 ---
+
+## Overview
+
+This API enables verification of Shop Establishment Certificates. The service accepts a certificate number and state code to validate the credentials against official records.
+
+## Supported states
+
+The API covers nine Indian states: Delhi, Haryana, Jammu and Kashmir, Karnataka, Rajasthan, Telangana, Uttarakhand, Uttar Pradesh, and West Bengal. Each state has a two-letter code used as a required query parameter.
+
+Upon successful verification, the API returns comprehensive business information including the SE number, business name, registration details, mobile number, acknowledgement number, and a document link to the certificate PDF.
+
+<Callout kind="info">
+Many response fields are optional and may return null values depending on the state and registration details available.
+</Callout>

@@ -2,3 +2,18 @@
 title: Create Udyam Aadhaar
 description: "Submit an asynchronous Udyam Aadhaar verification request."
 ---
+
+## Overview
+
+The Udyam Aadhaar Verification API validates details associated with a Udyam Aadhaar Number by querying government sources. This API accepts a UAM identifier and retrieves comprehensive business information including:
+
+- Business name
+- Primary business activity
+- Physical business address
+- Enterprise category classification
+- Certificate expiration date
+- NIC codes
+
+<Callout kind="info">
+This is an asynchronous API that issues a request ID rather than returning immediate results. You must use webhook mechanisms or polling to retrieve completed verification responses from the platform's servers.
+</Callout>

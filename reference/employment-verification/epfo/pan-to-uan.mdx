@@ -2,3 +2,9 @@
 title: PAN to UAN
 description: "Retrieve the UAN associated with a PAN number from EPFO records."
 ---
+
+## Overview
+
+This API retrieves the Universal Account Number (UAN) linked to a given PAN (Permanent Account Number) from EPFO (Employees' Provident Fund Organisation) records. You can use this endpoint to look up UAN information for employment verification purposes under India's employment and tax regulatory framework.
+
+The endpoint operates synchronously, returning results immediately within a single request-response cycle. If the provided PAN is linked to a UAN, the API returns the complete UAN account identification. If no UAN is associated with the PAN, the API confirms the absence of any linked record. Both outcomes return an HTTP 200 status.

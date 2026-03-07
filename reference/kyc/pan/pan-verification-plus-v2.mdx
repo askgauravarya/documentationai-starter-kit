@@ -2,3 +2,21 @@
 title: PAN Plus Verification V2
 description: "Enhanced PAN verification with additional details including Aadhaar seeding status."
 ---
+
+## Overview
+
+The PAN Plus Authentication API V2 provides comprehensive identity verification by extracting supplementary information beyond standard PAN validation. You can authenticate and retrieve details including date of birth, gender, residential address, email, and phone number from a PAN identifier.
+
+## Key features
+
+- **Address verification** - The system confirms residential location data with high precision.
+- **Masked contact information** - Email addresses and mobile numbers are returned in obfuscated format for security purposes (for example, `hd*****ra@tata.com` and `92XXXXXX26`).
+- **Streamlined integration** - Migration from the previous version requires only updating the API endpoint URL, minimizing implementation complexity.
+
+<Callout kind="info">
+  The system returns differentiated response structures for individual PAN holders versus firm registrations. Firm accounts typically contain minimal contact and demographic data compared to individual records.
+</Callout>
+
+<Callout kind="alert">
+  Strict adherence to data protection requirements is required, particularly regarding Aadhaar information handling across related services. Non-compliance with Indian authentication regulations may carry regulatory consequences.
+</Callout>

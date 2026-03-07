@@ -2,3 +2,16 @@
 title: Mobile to Name
 description: "Retrieve the name associated with a mobile number."
 ---
+
+## Overview
+
+The Mobile to Name API retrieves the name associated with a given phone number. It enables businesses to fetch user identity information linked to a mobile number for verification and onboarding purposes.
+
+The API accepts a mobile phone number as a query parameter and returns the associated user's name if available. The service searches against available data sources to match the provided number to registered user information.
+
+## Response outcomes
+
+The API supports two primary success scenarios:
+
+- **Name successfully retrieved** — Returns the matched name associated with the mobile number.
+- **Details not found** — Returns a successful response but indicates no matching name exists for the provided number.

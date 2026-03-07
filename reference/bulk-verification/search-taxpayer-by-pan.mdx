@@ -2,3 +2,11 @@
 title: Bulk Search Taxpayer by PAN
 description: "Submit a batch of PAN numbers for bulk GSTIN search."
 ---
+
+## Overview
+
+This API enables bulk GSTIN (Goods and Services Tax Identification Number) searches using PAN (Permanent Account Number) as the lookup parameter. The service operates asynchronously -- you submit a batch file containing PAN numbers and receive a request ID. Once processing completes, results are delivered to your specified webhook URL.
+
+<Callout kind="alert">
+  Input files must contain fewer than 1,000 records and use `pan_number` as the sole column header.
+</Callout>

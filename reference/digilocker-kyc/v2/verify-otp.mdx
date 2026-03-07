@@ -2,3 +2,22 @@
 title: Verify OTP V2
 description: "Verify OTP and retrieve Aadhaar data with auto-generated PDF in V2 flow."
 ---
+
+## Overview
+
+This API validates an OTP that a user has entered to authenticate with UIDAI. Upon successful validation, the response includes comprehensive Aadhaar details. Users receive an OTP on their Aadhaar-linked mobile number, which they enter through your application. This endpoint confirms that OTP and retrieves the associated Aadhaar information from UIDAI.
+
+## Integration flow
+
+This endpoint operates within the Offline Aadhaar eKYC V2 verification flow:
+
+1. **Generate OTP** -- Submit the Aadhaar number to trigger OTP delivery to the linked mobile number.
+2. **Verify OTP** -- Submit the OTP to retrieve the customer's Aadhaar information from UIDAI.
+
+<Callout kind="alert">
+  UIDAI regulations strictly prohibit sharing, publishing, or displaying share codes, XML files, or their contents with unauthorized parties. Non-compliance invokes penalties under The Aadhaar (Authentication) Regulation, 2016, The Aadhaar (Sharing of Information) Regulation, 2016, and The Aadhaar Act, 2016.
+</Callout>
+
+<Callout kind="info">
+  Customer consent must be mandatorily stored at your end before proceeding with verification.
+</Callout>

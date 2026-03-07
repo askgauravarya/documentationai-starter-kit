@@ -2,3 +2,17 @@
 title: Bank Aadhaar Seeding Generate OTP
 description: "Generate OTP to check bank-Aadhaar seeding status."
 ---
+
+## Overview
+
+This API triggers an OTP via UIDAI to the Aadhaar-registered mobile number. It serves as part of the Bank Aadhaar Seeding Status verification workflow, where this endpoint handles the OTP generation phase.
+
+The Generate OTP function is the second step in a three-part verification flow:
+
+1. **Initiate Session** — obtain a captcha
+2. **Generate OTP** — send a verification code to the Aadhaar-linked mobile number (this endpoint)
+3. **Verify OTP** — validate the code and retrieve Aadhaar seeding details
+
+<Callout kind="alert">
+Per UIDAI guidelines, service providers must not share or store Aadhaar numbers, share codes, or XML file contents. Non-compliance invokes penalties under The Aadhaar Act 2016 and related regulations. You must document and retain customer consent before proceeding with verification.
+</Callout>

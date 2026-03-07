@@ -2,3 +2,14 @@
 title: Get Bulk Verification Status
 description: "Retrieve the result and status of a bulk verification batch."
 ---
+
+## Overview
+
+This API retrieves the processing status of bulk validation requests. You provide the `request_id` obtained when you submitted the batch, and the endpoint returns the current status and results.
+
+- **Completed batches** include a downloadable results file URL in the response.
+- **In-progress batches** indicate processing is ongoing with a null output file URL.
+
+<Callout kind="info">
+  Use the `request_id` returned from any bulk verification submission endpoint to check the status of that batch.
+</Callout>

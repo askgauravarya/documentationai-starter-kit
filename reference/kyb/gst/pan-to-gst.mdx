@@ -2,3 +2,17 @@
 title: Search Taxpayer by PAN
 description: "Search for GSTINs associated with a PAN number."
 ---
+
+## Overview
+
+The Search GSTIN by PAN endpoint enables businesses to retrieve all GST-registered entities linked to a specific PAN (Permanent Account Number). Unlike a standard GSTIN search which returns details for a single GST entity, this API provides the information of all the business entities that are associated with that corresponding PAN.
+
+The API accepts a PAN number as input and responds with comprehensive details about every GST registration tied to that PAN, including:
+
+- GSTIN identifier
+- Associated state and state code
+- Current registration status
+
+<Callout kind="info">
+While the standard Search GSTIN API focuses on a particular GST entity by its GSTIN, this PAN-based variant delivers a complete picture of all entities under one PAN registration, making it valuable for multi-entity business verification scenarios.
+</Callout>

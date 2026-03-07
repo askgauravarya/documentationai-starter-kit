@@ -2,3 +2,21 @@
 title: FSSAI Verification
 description: "Verify an FSSAI license number and retrieve food business details."
 ---
+
+## Overview
+
+The FSSAI Verification API validates Food Safety and Standards Authority of India identification numbers and license credentials. It retrieves official registration and licensing information for food business operations registered with FSSAI.
+
+This verification tool confirms the authenticity of FSSAI ID/License Numbers by querying the official FSSAI database. Upon successful verification, the system returns comprehensive business details including:
+
+- Business registration and application information
+- Physical premises address and location identifiers
+- Company/FBO (Food Business Operator) identification
+- License category classification
+- Registration status and certification details
+- Application submission and update timestamps
+- Geographic information (state, district, taluk, pincode)
+
+<Callout kind="info">
+The API accepts a single required query parameter: the FSSAI identification number in the proper format. Malformed FSSAI patterns trigger validation errors.
+</Callout>

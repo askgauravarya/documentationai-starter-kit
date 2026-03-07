@@ -2,3 +2,27 @@
 title: Initiate Session
 description: "Initiate an Offline Aadhaar eKYC V1 session to begin the verification flow."
 ---
+
+## Overview
+
+The Initiate Session endpoint enables you to begin a session with UIDAI to retrieve a captcha prior to submitting a customer's Aadhaar number. This is the first step in the Offline Aadhaar eKYC (OKYC) verification flow.
+
+Offline Aadhaar KYC (OKYC) is a legally compliant verification method per UIDAI guidelines. Customers provide their Aadhaar number and verify via OTP sent to their registered mobile number to access a downloadable XML file containing their Aadhaar information.
+
+## Integration flow
+
+The offline eKYC flow involves three primary API operations:
+
+1. **Initiate Session** -- Obtain a captcha from UIDAI before submitting Aadhaar details.
+2. **Generate OTP** -- Pass the Aadhaar number to trigger OTP delivery to the linked mobile number.
+3. **Verify OTP** -- Submit the OTP to retrieve the customer's Aadhaar information from UIDAI.
+
+If a customer or platform needs to restart the session, you can use the Reload Captcha API to generate a fresh captcha for a new attempt.
+
+<Callout kind="alert">
+  Per UIDAI regulations, sharing and storage of Aadhaar numbers is prohibited. Service providers must not distribute, publish, or display the share code, XML file, or its contents with anyone else. Non-compliance may result in actions under The Aadhaar (Authentication) Regulation, 2016, The Aadhaar (Sharing of Information) Regulation, 2016, and The Aadhaar Act, 2016.
+</Callout>
+
+<Callout kind="info">
+  Customer consent must be stored at your end before proceeding with verification.
+</Callout>

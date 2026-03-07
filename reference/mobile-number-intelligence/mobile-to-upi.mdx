@@ -2,3 +2,12 @@
 title: Mobile to UPI
 description: "Retrieve the UPI VPA linked to a mobile number."
 ---
+
+## Overview
+
+The Mobile to UPI API retrieves account holder names and UPI IDs by providing a phone number. This endpoint allows platforms to verify UPI account details linked to mobile numbers, supporting customer identity verification workflows in financial services and payment contexts.
+
+## Response outcomes
+
+- **Successful VPA retrieval** — When a UPI ID is linked to the provided mobile number, the API returns the account holder's name at bank, mobile number, and associated VPA identifier.
+- **No VPA linked** — The API handles cases where mobile numbers exist but have no associated UPI account, returning a specific response indicating this status.

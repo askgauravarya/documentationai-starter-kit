@@ -2,3 +2,17 @@
 title: Bulk CIN Verification
 description: "Submit a batch of CINs for bulk company verification."
 ---
+
+## Overview
+
+This API enables bulk verification of Corporate Identity Numbers (CIN) through an asynchronous processing model. You submit a CSV batch file containing CIN data, receive a request ID for tracking, and processing occurs in the background. Upon completion, verified results are sent to your configured webhook URL.
+
+You can optionally specify a `webhook_url` parameter to override the default registered endpoint for a specific request.
+
+<Callout kind="alert">
+  Input files must contain fewer than 1,000 records.
+</Callout>
+
+<Callout kind="info">
+  The batch can return in two states: **Completed** (results available at the provided batch output file URL) or **In Progress** (still processing -- retry later or monitor the webhook).
+</Callout>

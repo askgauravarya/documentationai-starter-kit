@@ -2,3 +2,17 @@
 title: Upload File
 description: "Upload a bank statement file for automated analysis and extraction."
 ---
+
+## Overview
+
+This API enables you to upload bank statement data for analysis. The API accepts bank statement files in PDF and XML formats. Password-protected PDFs are supported when you provide the corresponding password parameter.
+
+Required fields include entity name, entity type (Individual, Company, Partnership, Sole_Proprietorship), account number, account type (Savings, Current, Cash_Credit, Over_Draft), and bank code. Optional parameters include file password and webhook URL for asynchronous result delivery.
+
+<Callout kind="alert">
+  You must reference the complete list of Bank Codes before uploading statements. Refer to the [Bank Codes reference](https://docs.google.com/spreadsheets/d/1Qx3fPoSBIhmfFMJl_MFkVFaTEsOhJMHe-4hYBwJbglo) for valid values.
+</Callout>
+
+<Callout kind="info">
+  You need an authorized access token to access any of the Platform APIs. One access token is valid for only 24 hours. After expiration, you can renew the token by using the Authorize endpoint to receive a fresh access token.
+</Callout>

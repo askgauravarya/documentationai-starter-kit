@@ -2,3 +2,17 @@
 title: PAN Plus Verification
 description: "Verify a PAN number and retrieve extended details including name, date of birth, and address."
 ---
+
+## Overview
+
+The PAN Plus Authentication API provides additional details compared to basic PAN verification. You can verify additional details such as date of birth, gender, and Aadhaar linking status from a PAN number.
+
+Beyond basic authentication, this endpoint returns supplementary information including date of birth, gender, email, phone, address details, and Aadhaar linkage status.
+
+## Response categories
+
+The API handles three distinct PAN categories:
+
+- **Individual PAN** - Returns personal details including masked Aadhaar, gender, date of birth, and Aadhaar linking confirmation.
+- **Firm PAN** - Provides business entity information with registration date and firm name breakdown.
+- **Invalid PAN** - Returns an appropriate error indication for malformed or non-existent PAN numbers.

@@ -2,3 +2,15 @@
 title: Track GST Return Status
 description: "Check GST return filing status for a GSTIN."
 ---
+
+## Overview
+
+The Track GST Return API enables businesses to monitor the filing status of Goods and Services Tax Returns (GSTRs) by accepting a GSTIN and financial year as inputs. The system then responds with comprehensive details about all GSTRs submitted by that entity during the specified period.
+
+A GST entity periodically and rightly filing GSTRs is a positive indication about its business and compliance performance. Monitoring GSTR submission patterns provides meaningful insight into an organization's compliance posture.
+
+The API returns filing information including return type designations, associated tax periods, filing dates, current status (such as Filed or Pending), and the submission method employed.
+
+<Callout kind="info">
+One Access Token will be valid for only 24 hours. After 24 hours, you can renew the token by using the Authorize Endpoint.
+</Callout>

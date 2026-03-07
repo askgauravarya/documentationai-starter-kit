@@ -2,3 +2,16 @@
 title: Mobile to Multiple UPI
 description: "Retrieve all UPI VPAs linked to a mobile number."
 ---
+
+## Overview
+
+This API retrieves an account holder's name and all associated UPI identifiers by supplying their phone number. The service queries banking systems to identify all VPA (Virtual Payment Address) accounts linked to a specific mobile number.
+
+## Response outcomes
+
+- **Successful VPA discovery** — When multiple UPI IDs are found, the response includes the account holder's registered bank name and a complete list of associated VPA addresses.
+- **No VPA found** — When no UPI identifiers are linked to the provided mobile number, the API returns a specific status indicating this condition rather than an error.
+
+<Callout kind="info">
+  The mobile number parameter must conform to valid phone number formatting standards. Requests with improperly formatted mobile numbers are rejected with a validation error response.
+</Callout>

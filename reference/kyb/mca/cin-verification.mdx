@@ -2,3 +2,18 @@
 title: CIN Verification
 description: "Verify a Corporate Identification Number and retrieve company details."
 ---
+
+## Overview
+
+This API enables retrieval of verification information linked to a company's Corporate Identification Number (CIN). You can quickly access important details and validate the authenticity of a company based on its unique identification number.
+
+The CIN Verification API is part of the broader MCA APIs, which provide a set of APIs that help fetch MCA's Director Master Data and Company Master Data. The API streamlines corporate entity verification by retrieving:
+
+- Company master data (name, registration details, capital information, compliance status)
+- Director and signatory information (names, designations, appointment dates)
+- Charges associated with the entity
+- LLP (Limited Liability Partnership) data when applicable
+
+<Callout kind="info">
+The endpoint accepts CIN, LLPIN, FLLPIN, or FCRN identifiers, returning relevant entity data based on the identifier type provided.
+</Callout>

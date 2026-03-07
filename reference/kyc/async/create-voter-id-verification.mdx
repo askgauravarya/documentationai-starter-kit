@@ -2,3 +2,13 @@
 title: Create Voter ID Verification
 description: "Submit an asynchronous voter ID verification request."
 ---
+
+## Overview
+
+The Voter ID Verification API enables instant verification of voter identification details by cross-referencing government databases. This service makes your onboarding process safer, faster, and smarter by confirming that individuals possess valid voter IDs and have provided legitimate identity documentation.
+
+This is an asynchronous KYC API. You submit an EPIC number (voter ID identifier) as a query parameter to initiate the verification task. The API returns a request ID upon submission and uses a webhook mechanism to deliver results back to your servers. You can also retrieve the response using the corresponding result endpoint.
+
+<Callout kind="info">
+Upon successful submission, you receive a `request_id` that you can use with the [Get Voter ID Result](/reference/kyc/async/result-voter-id-verification) endpoint to retrieve the verification outcome.
+</Callout>

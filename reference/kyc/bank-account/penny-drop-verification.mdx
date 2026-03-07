@@ -2,3 +2,21 @@
 title: Bank Account Verification
 description: "Verify a bank account by performing a penny drop transaction to confirm account holder details."
 ---
+
+## Overview
+
+The Penny Drop API enables bank account verification through a penny drop check mechanism. The service validates a customer's bank account and IFSC code combination by depositing 1 INR into the specified account, then retrieving the associated account information in return.
+
+This verification method authenticates customer bank account details for KYC (Know Your Customer) compliance and account onboarding workflows.
+
+<Callout kind="alert">
+  Billing only occurs when the API returns a 200 status code response.
+</Callout>
+
+## Response scenarios
+
+Successful verification returns account existence confirmation, name-at-bank details, UTR reference number, and deposited amount. The response may also indicate various non-verification states including invalid credentials, blocked accounts, invalid IFSC codes, or NRE (Non-Resident External) account detection.
+
+<Callout kind="info">
+  The API relies on bank connectivity and NPCI (National Payments Corporation of India) availability. Service disruptions may occur if beneficiary banks are offline, source banks decline requests, or NPCI services are unavailable.
+</Callout>

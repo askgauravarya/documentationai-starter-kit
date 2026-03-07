@@ -2,3 +2,32 @@
 title: Verify OTP
 description: "Verify OTP and retrieve Offline Aadhaar data in V1 flow."
 ---
+
+## Overview
+
+This API validates the OTP entered by the user to authenticate with UIDAI. Upon successful validation, the system retrieves comprehensive resident information including reference number, name, address, gender, photo, date of birth, and hashed mobile and email data.
+
+## Returned data
+
+Successful OTP verification returns the following resident details:
+
+- Reference number
+- Resident's name
+- Resident's address
+- Gender
+- Photo
+- Date of birth
+- Mobile number (hashed)
+- Email (hashed)
+
+<Callout kind="info">
+  The OTP is valid for 10 minutes. You can optionally verify the mobile number of the OTP recipient and generate a PDF of the Aadhaar data using the `generate_pdf` parameter.
+</Callout>
+
+<Callout kind="alert">
+  Per UIDAI regulations, service providers shall not share, publish, or display either the share code or XML file or its contents with anyone else. Non-compliance invites penalties under sections of The Aadhaar (Authentication) Regulation, 2016, The Aadhaar (Sharing of Information) Regulation, 2016, and The Aadhaar Act, 2016.
+</Callout>
+
+<Callout kind="info">
+  Consent must be mandatorily stored at your end before proceeding with verification.
+</Callout>

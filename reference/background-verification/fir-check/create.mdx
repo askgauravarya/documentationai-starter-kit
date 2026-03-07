@@ -2,3 +2,13 @@
 title: Create FIR Check Request
 description: "Submit an asynchronous FIR check request for background verification."
 ---
+
+## Overview
+
+This API enables you to submit a new FIR (First Information Report) check request with candidate details for background verification. The service processes requests asynchronously to screen individuals against FIR records.
+
+Upon successful submission, the system returns a transaction ID and confirms that request processing is in progress. The verification occurs in the background, and you can retrieve results later using the transaction ID.
+
+<Callout kind="info">
+  A full name and complete address are mandatory fields. You can optionally include the father's name to enhance verification accuracy.
+</Callout>

@@ -2,3 +2,13 @@
 title: Download Equifax Report
 description: "Download the Equifax credit report after user consent and authentication."
 ---
+
+## Overview
+
+This API retrieves a credit report using a `transaction_id` obtained from a prior session initiation call. After establishing a session via the Initiate Session endpoint, you provide the transaction ID to retrieve the associated credit report data.
+
+The response includes personal information, account details, credit scores, and inquiry history when a credit report is available. When no credit report exists for the provided transaction ID, the response indicates this status with a null data field.
+
+<Callout kind="info">
+  You need an authorized access token to access any of the Platform APIs. One access token is valid for only 24 hours. After expiration, you can renew the token by using the Authorize endpoint to receive a fresh access token.
+</Callout>

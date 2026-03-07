@@ -2,3 +2,12 @@
 title: Mobile to UAN
 description: "Retrieve the UAN linked to a mobile number."
 ---
+
+## Overview
+
+This API retrieves the Unified Account Number (UAN) associated with a user's phone number. The endpoint accepts a mobile number as a query parameter and returns the linked UAN number if one exists.
+
+## Response outcomes
+
+- **Successful retrieval** — Returns the associated UAN number linked to the provided mobile number.
+- **Details not found** — When no UAN is linked to the mobile number, the API returns a 200 status with a `DETAILS_NOT_FOUND` sub-code.

@@ -2,3 +2,18 @@
 title: Initiate Session
 description: "Initiate a DigiLocker session to begin document access."
 ---
+
+## Overview
+
+This API creates a DigiLocker session, generating an authorization code for subsequent document verification workflows. The session enables users to authenticate and access verified electronic documents through the Digital India Program initiative.
+
+DigiLocker allows documents to be shared online, accessed anytime and anywhere, and enables users to authenticate documents that are legally on a par with originals. Documents come directly from registered government issuers including the Income Tax Department, CBSE, and Registrar Offices.
+
+## Integration flow
+
+This endpoint initiates the first step in a multi-step DigiLocker journey:
+
+1. **Initiate Session** -- Create a session and obtain an authorization code.
+2. **Access Token** -- Exchange the authorization code for a user access token.
+3. **Issued Files** -- Retrieve the list of documents issued to the user.
+4. **e-Aadhaar / Download File** -- Download specific documents such as e-Aadhaar or other credentials from DigiLocker.

@@ -2,3 +2,13 @@
 title: Create Vehicle RC Verification
 description: "Submit an asynchronous vehicle RC basic verification request."
 ---
+
+## Overview
+
+The Vehicle Registration Verification API establishes a connection between vehicles and their owners to reduce fraud risk. It enables confident onboarding of both vehicles and individuals by confirming genuine vehicle registration through the RTO (Regional Transport Office) and linking ownership details.
+
+This asynchronous API accepts a vehicle registration number as input and returns a `request_id` for tracking. Results are delivered via webhook to your servers, or you can retrieve them using the corresponding result endpoint.
+
+<Callout kind="info">
+Upon successful submission, you receive a `request_id` that you can use with the [Get Vehicle RC Result](/reference/kyc/async/result-vehicle-rc-basic) endpoint to retrieve the verification outcome.
+</Callout>

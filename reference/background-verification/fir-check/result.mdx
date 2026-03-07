@@ -2,3 +2,24 @@
 title: Retrieve FIR Check Result
 description: "Retrieve the result of an asynchronous FIR check."
 ---
+
+## Overview
+
+This API retrieves the results of an FIR (First Information Report) background verification check for a transaction ID that was previously initiated.
+
+Successful responses include detailed FIR information such as the FIR number, year, associated police station, state, individual's name with matching scores, case category, and a URL to the FIR document.
+
+## Filtering capabilities
+
+You can filter results using the following criteria:
+
+- **Name matching logic** -- exact, fuzzy, or partial matches
+- **Party role** -- respondent or petitioner
+- **Case category** -- civil or criminal
+- **Case status** -- pending or disposed
+- **Geographic jurisdiction** -- state, district, or pan-India coverage
+- **Risk assessment levels**
+
+<Callout kind="info">
+  The response indicates whether processing has completed or remains in progress. If processing is still underway, you can poll the endpoint again later.
+</Callout>

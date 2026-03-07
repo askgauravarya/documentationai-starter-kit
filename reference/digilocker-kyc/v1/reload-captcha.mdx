@@ -2,3 +2,25 @@
 title: Reload Captcha
 description: "Reload the captcha for an Offline Aadhaar eKYC V1 session."
 ---
+
+## Overview
+
+This API enables you to refresh or regenerate a captcha during the Offline Aadhaar eKYC verification process. Use this endpoint when the user needs to reload the captcha or when an invalid captcha has been entered.
+
+## Integration flow
+
+The Reload Captcha endpoint fits into the broader Offline Aadhaar eKYC workflow:
+
+1. **Initiate Session** -- Obtain a captcha before submitting Aadhaar details.
+2. **Generate OTP** -- Pass the Aadhaar number to trigger OTP delivery to the linked mobile number.
+3. **Verify OTP** -- Submit the OTP to retrieve customer Aadhaar information from UIDAI.
+
+If a customer or platform needs to restart the session, this endpoint generates a fresh captcha for a new attempt.
+
+<Callout kind="alert">
+  Per UIDAI regulations, service providers shall not share, publish, or display either the share code or XML file or its contents with anyone else. Non-compliance may trigger legal consequences under The Aadhaar Act, 2016 and related regulations.
+</Callout>
+
+<Callout kind="info">
+  Consent must be mandatorily stored at your end before proceeding with verification.
+</Callout>

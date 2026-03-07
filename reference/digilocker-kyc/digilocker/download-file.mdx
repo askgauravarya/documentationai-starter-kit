@@ -2,3 +2,18 @@
 title: Download File
 description: "Download a specific document from DigiLocker using its URI."
 ---
+
+## Overview
+
+This API enables you to download files from DigiLocker based on issued documents, using a URN (Uniform Resource Name) as the identifier. It is part of the broader DigiLocker integration workflow within the Deepvue platform.
+
+DigiLocker is an initiative under the Digital India Program that aims to remove the dependency on physical documents and facilitate verified electronic document sharing across authorized agencies. Documents shared through DigiLocker are legally on a par with originals and are issued directly by registered authorities such as the Income Tax Department, CBSE, and Registrar Offices.
+
+## Integration flow
+
+The Download File API functions as one component within the larger DigiLocker workflow:
+
+1. **Initiate Session** -- Create a session for the DigiLocker journey.
+2. **Access Token** -- Obtain a user access token via the authorization code.
+3. **Issued Files** -- Retrieve the list of issued documents.
+4. **e-Aadhaar / Download File** -- Download specific documents using their URIs.

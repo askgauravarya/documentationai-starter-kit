@@ -2,3 +2,19 @@
 title: PAN MSME Check
 description: "Check MSME registration status linked to a PAN number."
 ---
+
+## Overview
+
+This API enables verification of whether a business has registered MSME status linked to a specific PAN (Permanent Account Number) and whether that registration has been migrated to the current Udyam Portal system.
+
+The PAN-MSME Check API determines two key pieces of information:
+
+1. Whether an MSME registration exists for a given business PAN
+2. The migration status of that MSME to the latest Udyam Portal platform
+
+Successful API calls return comprehensive business and individual information, including:
+
+- The queried PAN number
+- MSME existence confirmation status
+- Migration status to Udyam Portal
+- Associated PAN holder details (full name with name components separated, masked Aadhaar, gender, date of birth, Aadhaar linking status, entity category, and PAN validity status)

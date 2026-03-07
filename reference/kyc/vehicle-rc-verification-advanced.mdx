@@ -2,3 +2,22 @@
 title: Vehicle RC Advanced
 description: "Advanced vehicle registration certificate verification with comprehensive vehicle and owner details."
 ---
+
+## Overview
+
+The Vehicle RC-Advanced API establishes verification connections between vehicles and their owners to mitigate fraud risk. Beyond basic vehicle details, it supplies insurance information and additional ownership data.
+
+This verification service delivers comprehensive vehicle registration information including:
+
+- Owner and vehicle identification details
+- Registration and manufacturing dates
+- Complete address information
+- Vehicle specifications (chassis, engine, model, fuel type, body type, color)
+- Fitness certificate validity periods
+- Financing institution details
+- Insurance provider and policy information
+- Registration location and status
+
+<Callout kind="info">
+  Invalid RC numbers return a 200 status code with an `INVALID_RC_NUMBER` sub-code indicator rather than an error status. The API provides transaction IDs and timestamps with all responses for audit trails.
+</Callout>

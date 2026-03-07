@@ -2,3 +2,19 @@
 title: RC Challan Details
 description: "Retrieve traffic challan details for a vehicle registration number."
 ---
+
+## Overview
+
+The RC Challan API helps you retrieve traffic violation (challan) records for a vehicle by providing the Vehicle RC Number.
+
+Successful queries return challan records containing:
+
+- Violation offense descriptions
+- Fine amounts and payment statuses
+- Violation dates and locations
+- Accused driver names
+- Court-related information where applicable
+
+<Callout kind="info">
+  The API indicates which data sources were successfully queried through `successful_backends` and `failed_backends` fields in responses.
+</Callout>

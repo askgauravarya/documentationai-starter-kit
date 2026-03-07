@@ -2,3 +2,13 @@
 title: Access Token
 description: "Obtain a DigiLocker access token using the authorization code."
 ---
+
+## Overview
+
+The Access Token API allows you to obtain the necessary access token required for authenticating requests to the DigiLocker API. This endpoint retrieves authentication tokens from DigiLocker by exchanging an authorization code obtained during session initiation. The token is essential for all subsequent operations within the DigiLocker ecosystem.
+
+DigiLocker is an initiative under India's Digital India Program designed to eliminate reliance on physical documentation. It enables verified electronic document sharing among authorized agencies, with documents issued directly by registered authorities like the Income Tax Department, CBSE, and Registrar Offices.
+
+<Callout kind="info">
+  Upon successful authentication, the response includes user information such as DigiLocker ID, name, date of birth, gender, e-Aadhaar availability, mobile number, and consent expiration timestamp. Access tokens remain active for 3600 seconds (one hour).
+</Callout>

@@ -2,3 +2,22 @@
 title: Issued Files
 description: "Retrieve the list of documents issued to the user in DigiLocker."
 ---
+
+## Overview
+
+This API retrieves the list of issued documents stored within a user's DigiLocker account. It operates as part of Deepvue's broader DigiLocker integration suite.
+
+DigiLocker is a Digital India Program initiative aimed at reducing reliance on physical documents and enabling verified electronic document sharing among authorized agencies. Key advantages include online accessibility, legal authentication comparable to originals, a user-friendly interface, and direct issuance from registered authorities like the Income Tax Department, CBSE, and Registrar Offices.
+
+## Integration flow
+
+The Issued Files API functions within the following sequential process:
+
+1. **Initiate Session** -- Create a session for the DigiLocker journey.
+2. **Access Token** -- Obtain a user access token via the authorization code.
+3. **Issued Files** -- Retrieve the list of issued documents.
+4. **e-Aadhaar / Download File** -- Download specific documents such as e-Aadhaar or other files via their URIs.
+
+<Callout kind="info">
+  Users must provide explicit consent before operations proceed. You must store consent at your end to maintain compliance standards.
+</Callout>

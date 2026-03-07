@@ -2,3 +2,19 @@
 title: DIN Verification
 description: "Verify a Director Identification Number and retrieve director details."
 ---
+
+## Overview
+
+The DIN Verification API enables you to retrieve director master data using a Director Identification Number. This service provides verification information related to a given DIN, facilitating validation crucial for business operations and regulatory compliance.
+
+The endpoint retrieves director identification details from the Ministry of Corporate Affairs (MCA) database, returning associated director information along with linked company and Limited Liability Partnership (LLP) data.
+
+Successful verification returns:
+
+- **Director Data**: DIN and director name
+- **Company Data**: Associated companies with CIN/FCRN, designation, and tenure dates
+- **LLP Data**: Associated partnerships with LLPIN/FLLPIN, designation, and tenure dates
+
+<Callout kind="info">
+When a DIN does not match MCA records, the API returns a 200 status code with a message indicating an invalid DIN rather than a standard error code, allowing applications to distinguish between genuine verification failures and system errors.
+</Callout>

@@ -2,3 +2,13 @@
 title: Aadhaar OCR
 description: "Extract structured data from Aadhaar card images using OCR."
 ---
+
+## Overview
+
+The Aadhaar Card OCR API enables extraction of key document fields from Aadhaar card images. The system processes base64-encoded document files to retrieve structured data including identification numbers, personal names, dates of birth, and residential addresses in key-value pair format.
+
+Documents must be submitted as base64-encoded strings within the request payload. The API processes the image and returns extracted information fields such as `aadhaar_number`, `name`, `dob`, and `address`.
+
+<Callout kind="alert">
+  Service Providers shall not share, publish, or display either Share Code or XML file or its contents, as per UIDAI regulations. Non-compliance may trigger enforcement actions under multiple sections of The Aadhaar Act, 2016 and related regulations covering authentication, information sharing, and data protection requirements.
+</Callout>

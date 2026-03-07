@@ -2,3 +2,11 @@
 title: Bulk PAN Plus
 description: "Submit a batch of PAN numbers for bulk plus verification."
 ---
+
+## Overview
+
+This API enables validation of PAN numbers in bulk through an asynchronous verification process. You submit a batch file containing PAN numbers and receive a request ID for tracking. Once processing completes, results are sent to a webhook registered for your account.
+
+<Callout kind="alert">
+  Input files must contain fewer than 1,000 records and use `pan_number` as the sole column header.
+</Callout>

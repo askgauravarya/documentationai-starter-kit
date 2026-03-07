@@ -2,3 +2,13 @@
 title: Get Vehicle RC Result
 description: "Retrieve the result of an asynchronous vehicle RC basic verification request."
 ---
+
+## Overview
+
+This API retrieves the complete vehicle registration verification result for a given request. You submit the `request_id` received from the [Create Vehicle RC Verification](/reference/kyc/async/create-vehicle-rc-basic) endpoint to fetch comprehensive results.
+
+Upon successful verification, the response includes vehicle identification details (registration number, chassis and engine numbers), owner information (name, contact details), technical specifications (fuel type, vehicle class, color, weight), regulatory compliance data (fitness validity, MV tax expiration, insurance dates), and manufacturer and model information.
+
+<Callout kind="info">
+This endpoint streamlines access to crucial vehicle registration data for seamless integration into your applications, supporting various verification processes and KYC checks.
+</Callout>

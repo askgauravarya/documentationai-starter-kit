@@ -2,3 +2,13 @@
 title: Bank Aadhaar Seeding Verify OTP
 description: "Verify OTP to retrieve bank-Aadhaar seeding status."
 ---
+
+## Overview
+
+This API validates the OTP entered by the user to authenticate with UIDAI. Upon successful validation, the response includes the user's Bank Aadhaar Seeding Status details, including the bank name associated with the Aadhaar account, seeding status, last updated date, and a reference identifier for the transaction.
+
+The verification process is part of the larger Aadhaar authentication workflow. Users submit an OTP that was previously sent to their Aadhaar-linked mobile number by UIDAI. The API confirms the OTP validity and retrieves the associated banking information.
+
+<Callout kind="alert">
+UIDAI regulations strictly prohibit sharing, publishing, or displaying Aadhaar numbers, share codes, or XML file contents. Non-compliance invokes legal action under multiple sections of The Aadhaar Act and related regulations. You must maintain records of user consent before proceeding with verification.
+</Callout>

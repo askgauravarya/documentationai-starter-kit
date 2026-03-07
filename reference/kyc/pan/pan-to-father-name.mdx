@@ -2,3 +2,13 @@
 title: PAN to Father Name
 description: "Retrieve the father's name associated with a PAN number."
 ---
+
+## Overview
+
+This API allows you to find the father's name associated with the provided PAN number. When provided with a valid PAN, the service returns associated details including the father's name, the individual's full name, and a split version of the name into component parts.
+
+Successful queries return the father's name along with the complete name of the PAN holder and confirmation of whether the PAN is for an individual entity rather than a business or organization.
+
+<Callout kind="info">
+  Invalid PAN numbers receive a 200 response with an `INVALID_PAN_NUMBER` sub-code rather than an error status. PAN format validation occurs separately; improperly formatted PANs trigger a 422 response.
+</Callout>

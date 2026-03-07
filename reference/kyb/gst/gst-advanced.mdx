@@ -2,3 +2,28 @@
 title: GST Advanced Verification
 description: "Verify a GSTIN and retrieve comprehensive taxpayer details including filing history."
 ---
+
+## Overview
+
+This API verifies GST Identification Numbers (GSTINs) for business entities by accessing data registered on the GST Portal. It delivers both fundamental verification details and advanced information points.
+
+The service conducts comprehensive GSTIN verification encompassing:
+
+- Principal and additional contact information (addresses, email addresses, phone numbers)
+- Business nature classifications
+- Promoter identification
+- Annual turnover ranges and fiscal year references
+- Cash transaction percentages
+- Aadhaar validation status and dates
+- Registration and cancellation dates
+- Business constitution type (e.g., Public Limited Company)
+- Taxpayer classification (Regular status)
+- Current GSTIN activation status
+- Field inspection completion indicators
+- Core business activity codes and descriptions
+- Multi-period GST return filing records (GSTR-1, GSTR-3B, GSTR-9, GSTR-9C)
+- Jurisdictional information at center and state levels
+
+<Callout kind="info">
+One Access Token will be valid for only 24 hours. After 24 hours, you can renew the token by using the Authorize Endpoint.
+</Callout>

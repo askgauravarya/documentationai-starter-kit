@@ -2,3 +2,13 @@
 title: DIN to PAN
 description: "Retrieve the PAN associated with a DIN."
 ---
+
+## Overview
+
+This API fetches the PAN Number and its details from the DIN Number. It enables verification of Director Identification Numbers by retrieving the associated Permanent Account Number information.
+
+Successful responses return comprehensive director information including name components, date of birth, father's details, residency status, and associated PAN. The API also handles cases where no linked PAN exists or the provided DIN is invalid.
+
+<Callout kind="info">
+The API provides detailed error responses covering authentication failures, token expiration, invalid DIN formatting, and source system unavailability, with appropriate HTTP status codes and descriptive messages for troubleshooting.
+</Callout>

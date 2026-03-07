@@ -2,3 +2,13 @@
 title: PAN to Employment Status
 description: "Check the employment status linked to a PAN number."
 ---
+
+## Overview
+
+This API enables you to determine the employment classification associated with a provided PAN (Permanent Account Number). The system identifies whether an individual holds status as a salaried employee, proprietor, or director.
+
+The service verifies PAN details and returns employment categorization data, including the full name of the PAN holder and boolean flags indicating their specific employment status type(s). Successful verification returns the individual's full name (both complete and split into components), validation status, and three boolean indicators: sole proprietor status, director status, and salaried status.
+
+<Callout kind="info">
+  Invalid PAN numbers return a 200 status code with an appropriate sub-code rather than an error code.
+</Callout>

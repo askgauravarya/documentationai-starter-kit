@@ -2,3 +2,17 @@
 title: Mobile to PAN
 description: "Retrieve the PAN number linked to a mobile number."
 ---
+
+## Overview
+
+This API retrieves PAN (Permanent Account Number) details associated with a user's phone number. The endpoint enables real-time verification of PAN information by accepting a mobile number as input.
+
+When successful, the API returns comprehensive personal and financial identification data including the PAN number, full name, date of birth, gender, address components, and Aadhaar linkage status.
+
+## Response outcomes
+
+The API returns successful responses when PAN details are found linked to the provided mobile number. However, responses with status code 200 may also indicate that no linked PAN details exist for that particular phone number, returning a `DETAILS_NOT_FOUND` sub-code instead.
+
+<Callout kind="info">
+  Results include a category classification identifying the PAN holder type (such as "person") and flags indicating whether the PAN is Aadhaar-linked and whether date of birth information has been verified.
+</Callout>

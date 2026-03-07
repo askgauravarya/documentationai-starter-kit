@@ -2,3 +2,11 @@
 title: Get Udyog Aadhaar Result
 description: "Retrieve the result of an asynchronous Udyog Aadhaar verification."
 ---
+
+## Overview
+
+This API gives you back the complete result and verification details against your request ID received in the previous step. After initiating a verification request in a prior step, you submit the resulting request identifier to obtain comprehensive verification details and status information.
+
+<Callout kind="info">
+This is an asynchronous GET request. You must first create a verification request using the Create Udyog Aadhaar endpoint to obtain a request ID, then use that ID with this endpoint to retrieve the results.
+</Callout>

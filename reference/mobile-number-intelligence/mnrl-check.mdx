@@ -2,3 +2,21 @@
 title: MNRL Check
 description: "Check if a mobile number is in the Mobile Number Revocation List."
 ---
+
+## Overview
+
+The MNRL Check API verifies mobile numbers against the MNRL (Mobile Number Revocation List) database. This service determines whether a given phone number has been revoked and tracks the history of any revocations.
+
+The API accepts a mobile number as input and queries the MNRL database to determine whether a record exists for the provided number, the current revocation status, and the timeline of revocations (first occurrence and most recent).
+
+## Response outcomes
+
+The API returns three possible outcomes:
+
+- **Latest MNRL record found** — A record exists with a current active revocation status.
+- **MNRL record found** — A record exists but is not currently revoked.
+- **No MNRL record found** — No revocation history exists for the number.
+
+<Callout kind="info">
+  All successful responses include the phone number, revocation status, and relevant month/year information for tracking purposes.
+</Callout>

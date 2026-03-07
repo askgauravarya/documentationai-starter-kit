@@ -2,3 +2,19 @@
 title: UAN to Employment History V2
 description: "Retrieve employment history for a UAN from EPFO records."
 ---
+
+## Overview
+
+This API retrieves comprehensive employment history records linked to a Universal Account Number (UAN). You can use this endpoint to fetch detailed employment data associated with a given UAN identifier.
+
+## What's new in V2
+
+The V2 iteration introduces three notable improvements over the previous version:
+
+- **Better uptime** -- Backend enhancements ensure more consistent availability.
+- **Reduced source failures** -- Improved handling of upstream dependencies for smoother performance.
+- **Date of exit** -- Get clearer employment histories with the newly added `date_of_exit` field in each record.
+
+<Callout kind="info">
+  Successful requests return either employment history records or a notification that no linked history exists for the provided UAN. Both responses carry an HTTP 200 status code.
+</Callout>

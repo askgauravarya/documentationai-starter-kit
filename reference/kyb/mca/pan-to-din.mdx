@@ -2,3 +2,20 @@
 title: PAN to DIN
 description: "Retrieve the DIN associated with a PAN number."
 ---
+
+## Overview
+
+This API retrieves Director Identification Number (DIN) details and associated information from a provided PAN (Permanent Account Number). It enables verification of PAN numbers and fetches linked DIN information when available.
+
+When a PAN is successfully matched to a DIN, the API returns:
+
+- DIN number and approval status
+- Director's full name (first, middle, last)
+- Date of birth
+- Father's name details
+- Resident status in India
+- Membership number information
+
+<Callout kind="info">
+The API returns a 200 status code even when a PAN is invalid or no linked DIN exists, with the message: "No Linked DIN found or Invalid Pan."
+</Callout>

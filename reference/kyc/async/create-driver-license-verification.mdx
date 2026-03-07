@@ -2,3 +2,13 @@
 title: Create DL Verification
 description: "Submit an asynchronous driver license verification request."
 ---
+
+## Overview
+
+The Driving License Verification API enables immediate validation of driving license details by cross-referencing government databases. It makes your onboarding process safer, faster, and smarter by confirming that individuals possess valid licenses and have submitted authentic identity documentation.
+
+This endpoint functions as an asynchronous KYC API. You submit a driving license number and date of birth, and the system returns a request ID for tracking purposes. Actual verification results are delivered asynchronously through webhook callbacks to your configured servers, or you can retrieve them using the corresponding result endpoint.
+
+<Callout kind="info">
+Upon successful submission, you receive a `request_id` that you can use with the [Get DL Verification Result](/reference/kyc/async/result-driver-license-verification) endpoint to retrieve the verification outcome.
+</Callout>

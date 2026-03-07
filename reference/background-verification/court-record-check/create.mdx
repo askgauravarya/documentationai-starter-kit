@@ -2,3 +2,13 @@
 title: Create Court Record Check
 description: "Submit an asynchronous court record check request for background verification."
 ---
+
+## Overview
+
+This API enables you to submit background verification requests against court records. You can use this endpoint for compliance and due diligence purposes by screening individuals against court case databases.
+
+The API operates asynchronously. When you submit a request, you receive an immediate acknowledgment with a transaction ID and an `IN_PROGRESS` status (HTTP 201). Verification results are processed in the background and can be retrieved separately using the transaction ID.
+
+<Callout kind="info">
+  The request requires the individual's name and address as mandatory fields. You can optionally include the father's name, date of birth, and case type to refine the search.
+</Callout>

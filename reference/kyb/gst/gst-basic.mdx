@@ -2,3 +2,15 @@
 title: GST Basic Verification
 description: "Verify a GSTIN and retrieve basic taxpayer details."
 ---
+
+## Overview
+
+The GST Basic Verification API takes in the GSTIN of a business entity and provides you the information of the business entities as registered on the GST Portal.
+
+The GSTIN Basic Verification API provides you the necessary information to verify an entity onboarding onto your workflow. For example, you can cross-check the information provided to you against the information available on the GST Portal using this API.
+
+The API accepts a single required parameter: a 15-character alphanumeric GSTIN (Goods and Services Tax Identification Number) that serves as the unique identifier for GST-registered businesses.
+
+<Callout kind="info">
+One Access Token will be valid for only 24 hours. After 24 hours, you can renew the token by using the Authorize Endpoint.
+</Callout>

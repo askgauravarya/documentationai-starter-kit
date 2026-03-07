@@ -2,3 +2,33 @@
 title: Download Report
 description: "Download the analyzed bank statement report with categorized transactions."
 ---
+
+## Overview
+
+This API retrieves the analyzed bank statement report in either XLSX or JSON format after document processing has been completed. You provide a reference ID (obtained from the Upload API) and specify your desired report format.
+
+The analysis data includes:
+
+- Monthly financial overview and transaction breakdowns
+- Income and expense categorization
+- Account holder details and statement period information
+- Complete bank statement line items with transaction classifications
+- End-of-day (EOD) balance analysis by month
+- Top 10 debit and credit transactions
+- Exceptional transaction flagging (weekend activity, high-value transfers, etc.)
+- Cheque and online return tracking
+- ECS/NACH transaction details
+- Investment transaction history
+- Related party transaction identification
+
+## Processing states
+
+The API returns different responses based on the current processing status:
+
+- **Completed** -- full report data is available for download or JSON consumption.
+- **In Progress** -- processing continues; check again later.
+- **Failed** -- processing encountered errors; the reference ID may be invalid.
+
+<Callout kind="info">
+  You need an authorized access token to access any of the Platform APIs. One access token is valid for only 24 hours. After expiration, you can renew the token by using the Authorize endpoint to receive a fresh access token.
+</Callout>

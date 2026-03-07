@@ -2,3 +2,25 @@
 title: e-Aadhaar
 description: "Download e-Aadhaar XML from DigiLocker."
 ---
+
+## Overview
+
+This API retrieves e-Aadhaar data and returns it in JSON format through Deepvue's DigiLocker integration service. It operates within the broader DigiLocker ecosystem, an initiative under the Digital India Program aiming to eliminate reliance on physical documents and facilitate verified electronic document sharing across authorized agencies.
+
+## Integration flow
+
+The DigiLocker workflow involves the following sequential steps:
+
+1. **Initiate Session** -- Create a session for the DigiLocker journey.
+2. **Access Token** -- Obtain a user access token from DigiLocker via the authorization code.
+3. **Issued Files** -- Retrieve the list of issued documents from DigiLocker.
+4. **e-Aadhaar** -- Download the Aadhaar XML file.
+5. **Download File** -- Retrieve other documents using their URIs.
+
+<Callout kind="alert">
+  Per UIDAI regulations, service providers shall not share, publish, or display either the share code or XML file or its contents with anyone else. Non-compliance carries serious legal consequences under multiple sections of The Aadhaar Act, 2016 and related regulations.
+</Callout>
+
+<Callout kind="info">
+  Consent must be mandatorily stored at your end before proceeding with verification.
+</Callout>

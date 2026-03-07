@@ -2,3 +2,13 @@
 title: Get AIS Details
 description: "Retrieve parsed AIS details including financial transactions reported to the income tax department."
 ---
+
+## Overview
+
+This API retrieves AIS (Annual Information Statement) details directly within the API response, including a secure link to the JSON file. It enables real-time access to an individual's financial and personal information for a specified financial year, facilitating immediate review and integration of AIS data within your applications.
+
+The API requires two parameters: `itr_client_id` (unique client identifier) and `financial_year` (the requested financial period, e.g., 2020-21). On success, the response includes transaction ID, PAN number, secure file URL, file type designation, completion status, and the requested financial year.
+
+<Callout kind="info">
+  You need an authorized access token to access any of the Platform APIs. One access token is valid for only 24 hours. After expiration, you can renew the token by using the Authorize endpoint to receive a fresh access token.
+</Callout>

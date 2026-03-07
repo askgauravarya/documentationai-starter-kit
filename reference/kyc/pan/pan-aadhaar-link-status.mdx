@@ -2,3 +2,18 @@
 title: PAN Aadhaar Link Status
 description: "Check the Aadhaar-PAN link status for a given PAN number."
 ---
+
+## Overview
+
+The PAN Aadhaar Link API enables verification of whether a PAN (Permanent Account Number) and Aadhaar number belong to the same individual. This forms part of Deepvue's KYC API suite for real-time identity verification.
+
+## Response outcomes
+
+The API returns one of four primary scenarios:
+
+1. Documents are confirmed as linked to the same person.
+2. PAN is linked to a different Aadhaar number.
+3. Invalid PAN number or pattern format detected.
+4. Invalid Aadhaar number format detected.
+
+Each response includes a transaction ID for tracking and logging purposes.

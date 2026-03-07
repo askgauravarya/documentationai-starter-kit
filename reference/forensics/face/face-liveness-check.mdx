@@ -2,3 +2,9 @@
 title: Face Liveness Check
 description: "Detect if a face in an image is live to prevent spoofing and impersonation."
 ---
+
+## Overview
+
+Liveness Check is a process of verifying that a real person is present and not a photo or video. It is a critical step in the KYC process. This API employs passive liveness detection, analyzing a user-provided selfie or image to determine authenticity without requiring active user participation.
+
+The API accepts image data either as a URL or as a base64-encoded string within the request body. Successful requests return confirmation that a live face was detected with an `is_live` boolean flag, or notification that no face was detected in the submitted image.

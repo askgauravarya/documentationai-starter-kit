@@ -2,3 +2,11 @@
 title: Bulk UPI Verification
 description: "Submit a batch of UPI VPAs for bulk verification."
 ---
+
+## Overview
+
+This API performs UPI basic verification in bulk through an asynchronous batch processing workflow. You submit a batch file containing UPI IDs, receive a request ID and transaction ID for tracking, and results are delivered to your registered webhook endpoint once processing completes.
+
+<Callout kind="alert">
+  Input files must contain fewer than 1,000 records and use `upi_id` as the sole column header.
+</Callout>

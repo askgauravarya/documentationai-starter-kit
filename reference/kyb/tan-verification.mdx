@@ -2,3 +2,19 @@
 title: TAN Verification
 description: "Verify a Tax Account Number (TAN) and retrieve deductor details."
 ---
+
+## Overview
+
+This API enables verification of Tax Deduction and Collection Account Numbers (TANs) and retrieves associated organizational details from authoritative sources.
+
+The endpoint accepts a 10-digit alphanumeric TAN number as input. Upon successful verification, it returns organizational information including:
+
+- Organization name
+- Complete address (multiple lines)
+- State code and PIN
+- Contact details (phone and email)
+- TAN allotment date
+
+<Callout kind="info">
+The API handles two primary outcomes: successful TAN verification returning full organizational data, or a "no record found" response when the TAN does not exist in the system.
+</Callout>

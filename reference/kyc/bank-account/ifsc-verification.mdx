@@ -2,3 +2,18 @@
 title: IFSC Verification
 description: "Verify an IFSC code and retrieve bank branch details."
 ---
+
+## Overview
+
+IFSC code is a unique identifier for a bank branch. Businesses verify IFSC before performing penny-drop to ensure successful payouts. This API allows you to verify IFSC codes against RBI's official registry and retrieve associated bank branch information.
+
+The API enables two main capabilities:
+
+1. Verification of IFSC codes for validity.
+2. Retrieval of bank and branch details linked to a valid IFSC code.
+
+Upon successful verification, the API provides bank name, NEFT/IMPS/RTGS/UPI/FT status, MICR code, branch address, city, state, and SWIFT code information.
+
+<Callout kind="info">
+  The IFSC code must contain exactly 11 characters. Invalid formats or non-existent codes return appropriate error responses indicating the specific issue.
+</Callout>

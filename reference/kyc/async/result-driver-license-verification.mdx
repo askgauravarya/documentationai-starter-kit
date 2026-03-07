@@ -2,3 +2,13 @@
 title: Get DL Verification Result
 description: "Retrieve the result of an asynchronous driver license verification request."
 ---
+
+## Overview
+
+This API retrieves the complete verification result and detailed information for a driving license verification request. It accepts the `request_id` received from the [Create DL Verification](/reference/kyc/async/create-driver-license-verification) endpoint and returns the corresponding verification outcome.
+
+Upon successful verification, the API returns comprehensive driving license information including personal identifiers (name, date of birth, ID number), document validity periods and issue dates, issuing RTO (Regional Transport Office) details, class of vehicle (COV) categories with respective validity, and address information from the document.
+
+<Callout kind="info">
+The response includes an operational status such as "completed" with verified data, or error conditions indicating issues like inactive clients, authentication failures, invalid request identifiers, or source unavailability.
+</Callout>

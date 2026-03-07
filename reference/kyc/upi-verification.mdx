@@ -2,3 +2,18 @@
 title: UPI Verification
 description: "Verify a UPI VPA and retrieve the associated account holder name."
 ---
+
+## Overview
+
+You can verify the UPI details of your customer before adding them to your payouts account using the UPI Verification feature. This functionality streamlines payment operations by validating recipient information upfront.
+
+The API addresses two main scenarios:
+
+- Verifying customer names against their UPI registration.
+- Validating whether a given UPI identifier actually exists within the banking system.
+
+Both checks execute instantly. The verification process confirms UPI account existence and retrieves the registered account holder's name from banking records. Successful responses include both raw and cleaned name data for matching against customer records.
+
+<Callout kind="alert">
+  A successful response is billable only in case of a 200 response status code. Charges apply exclusively when the API returns successful verification results.
+</Callout>

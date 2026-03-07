@@ -2,3 +2,18 @@
 title: Create Udyog Aadhaar
 description: "Submit an asynchronous Udyog Aadhaar verification request."
 ---
+
+## Overview
+
+This API enables verification of Udyog Aadhaar Number details sourced from official government registries. When provided with a UAM number, the system returns comprehensive business information including:
+
+- Entity name
+- Primary activities
+- Physical location
+- Business category
+- Registration status
+- NIC classification codes
+
+<Callout kind="info">
+This endpoint operates as an async service, returning a request identifier upon submission. The actual verification results are delivered through webhook callbacks to your registered servers, which can then be retrieved using the corresponding request ID.
+</Callout>

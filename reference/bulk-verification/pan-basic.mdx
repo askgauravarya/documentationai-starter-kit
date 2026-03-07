@@ -2,3 +2,11 @@
 title: Bulk PAN Basic
 description: "Submit a batch of PAN numbers for bulk basic verification."
 ---
+
+## Overview
+
+This API performs basic PAN (Permanent Account Number) validation in bulk through an asynchronous verification process. You submit a batch file containing PAN numbers, receive a request ID immediately, and the system processes the records in the background. Once processing completes, results are automatically sent to your registered webhook URL.
+
+<Callout kind="alert">
+  Input files must contain fewer than 1,000 records and use a single column header labeled `pan_number`.
+</Callout>

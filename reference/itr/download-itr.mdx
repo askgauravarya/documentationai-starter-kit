@@ -2,3 +2,13 @@
 title: Download ITR
 description: "Download ITR documents for a registered client."
 ---
+
+## Overview
+
+This API enables downloading of Income Tax Return information including ITR ID, filing year, acknowledgement number, ITR form type, filing date, and ITR status. Upon successful execution, the API returns the client ID, PAN number, and a collection of filed ITRs associated with that client.
+
+The API requires the `itr_client_id` parameter, which serves as a unique identifier for the client whose Income Tax Return information is being retrieved.
+
+<Callout kind="info">
+  You need an authorized access token to access any of the Platform APIs. One access token is valid for only 24 hours. After expiration, you can renew the token by using the Authorize endpoint to receive a fresh access token.
+</Callout>

@@ -2,3 +2,13 @@
 title: Mobile to UAN List
 description: "Retrieve all UANs linked to a mobile number."
 ---
+
+## Overview
+
+This API retrieves all Unique Account Number (UAN) records associated with a specific phone number. The service queries worker registration data to surface all linked UAN identifiers.
+
+The API accepts a mobile number as input and returns either a list of UAN numbers connected to that phone number, or a "not found" response if no linked UANs exist in the system.
+
+## Response outcomes
+
+Successful responses include a transaction ID, timestamp, and status code. The service may return HTTP 200 even when no data is found, distinguishing success through the `sub_code` field (either `SUCCESS` or `DETAILS_NOT_FOUND`).

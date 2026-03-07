@@ -2,3 +2,11 @@
 title: PAN Basic Verification
 description: "Verify a PAN number and retrieve basic details including name, category, and status."
 ---
+
+## Overview
+
+The PAN Basic API enables verification of Permanent Account Numbers (PANs), which serve as universal identification keys for tracking financial transactions with taxable components to prevent tax evasion. The API validates PAN numbers and provides basic information including name, category, and status.
+
+PAN validity is maintained regardless of address changes throughout India. You can submit a PAN number and optionally a name to retrieve verification results.
+
+Successful verification returns the PAN status (VALID or INVALID), the associated full name, taxpayer category (such as Individual), and cleaned name information. Invalid PANs are flagged with an INVALID status while still returning the category classification.

@@ -2,3 +2,13 @@
 title: Download AIS
 description: "Download Annual Information Statement for a registered client."
 ---
+
+## Overview
+
+This API downloads the Annual Information Statement (AIS) details as a JSON file. The service delivers a secure, temporary URL to access the full financial data for the specified financial year, making it useful for storing or processing the AIS data offline.
+
+The API requires the `itr_client_id` parameter, which serves as the unique identifier of the client for whom the AIS is being downloaded. On success, the response includes transaction tracking, the PAN number, a downloadable file URL, file type (JSON), completion status, and the associated financial year.
+
+<Callout kind="info">
+  You need an authorized access token to access any of the Platform APIs. One access token is valid for only 24 hours. After expiration, you can renew the token by using the Authorize endpoint to receive a fresh access token.
+</Callout>

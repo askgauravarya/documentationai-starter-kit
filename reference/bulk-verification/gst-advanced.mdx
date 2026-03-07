@@ -2,3 +2,13 @@
 title: Bulk GST Advanced
 description: "Submit a batch of GSTINs for bulk advanced verification."
 ---
+
+## Overview
+
+This API performs GST advanced verification in bulk through an asynchronous processing workflow. You submit a batch file containing GSTIN numbers and receive a transaction ID and request ID for tracking. Once processing completes, results are delivered to a webhook URL registered for your account.
+
+You can optionally specify a webhook URL as a query parameter to override the default registered endpoint for result delivery.
+
+<Callout kind="alert">
+  Input files must contain fewer than 1,000 records and use `gstin_number` as the sole column header.
+</Callout>

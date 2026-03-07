@@ -2,3 +2,13 @@
 title: Download 26AS
 description: "Download Form 26AS tax credit statement for a registered client."
 ---
+
+## Overview
+
+This API enables downloading of the 26AS form by providing a unique ITR client identifier. The 26AS form contains tax deducted at source (TDS) information and other relevant documentation for tax verification purposes.
+
+The API requires the `itr_client_id` parameter, which serves as a unique identifier for the client whose 26AS form is being retrieved.
+
+<Callout kind="info">
+  You need an authorized access token to access any of the Platform APIs. One access token is valid for only 24 hours. After expiration, you can renew the token by using the Authorize endpoint to receive a fresh access token.
+</Callout>

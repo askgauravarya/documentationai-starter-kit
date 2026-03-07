@@ -2,3 +2,11 @@
 title: Bulk Bank Account Verification
 description: "Submit a batch of bank accounts for bulk verification."
 ---
+
+## Overview
+
+This API validates bank account numbers and IFSC codes in bulk through an asynchronous verification process. You submit a batch file containing bank account information, receive a request ID immediately, and results are delivered to your registered webhook endpoint once processing completes.
+
+<Callout kind="alert">
+  Input files must contain fewer than 1,000 records and use only `account_number` and `ifsc` as column headers.
+</Callout>

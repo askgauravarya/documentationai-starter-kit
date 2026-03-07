@@ -2,3 +2,25 @@
 title: Get Court Record Check Result
 description: "Retrieve the result of an asynchronous court record check."
 ---
+
+## Overview
+
+This API retrieves the status and results of a court record verification using the transaction ID obtained when you created the check request.
+
+When processing is complete, the response includes matching court case records with details such as case number, year, status, category, court name, jurisdiction, and a confidence score indicating name match quality. If processing is still underway, the API returns an intermediate status, allowing you to retry later.
+
+## Filtering capabilities
+
+You can filter results by multiple criteria:
+
+- **Name matching logic** -- exact, fuzzy, or partial variants
+- **Father's name comparison** -- various matching methods
+- **Party type** -- respondent or petitioner
+- **Case classification** -- civil or criminal
+- **Disposition status** -- pending or disposed
+- **Geographic jurisdiction** -- district, state, or nationwide
+- **Risk assessment levels**
+
+<Callout kind="info">
+  The API accesses court records from eCourts infrastructure, providing both live case portals and archived case documentation through secure, tokenized URLs.
+</Callout>

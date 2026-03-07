@@ -2,3 +2,13 @@
 title: Bulk Udyam Verification
 description: "Submit a batch of Udyam numbers for bulk verification."
 ---
+
+## Overview
+
+This API enables bulk validation of Udyam numbers through an asynchronous verification process. You submit a batch file containing Udyam identifiers, receive a request ID immediately, and results are delivered to your registered webhook endpoint once processing completes.
+
+You can optionally specify a webhook URL as a query parameter to override the default registered endpoint.
+
+<Callout kind="alert">
+  Input files must contain fewer than 1,000 records and use `udyam_aadhaar_number` as the sole column header.
+</Callout>

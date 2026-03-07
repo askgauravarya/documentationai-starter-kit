@@ -2,3 +2,15 @@
 title: Initiate Equifax Session
 description: "Initiate an Equifax credit report retrieval session with user consent flow."
 ---
+
+## Overview
+
+This API initiates a session and generates a `transaction_id` which is used in the subsequent API flow. It serves as a server-to-server mechanism allowing you to authenticate and launch an SDK session.
+
+Upon successful authentication, the system returns a secure, signed URL for redirecting end-users to the credit report interface. The platform validates your credentials and generates a secure redirect URL containing session parameters. This URL directs users to complete their credit report verification workflow through the Deepvue SDK interface before being redirected back to your specified application.
+
+The endpoint accepts optional fields for pre-populating user information, including mobile number and full name (as per PAN documentation). Additional parameters allow specification of report version and enrichment options for cases lacking existing credit history.
+
+<Callout kind="info">
+  You need an authorized access token to access any of the Platform APIs. One access token is valid for only 24 hours. After expiration, you can renew the token by using the Authorize endpoint to receive a fresh access token.
+</Callout>

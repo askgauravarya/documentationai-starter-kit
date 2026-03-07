@@ -2,3 +2,13 @@
 title: Aadhaar Masking
 description: "Mask Aadhaar numbers in document images to comply with UIDAI data protection requirements."
 ---
+
+## Overview
+
+The Aadhaar Masking API conceals sensitive information on Aadhaar documents by obscuring the QR code and the first 8 digits of the Aadhaar number. This enables verifications while limiting access to personal information, ensuring privacy and data security.
+
+The API accepts either base64-encoded images or publicly accessible URLs of Aadhaar documents as input and returns the masked version in response.
+
+<Callout kind="alert">
+  Service providers shall not share, publish, or display Share Codes, XML files, or their contents, as per UIDAI regulations. Non-compliance may trigger legal action under multiple sections of The Aadhaar Act, 2016 and related regulations. Consent documentation should be mandatorily stored at the company end before proceeding with verification workflows.
+</Callout>
