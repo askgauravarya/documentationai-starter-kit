@@ -65,28 +65,37 @@ Error responses include a `detail` field explaining the issue:
 ## Common errors and solutions
 
 <ExpandableGroup>
-  <Expandable title="400 — Inactive client_id" default-open="true">
-    Your `client_id` is inactive or has been disabled.
+  <Expandable title="400 — Inactive client_id / Bad Request" default-open="true">
+    Your `client_id` is inactive, disabled, or the request is malformed.
+
+    **Common messages:** `"Inactive client_id"`, `"Bad Request"`
 
     - Verify your credentials in the [Deepvue Dashboard](https://dashboard.deepvue.tech)
     - Check if your account is active and in good standing
+    - Ensure the request body and query parameters are correctly formatted
     - Contact support if the issue persists
   </Expandable>
 
-  <Expandable title="401 — Not authenticated" default-open="false">
-    The request is missing valid authentication credentials.
+  <Expandable title="401 — Authentication failure" default-open="false">
+    The request is missing valid authentication credentials or the provided credentials are invalid.
+
+    **Common messages:** `"Not authenticated"`, `"Could not validate credentials"`, `"Invalid client_id"`, `"Invalid client_id or client_secret, access Denied"`, `"Authorization failure"`, `"Incorrect client_id or client_secret"`
 
     - Include the `Authorization: Bearer YOUR_ACCESS_TOKEN` header
     - Include the `x-api-key: YOUR_CLIENT_SECRET` header
+    - Verify your `client_id` and `client_secret` are correct and match your environment (test vs. live)
     - Ensure your access token has not expired (tokens are valid for 24 hours)
     - Generate a new token via the [Authorize](/reference/auth/authorization) endpoint
   </Expandable>
 
-  <Expandable title="403 — Not a valid token" default-open="false">
-    Your access token is invalid or expired.
+  <Expandable title="403 — Access forbidden" default-open="false">
+    Your access token is invalid, expired, or you do not have permission to access the requested resource.
+
+    **Common messages:** `"Not a valid token"`, `"Access forbidden"`
 
     - Generate a new token via `POST /v1/authorize`
     - Verify that you are using the correct `client_secret` as the `x-api-key` header
+    - Ensure your account has access to the requested API product
   </Expandable>
 
   <Expandable title="429 — Rate limit exceeded" default-open="false">
@@ -106,11 +115,24 @@ Error responses include a `detail` field explaining the issue:
     - Review the API reference for the specific endpoint's parameter requirements
   </Expandable>
 
+  <Expandable title="500 — Internal Server Error" default-open="false">
+    An unexpected error occurred on the server.
+
+    **Common message:** `"Internal Server Error"`
+
+    - This is a transient error — retry the request with exponential backoff
+    - If the error persists across multiple retries, contact [support@deepvue.tech](mailto:support@deepvue.tech) with the endpoint, request parameters, and timestamp
+    - Check the [API Status](/status) page for any ongoing incidents
+  </Expandable>
+
   <Expandable title="503 — Source Unavailable" default-open="false">
     The upstream data source is temporarily unavailable.
 
+    **Common message:** `"Source Unavailable"`
+
     - This is a transient error — retry the request after a short delay
-    - If the issue persists, check the [Deepvue status page](https://dashboard.deepvue.tech) or contact support
+    - The issue is typically with the upstream government or financial data source, not Deepvue
+    - Check the [API Status](/status) page for any ongoing incidents or contact support
   </Expandable>
 </ExpandableGroup>
 
