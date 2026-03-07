@@ -16,6 +16,7 @@ Deepvue APIs return standard HTTP status codes to indicate the success or failur
 | `401` | Unauthorized | Authentication failed or missing credentials |
 | `403` | Forbidden | Valid credentials but insufficient access |
 | `422` | Validation Error | Request parameters failed validation |
+| `429` | Too Many Requests | Rate limit exceeded — slow down and retry |
 | `500` | Internal Server Error | Server-side issue — retry or contact support |
 | `503` | Service Unavailable | Upstream data source is temporarily unavailable |
 
@@ -23,7 +24,7 @@ Deepvue APIs return standard HTTP status codes to indicate the success or failur
 
 Error responses include a `detail` field explaining the issue:
 
-<Response tabs="400,401,403,422,503">
+<Response tabs="400,401,403,422,429,503">
   ```json
   {
     "detail": "Inactive client_id"
@@ -45,6 +46,12 @@ Error responses include a `detail` field explaining the issue:
   ```json
   {
     "detail": "Invalid Pan pattern"
+  }
+  ```
+
+  ```json
+  {
+    "detail": "Rate limit exceeded. Please retry after some time."
   }
   ```
 
@@ -80,6 +87,15 @@ Error responses include a `detail` field explaining the issue:
 
     - Generate a new token via `POST /v1/authorize`
     - Verify that you are using the correct `client_secret` as the `x-api-key` header
+  </Expandable>
+
+  <Expandable title="429 — Rate limit exceeded" default-open="false">
+    You have exceeded the rate limit for your plan.
+
+    - Pause requests and retry with exponential backoff
+    - Spread requests evenly over time instead of sending bursts
+    - Review your plan limits on the [Rate Limits](/rate-limits) page
+    - Contact [support@deepvue.tech](mailto:support@deepvue.tech) if you need higher limits
   </Expandable>
 
   <Expandable title="422 — Validation Error" default-open="false">
