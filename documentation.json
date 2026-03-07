@@ -1,5 +1,6 @@
 {
   "name": "deepvue",
+  "template": "atlas",
   "colors": {
     "light": {
       "brand": "#3B82F6"
