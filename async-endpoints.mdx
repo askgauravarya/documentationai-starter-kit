@@ -64,20 +64,6 @@ sequenceDiagram
   </Step>
 </Steps>
 
-## Async API endpoints
-
-The following endpoints use the async create/result pattern:
-
-| Category | Create Endpoint | Result Endpoint |
-|----------|----------------|-----------------|
-| **Driver License** | `POST /v1/verification/post-driving-license` | `GET /v1/verification/get-driving-license` |
-| **Voter ID** | `POST /v1/verification/post-voter-id` | `GET /v1/verification/get-voter-id` |
-| **Vehicle RC Basic** | `POST /v1/verification/post-vehicle-rc` | `GET /v1/verification/get-vehicle-rc` |
-| **Udyam Aadhaar** | `POST /v1/verification/async/post-udyam-details` | `GET /v1/verification/async/get-udyam-details` |
-| **Udyog Aadhaar** | `POST /v1/verification/async/post-udyog-details` | `GET /v1/verification/async/get-udyog-details` |
-| **Court Record Check** | `POST /v1/background-verification/court-record-check` | `GET /v1/background-verification/court-record-check/{transaction_id}` |
-| **FIR Check** | `POST /v1/background-verification/fir-check` | `GET /v1/background-verification/fir-check/{transaction_id}` |
-
 ## Recommended polling strategy
 
 <Callout kind="tip">
