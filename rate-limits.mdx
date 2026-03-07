@@ -1,0 +1,95 @@
+---
+title: Rate Limits
+description: Understand Deepvue API rate limits by plan, how to handle 429 errors, and best practices for staying within your quota.
+---
+
+## Overview
+
+Deepvue enforces rate limits to ensure platform stability and fair usage across all customers. Rate limits are applied per API key and vary based on your subscription plan. When you exceed your limit, the API responds with a `429 Too Many Requests` status code.
+
+## Rate limits by plan
+
+| Plan | Requests per second | Requests per minute | Requests per day |
+|------|---------------------|---------------------|------------------|
+| **Starter** | 1 | 30 | 1,000 |
+| **Business** | 2 | 100 | 10,000 |
+| **Growth** | 5 | 500 | 20,000 |
+| **Enterprise** | 17 | 1,000 | 50,000 |
+
+<Callout kind="info">
+  Rate limits are evaluated at the per-second, per-minute, and per-day levels independently. Exceeding any one threshold triggers a `429` response.
+</Callout>
+
+## Rate limit response
+
+When you exceed your rate limit, the API returns the following response:
+
+<Response tabs="429">
+  ```json
+  {
+    "detail": "Rate limit exceeded. Please retry after some time."
+  }
+  ```
+</Response>
+
+## Handling rate limits
+
+<Steps>
+  <Step title="Pause and retry" icon="pause" titleType="p">
+    When you receive a `429` response, stop sending requests immediately. Wait before retrying to allow your quota to reset.
+  </Step>
+
+  <Step title="Use exponential backoff" icon="refresh-cw" titleType="p">
+    Implement retry logic that progressively increases the delay between attempts. Start with a 1-second wait and double it on each subsequent retry, up to a maximum delay.
+
+    <CodeGroup tabs="Python,JavaScript">
+      ```python
+      import time
+      import requests
+
+      def make_request_with_backoff(url, headers, max_retries=5):
+          delay = 1
+          for attempt in range(max_retries):
+              response = requests.get(url, headers=headers)
+              if response.status_code == 429:
+                  time.sleep(delay)
+                  delay *= 2
+              else:
+                  return response
+          return response
+      ```
+
+      ```javascript
+      async function makeRequestWithBackoff(url, headers, maxRetries = 5) {
+        let delay = 1000;
+        for (let attempt = 0; attempt < maxRetries; attempt++) {
+          const response = await fetch(url, { headers });
+          if (response.status === 429) {
+            await new Promise(resolve => setTimeout(resolve, delay));
+            delay *= 2;
+          } else {
+            return response;
+          }
+        }
+      }
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Spread requests evenly" icon="clock" titleType="p">
+    Distribute your API calls evenly over time rather than sending them in bursts. For example, on the Starter plan with 30 requests per minute, space calls at least 2 seconds apart instead of sending all 30 at once.
+  </Step>
+</Steps>
+
+## Best practices
+
+- **Monitor your usage** — Track request volume through the [Deepvue Dashboard](https://dashboard.deepvue.tech) to stay within your limits.
+- **Cache responses** — Store results for repeated queries to reduce unnecessary API calls.
+- **Use bulk endpoints** — For high-volume operations like PAN or bank account verification, use the [Bulk Validations](/reference/bulk-verification/pan-basic) endpoints instead of making individual requests.
+- **Queue requests** — Implement a request queue on your end to throttle outgoing calls and avoid bursts.
+
+## Need higher limits?
+
+<Callout kind="tip">
+  If your integration requires higher rate limits than your current plan allows, contact the Deepvue team at [support@deepvue.tech](mailto:support@deepvue.tech) with your current plan, desired limits, and expected usage patterns.
+</Callout>

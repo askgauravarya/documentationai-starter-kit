@@ -51,6 +51,11 @@
                 "title": "Errors",
                 "path": "errors",
                 "icon": "alert-circle"
+              },
+              {
+                "title": "Rate Limits",
+                "path": "rate-limits",
+                "icon": "gauge"
               }
             ]
           }
