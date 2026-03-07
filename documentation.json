@@ -1,11 +1,19 @@
 {
-  "name": "deepvue",
+  "name": "Deepvue",
+  "logo-light": "/logo-light.svg",
+  "logo-dark": "/logo-dark.svg",
+  "logo-small-light": "/favicon-light.png",
+  "logo-small-dark": "/favicon-dark.png",
   "colors": {
     "light": {
-      "brand": "#3B82F6"
+      "brand": "#e84278",
+      "heading": "#1a1a1a",
+      "text": "#374151"
     },
     "dark": {
-      "brand": "#87B1F6"
+      "brand": "#e84278",
+      "heading": "#f2f2f2",
+      "text": "#c1c1c1"
     }
   },
   "navigation": {
