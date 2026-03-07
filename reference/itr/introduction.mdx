@@ -1,0 +1,52 @@
+---
+title: Income Tax Returns (ITR)
+description: Programmatic access to Income Tax Returns, Form 26AS, and Annual Information Statement (AIS) data through a secure, consent-based workflow.
+---
+
+## Overview
+
+The ITR API suite lets you retrieve and analyze income tax data for individuals directly from the Income Tax Department. You can download and parse Income Tax Returns, Form 26AS (tax credit statements), and Annual Information Statements (AIS) through a unified set of endpoints.
+
+## Typical workflow
+
+The ITR APIs follow a three-step pattern:
+
+1. **Create a client** — Register the taxpayer and establish a secure session for data retrieval.
+2. **Download the document** — Fetch the raw ITR, 26AS, or AIS document from the Income Tax Department.
+3. **Get parsed details** — Retrieve structured, parsed data from the downloaded document for downstream processing.
+
+<Callout kind="info">
+  You must call the Create Client endpoint before downloading or retrieving details for any document type. The client session is required for all subsequent requests.
+</Callout>
+
+## Available endpoints
+
+<Columns cols="2">
+  <Card title="Create Client" icon="user-plus" href="/reference/itr/create-client">
+    Register a taxpayer and establish a secure session required for all ITR, 26AS, and AIS operations.
+  </Card>
+
+  <Card title="Download ITR" icon="download" href="/reference/itr/download-itr">
+    Download the raw Income Tax Return filing for the specified assessment year.
+  </Card>
+
+  <Card title="Get ITR Details" icon="file-text" href="/reference/itr/itr-details">
+    Retrieve structured, parsed data from a previously downloaded Income Tax Return.
+  </Card>
+
+  <Card title="Download 26AS" icon="download" href="/reference/itr/download-26as">
+    Download Form 26AS, the consolidated tax credit statement issued by the Income Tax Department.
+  </Card>
+
+  <Card title="26AS Details" icon="file-search" href="/reference/itr/26as-details">
+    Retrieve structured, parsed data from a previously downloaded Form 26AS document.
+  </Card>
+
+  <Card title="Download AIS" icon="download" href="/reference/itr/download-ais">
+    Download the Annual Information Statement containing financial transactions reported to the tax department.
+  </Card>
+
+  <Card title="Get AIS Details" icon="file-check" href="/reference/itr/get-ais-details">
+    Retrieve structured, parsed data from a previously downloaded Annual Information Statement.
+  </Card>
+</Columns>

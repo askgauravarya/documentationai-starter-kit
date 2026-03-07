@@ -1,0 +1,124 @@
+---
+title: KYC Verification
+description: APIs for verifying individual identity through PAN, bank account, driving license, voter ID, passport, vehicle RC, and other government-issued documents.
+---
+
+## Overview
+
+The KYC Verification APIs enable you to verify the identity of individuals against authoritative government and financial databases. These APIs support real-time validation of identity documents such as PAN cards, bank accounts, passports, and driving licenses, helping you meet regulatory compliance requirements and reduce fraud.
+
+Key capabilities include:
+
+- **PAN verification** with multiple detail levels, Aadhaar linkage checks, and employment status lookups
+- **Bank account validation** through penny drop and IFSC verification
+- **Async document verification** for driving license, voter ID, and vehicle RC
+- **Aadhaar-bank seeding status** checks via OTP-based verification
+- **Additional checks** for passport, vehicle RC details, RC challans, name matching, and UPI handle verification
+
+## PAN
+
+<Columns cols="2">
+  <Card title="PAN Basic" icon="credit-card" href="/reference/kyc/pan/pan-verification-basic">
+    Verify basic PAN card details including name and status.
+  </Card>
+
+  <Card title="PAN Plus" icon="credit-card" href="/reference/kyc/pan/pan-verification-plus">
+    Retrieve extended PAN details with additional personal information.
+  </Card>
+
+  <Card title="PAN Plus V2" icon="credit-card" href="/reference/kyc/pan/pan-verification-plus-v2">
+    Enhanced PAN verification with the latest data fields and improved accuracy.
+  </Card>
+
+  <Card title="PAN Aadhaar Link" icon="link" href="/reference/kyc/pan/pan-aadhaar-link-status">
+    Check the linkage status between a PAN and an Aadhaar number.
+  </Card>
+
+  <Card title="PAN To Father Name" icon="user" href="/reference/kyc/pan/pan-to-father-name">
+    Retrieve the father's name associated with a given PAN number.
+  </Card>
+
+  <Card title="PAN To Employment Status" icon="briefcase" href="/reference/kyc/pan/pan-to-employment-status">
+    Look up the employment status linked to a PAN number.
+  </Card>
+
+  <Card title="PAN KRA Status" icon="shield-check" href="/reference/kyc/pan/pan-kra-verification">
+    Verify a PAN's KYC Registration Agency (KRA) compliance status.
+  </Card>
+</Columns>
+
+## Bank Account
+
+<Columns cols="2">
+  <Card title="Penny Drop" icon="banknote" href="/reference/kyc/bank-account/penny-drop-verification">
+    Validate a bank account by initiating a small deposit and confirming account holder details.
+  </Card>
+
+  <Card title="IFSC Verification" icon="building" href="/reference/kyc/bank-account/ifsc-verification">
+    Retrieve bank branch details such as name, address, and MICR code for a given IFSC code.
+  </Card>
+</Columns>
+
+## Async Verification
+
+<Columns cols="2">
+  <Card title="Create Driver License Verification" icon="car" href="/reference/kyc/async/create-driver-license-verification">
+    Submit a driving license number for asynchronous verification.
+  </Card>
+
+  <Card title="Result Driver License Verification" icon="car" href="/reference/kyc/async/result-driver-license-verification">
+    Retrieve the result of a previously submitted driving license verification.
+  </Card>
+
+  <Card title="Create Voter ID Verification" icon="vote" href="/reference/kyc/async/create-voter-id-verification">
+    Submit a voter ID for asynchronous verification.
+  </Card>
+
+  <Card title="Result Voter ID Verification" icon="vote" href="/reference/kyc/async/result-voter-id-verification">
+    Retrieve the result of a previously submitted voter ID verification.
+  </Card>
+
+  <Card title="Create Vehicle RC Basic" icon="truck" href="/reference/kyc/async/create-vehicle-rc-basic">
+    Submit a vehicle registration certificate number for asynchronous verification.
+  </Card>
+
+  <Card title="Result Vehicle RC Basic" icon="truck" href="/reference/kyc/async/result-vehicle-rc-basic">
+    Retrieve the result of a previously submitted vehicle RC verification.
+  </Card>
+</Columns>
+
+## Bank Aadhaar Seeding Status
+
+<Columns cols="2">
+  <Card title="Generate OTP" icon="key" href="/reference/kyc/bank-aadhaar-seeding-status/generate-otp">
+    Generate an OTP to initiate the bank-Aadhaar seeding status check.
+  </Card>
+
+  <Card title="Verify OTP" icon="shield-check" href="/reference/kyc/bank-aadhaar-seeding-status/verify-otp">
+    Verify the OTP and retrieve the bank-Aadhaar seeding status.
+  </Card>
+</Columns>
+
+## Other Verifications
+
+<Columns cols="2">
+  <Card title="Passport" icon="plane" href="/reference/kyc/passport-verification">
+    Verify passport details against government records.
+  </Card>
+
+  <Card title="Vehicle RC Advanced" icon="truck" href="/reference/kyc/vehicle-rc-verification-advanced">
+    Retrieve comprehensive vehicle registration certificate details.
+  </Card>
+
+  <Card title="RC Challan" icon="file-text" href="/reference/kyc/rc-challan-details">
+    Fetch pending challan details for a given vehicle registration number.
+  </Card>
+
+  <Card title="Name Match" icon="check-circle" href="/reference/kyc/name-match">
+    Compare two names and get a similarity score for identity matching.
+  </Card>
+
+  <Card title="UPI Verification" icon="smartphone" href="/reference/kyc/upi-verification">
+    Verify a UPI handle and retrieve the associated account holder name.
+  </Card>
+</Columns>

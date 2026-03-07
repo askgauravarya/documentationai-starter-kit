@@ -66,6 +66,17 @@
         "icon": "code",
         "groups": [
           {
+            "group": "Overview",
+            "icon": "home",
+            "pages": [
+              {
+                "title": "API Reference",
+                "path": "reference/overview",
+                "icon": "book-open"
+              }
+            ]
+          },
+          {
             "group": "Auth",
             "icon": "lock",
             "pages": [
@@ -84,6 +95,10 @@
             "group": "Digilocker KYC",
             "icon": "folder",
             "pages": [
+              {
+                "title": "Introduction",
+                "path": "reference/digilocker-kyc/introduction"
+              },
               {
                 "group": "V1",
                 "pages": [
@@ -172,6 +187,10 @@
             "group": "KYC",
             "icon": "shield",
             "pages": [
+              {
+                "title": "Introduction",
+                "path": "reference/kyc/introduction"
+              },
               {
                 "group": "PAN",
                 "pages": [
@@ -459,6 +478,10 @@
             "icon": "building",
             "pages": [
               {
+                "title": "Introduction",
+                "path": "reference/kyb/introduction"
+              },
+              {
                 "group": "GST",
                 "pages": [
                   {
@@ -570,6 +593,10 @@
             "icon": "file",
             "pages": [
               {
+                "title": "Introduction",
+                "path": "reference/itr/introduction"
+              },
+              {
                 "title": "Create Client",
                 "path": "reference/itr/create-client",
                 "openapi": "api-reference/openapi.json POST /v1/verification/itr/create-client"
@@ -659,6 +686,10 @@
             "icon": "briefcase",
             "pages": [
               {
+                "title": "Introduction",
+                "path": "reference/employment-verification/introduction"
+              },
+              {
                 "group": "EPFO",
                 "pages": [
                   {
@@ -679,6 +710,10 @@
             "group": "Background Verification",
             "icon": "shield-check",
             "pages": [
+              {
+                "title": "Introduction",
+                "path": "reference/background-verification/introduction"
+              },
               {
                 "group": "Court Record Check",
                 "pages": [
@@ -715,6 +750,10 @@
             "group": "Bulk Validations",
             "icon": "layers",
             "pages": [
+              {
+                "title": "Introduction",
+                "path": "reference/bulk-verification/introduction"
+              },
               {
                 "title": "PAN Basic",
                 "path": "reference/bulk-verification/pan-basic",
@@ -786,6 +825,10 @@
             "group": "Utilities",
             "icon": "tool",
             "pages": [
+              {
+                "title": "Introduction",
+                "path": "reference/utilities/introduction"
+              },
               {
                 "title": "Usage Report",
                 "path": "reference/utilities/usage-report",

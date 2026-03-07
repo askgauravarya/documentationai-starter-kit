@@ -1,0 +1,97 @@
+---
+title: Know Your Business (KYB)
+description: Verify businesses, validate tax registrations, and confirm regulatory compliance using GST, MCA, MSME, TAN, TDS, FSSAI, and Shop Establishment APIs.
+---
+
+## Overview
+
+The KYB API suite enables you to verify the legitimacy and compliance status of businesses operating in India. These APIs pull data from authoritative government sources to validate tax registrations, corporate filings, MSME credentials, and regulatory licenses in real time.
+
+Use KYB verification to onboard merchants, underwrite business loans, assess supply-chain partners, or satisfy regulatory due-diligence requirements.
+
+## Key capabilities
+
+1. **GST Verification** — Validate GST registrations, retrieve detailed taxpayer profiles, and check return filing status
+2. **MCA Corporate Data** — Verify companies and directors through CIN, DIN, and PAN lookups against Ministry of Corporate Affairs records
+3. **MSME Validation** — Confirm Udyam and Udyog Aadhaar registrations and track MSME migration status
+4. **Tax and Compliance Checks** — Verify TAN details, check TDS 206 compliance, validate FSSAI food-safety licenses, and authenticate Shop Establishment certificates
+
+## GST
+
+<Columns cols="2">
+  <Card title="GST Basic" icon="file-text" href="/reference/kyb/gst/gst-basic">
+    Fetch basic GST registration details such as trade name, status, and registration date.
+  </Card>
+
+  <Card title="GST Advanced" icon="file-search" href="/reference/kyb/gst/gst-advanced">
+    Retrieve an extended GST profile including business address, filing frequency, and nature of activities.
+  </Card>
+
+  <Card title="PAN to GST" icon="arrow-right-left" href="/reference/kyb/gst/pan-to-gst">
+    Look up all GST numbers linked to a given PAN.
+  </Card>
+
+  <Card title="GST Return Status" icon="clipboard-check" href="/reference/kyb/gst/gst-return-status">
+    Check the filing status of GST returns for a specific GSTIN.
+  </Card>
+</Columns>
+
+## MCA
+
+<Columns cols="2">
+  <Card title="CIN Verification" icon="building" href="/reference/kyb/mca/cin-verification">
+    Verify a company using its Corporate Identification Number against MCA records.
+  </Card>
+
+  <Card title="DIN Verification" icon="user-check" href="/reference/kyb/mca/din-verification">
+    Validate a Director Identification Number and retrieve director details.
+  </Card>
+
+  <Card title="PAN to DIN" icon="arrow-right-left" href="/reference/kyb/mca/pan-to-din">
+    Look up the DIN associated with a given PAN.
+  </Card>
+
+  <Card title="DIN to PAN" icon="arrow-right-left" href="/reference/kyb/mca/din-to-pan">
+    Retrieve the PAN linked to a given DIN.
+  </Card>
+</Columns>
+
+## MSME
+
+<Columns cols="2">
+  <Card title="PAN-MSME Registration Status" icon="badge-check" href="/reference/kyb/msme/pan-udyam-msme-status">
+    Check whether an MSME registration exists for a given PAN under the Udyam portal.
+  </Card>
+
+  <Card title="MSME Migration Status" icon="refresh-cw" href="/reference/kyb/msme/msme-migration-status">
+    Verify the migration status of an MSME from the legacy Udyog Aadhaar system to Udyam.
+  </Card>
+
+  <Card title="Udyam Aadhaar (Async)" icon="clock" href="/reference/kyb/msme/async/create-udyam-aadhaar">
+    Submit and retrieve detailed Udyam Aadhaar registration data through an asynchronous workflow.
+  </Card>
+
+  <Card title="Udyog Aadhaar (Async)" icon="clock" href="/reference/kyb/msme/async/create-udyog-aadhaar">
+    Submit and retrieve legacy Udyog Aadhaar registration data through an asynchronous workflow.
+  </Card>
+</Columns>
+
+## Additional verifications
+
+<Columns cols="2">
+  <Card title="TAN Verification" icon="hash" href="/reference/kyb/tan-verification">
+    Validate a Tax Deduction and Collection Account Number and retrieve associated entity details.
+  </Card>
+
+  <Card title="TDS 206 Compliance" icon="shield-check" href="/reference/kyb/tds-206-compliance">
+    Check whether a business is compliant with TDS provisions under Section 206 of the Income Tax Act.
+  </Card>
+
+  <Card title="FSSAI Verification" icon="utensils" href="/reference/kyb/fssai-verification">
+    Verify a Food Safety and Standards Authority of India license number and retrieve license details.
+  </Card>
+
+  <Card title="Shop Establishment Certificate" icon="store" href="/reference/kyb/shop-establishment-certificate">
+    Authenticate a Shop and Establishment registration certificate issued by the local labour department.
+  </Card>
+</Columns>

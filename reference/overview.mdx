@@ -1,0 +1,99 @@
+---
+title: "API Reference Overview"
+description: "Explore Deepvue's complete suite of 150+ APIs for identity verification, business verification, document OCR, financial services, and more."
+---
+
+## Overview
+
+Deepvue provides 150+ REST APIs across identity verification (KYC), business verification (KYB), document OCR, financial services, and more. Whether you are onboarding individuals, verifying businesses, or running background checks, Deepvue offers a unified platform to streamline your compliance workflows.
+
+**Base URL:**
+
+```
+https://production.deepvue.tech
+```
+
+All API requests require authentication via a bearer token and your API key. Generate a token using the `/v1/authorize` endpoint before making any other API calls.
+
+## API categories
+
+<Columns cols="3">
+  <Card title="Auth" href="/reference/auth/introduction" icon="lock" horizontal={false}>
+    API key management and token generation.
+  </Card>
+
+  <Card title="Digilocker KYC" href="/reference/digilocker-kyc/introduction" icon="fingerprint" horizontal={false}>
+    Aadhaar eKYC and DigiLocker document retrieval.
+  </Card>
+
+  <Card title="KYC" href="/reference/kyc/introduction" icon="shield" horizontal={false}>
+    PAN, bank account, passport, driving license, and voter ID verification.
+  </Card>
+
+  <Card title="Document OCR" href="/reference/document-ocr/introduction" icon="file-text" horizontal={false}>
+    Extract structured data from identity documents.
+  </Card>
+
+  <Card title="Mobile Intelligence" href="/reference/mobile-number-intelligence/introduction" icon="smartphone" horizontal={false}>
+    Name, PAN, UPI, and more from mobile numbers.
+  </Card>
+
+  <Card title="Forensics" href="/reference/forensics/introduction" icon="search" horizontal={false}>
+    Face matching, liveness detection, and Aadhaar masking.
+  </Card>
+
+  <Card title="KYB" href="/reference/kyb/introduction" icon="building" horizontal={false}>
+    GST, MCA, MSME, TAN, and FSSAI business checks.
+  </Card>
+
+  <Card title="ITR" href="/reference/itr/introduction" icon="file" horizontal={false}>
+    Income tax returns, 26AS, and AIS data.
+  </Card>
+
+  <Card title="Financial Services" href="/reference/financial-services/introduction" icon="credit-card" horizontal={false}>
+    Credit bureau reports and bank statement analysis.
+  </Card>
+
+  <Card title="Employment Verification" href="/reference/employment-verification/introduction" icon="briefcase" horizontal={false}>
+    EPFO employment history verification.
+  </Card>
+
+  <Card title="Background Verification" href="/reference/background-verification/introduction" icon="shield-check" horizontal={false}>
+    Court record and FIR checks.
+  </Card>
+
+  <Card title="Bulk Validations" href="/reference/bulk-verification/introduction" icon="layers" horizontal={false}>
+    High-volume batch processing for bulk verifications.
+  </Card>
+
+  <Card title="Utilities" href="/reference/utilities/introduction" icon="tool" horizontal={false}>
+    Usage reports and wallet balance.
+  </Card>
+</Columns>
+
+## Getting started
+
+<Steps>
+  <Step title="Get your credentials" icon="key" titleType="p">
+    Sign up on the [Deepvue dashboard](https://dashboard.deepvue.tech) and retrieve your `client_id` and `client_secret` from the API settings page.
+  </Step>
+
+  <Step title="Generate an access token" icon="lock" titleType="p">
+    Make a `POST` request to `/v1/authorize` with your credentials to receive a bearer token.
+
+    ```bash
+    curl -X POST https://production.deepvue.tech/v1/authorize \
+      -H "Content-Type: application/json" \
+      -d '{
+        "client_id": "YOUR_CLIENT_ID",
+        "client_secret": "YOUR_CLIENT_SECRET"
+      }'
+    ```
+  </Step>
+
+  <Step title="Make your first API call" icon="play" titleType="p">
+    Include the bearer token in the `Authorization` header of subsequent requests and start verifying identities, businesses, and documents.
+
+    For a complete walkthrough, see the [Quickstart guide](/quickstart).
+  </Step>
+</Steps>

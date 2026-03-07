@@ -1,0 +1,39 @@
+---
+title: "Bulk Validations"
+description: "Submit high-volume verification requests in batches and retrieve results asynchronously."
+---
+
+## Overview
+
+The Bulk Validation APIs allow you to process large volumes of verification requests in a single batch. Instead of calling individual endpoints one at a time, you submit an entire batch of records and then poll for results once processing completes.
+
+### How bulk processing works
+
+All bulk endpoints follow an **async batch pattern**:
+
+1. **Submit batch** — Send a bulk request containing multiple records for a specific verification type. The API returns a batch identifier.
+2. **Poll result** — Use the batch identifier with the Result endpoint to check processing status and retrieve completed results.
+
+This pattern is ideal for scenarios such as periodic re-verification of customer databases, onboarding large employee groups, or running compliance checks across portfolios.
+
+### Supported bulk operations
+
+| Operation | Endpoint |
+|-----------|----------|
+| PAN Basic | [Bulk PAN Basic](/reference/bulk-verification/pan-basic) |
+| PAN Plus | [Bulk PAN Plus](/reference/bulk-verification/pan-plus) |
+| Mobile To PAN | [Bulk Mobile To PAN](/reference/bulk-verification/mobile-to-pan) |
+| Bank Account | [Bulk Bank Account](/reference/bulk-verification/bank-account) |
+| UPI | [Bulk UPI](/reference/bulk-verification/upi) |
+| Search Taxpayer By PAN | [Bulk Search Taxpayer By PAN](/reference/bulk-verification/search-taxpayer-by-pan) |
+| GST Basic | [Bulk GST Basic](/reference/bulk-verification/gst-basic) |
+| GST Advanced | [Bulk GST Advanced](/reference/bulk-verification/gst-advanced) |
+| Udyam | [Bulk Udyam](/reference/bulk-verification/udyam) |
+| Udyog | [Bulk Udyog](/reference/bulk-verification/udyog) |
+| Employment History | [Bulk Employment History](/reference/bulk-verification/employment-history) |
+| CIN | [Bulk CIN](/reference/bulk-verification/cin) |
+| **Result** | [Bulk Result](/reference/bulk-verification/result) |
+
+<Callout kind="tip">
+  Use the **Result** endpoint with the batch identifier returned by any bulk submission to retrieve processed results. You can poll this endpoint until the batch status indicates completion.
+</Callout>

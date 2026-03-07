@@ -1,0 +1,39 @@
+---
+title: "Background Verification"
+description: "Screen individuals against court records and FIR databases for comprehensive background checks."
+---
+
+## Overview
+
+The Background Verification APIs enable you to screen individuals against criminal court records and First Information Report (FIR) databases. These checks help organizations assess risk during onboarding, lending, and compliance workflows.
+
+All background verification endpoints follow an **asynchronous create/result pattern**:
+
+1. **Create** — Submit a verification request. The API returns a request identifier immediately.
+2. **Result** — Poll the result endpoint using the request identifier to retrieve the completed verification report once processing is finished.
+
+This async pattern ensures that longer-running checks do not block your application while the system queries underlying databases.
+
+### Court Record Check
+
+<Columns cols="2">
+  <Card title="Create Court Record Check" href="/reference/background-verification/court-record-check/create" icon="file-plus" horizontal="false">
+    Submit a new court record screening request for an individual.
+  </Card>
+
+  <Card title="Court Record Check Result" href="/reference/background-verification/court-record-check/result" icon="file-check" horizontal="false">
+    Retrieve the result of a previously submitted court record check.
+  </Card>
+</Columns>
+
+### FIR Check
+
+<Columns cols="2">
+  <Card title="Create FIR Check" href="/reference/background-verification/fir-check/create" icon="file-plus" horizontal="false">
+    Submit a new FIR screening request for an individual.
+  </Card>
+
+  <Card title="FIR Check Result" href="/reference/background-verification/fir-check/result" icon="file-check" horizontal="false">
+    Retrieve the result of a previously submitted FIR check.
+  </Card>
+</Columns>

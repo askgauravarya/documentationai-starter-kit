@@ -1,0 +1,25 @@
+---
+title: "Employment Verification"
+description: "Verify employment history and provident fund details using EPFO-based APIs."
+---
+
+## Overview
+
+The Employment Verification APIs allow you to validate an individual's employment history through the Employees' Provident Fund Organisation (EPFO) database. By linking a PAN number to its associated Universal Account Number (UAN), you can retrieve detailed employment records including employer names, dates of joining and exit, and provident fund contribution history.
+
+These APIs support two key workflows:
+
+1. **PAN to UAN lookup** — Resolve a PAN number to its linked UAN, establishing the connection between identity and employment records.
+2. **Employment history retrieval** — Use the UAN to fetch a comprehensive employment timeline with employer details and contribution data.
+
+### EPFO endpoints
+
+<Columns cols="2">
+  <Card title="PAN To UAN" href="/reference/employment-verification/epfo/pan-to-uan" icon="search" horizontal="false">
+    Retrieve the Universal Account Number (UAN) associated with a given PAN number.
+  </Card>
+
+  <Card title="UAN To Employment History V2" href="/reference/employment-verification/epfo/uan-to-employment-history-v2" icon="briefcase" horizontal="false">
+    Fetch detailed employment history and provident fund records using a UAN.
+  </Card>
+</Columns>
