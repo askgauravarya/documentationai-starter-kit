@@ -1,7 +1,31 @@
 ---
-title: Auth Introduction
+title: Authentication
+description: Learn how Deepvue API authentication works, including API key management, security best practices, and monitoring API activity.
 ---
 
 ## Overview
 
-This section provides an overview of the Auth APIs.
+Deepvue uses API keys to authenticate requests. You must include valid API credentials with every API call. Requests made with invalid, deleted, or expired keys return authentication errors.
+
+## Locating your API keys
+
+You can retrieve your API keys from the [Deepvue Dashboard](https://dashboard.deepvue.tech) by navigating to the credentials section.
+
+<Callout kind="info">
+  Trial account secret keys have the prefix **free_tier** and live account secret keys have **live** as prefix followed by your organization ID.
+</Callout>
+
+## Security requirements
+
+All API requests must use **HTTPS**. Unencrypted HTTP calls and unauthenticated requests will fail.
+
+## Best practices for key protection
+
+- Restrict access to API keys to only the personnel who need them
+- Do not store keys in version control systems
+- Use password managers or secrets management tools for secure storage
+- Never expose keys in client-side applications such as mobile apps or frontend code
+
+## Monitoring API activity
+
+You can access your API request logs through the dashboard's dedicated logging section. Filter by date range and specific products to review your API usage history.

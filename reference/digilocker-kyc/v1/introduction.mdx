@@ -1,7 +1,47 @@
 ---
-title: Offline Aadhaar eKYC Introduction
+title: Offline Aadhaar eKYC V1
+description: Integrate Offline Aadhaar Verification to securely verify identity using digitally signed Aadhaar data without real-time UIDAI authentication.
 ---
 
 ## Overview
 
-This section provides an overview of the Offline Aadhaar eKYC APIs.
+Offline Aadhaar Verification is a recognized identity verification mechanism that enables individuals to generate and share a digitally signed Offline Aadhaar data file without requiring real-time authentication against central UIDAI systems.
+
+## Verification process
+
+The flow consists of five main steps:
+
+<Steps>
+  <Step title="Consent capture" icon="check-circle">
+    The user explicitly agrees to participate in the verification process.
+  </Step>
+
+  <Step title="Aadhaar number submission" icon="hash">
+    The individual voluntarily provides their Aadhaar number.
+  </Step>
+
+  <Step title="OTP validation" icon="message-circle">
+    A one-time password sent to the registered mobile number enables offline data access.
+  </Step>
+
+  <Step title="Data verification" icon="shield-check">
+    The downloaded file contains verified demographics including name, address, photo, gender, and date of birth.
+  </Step>
+
+  <Step title="Optional biometric checks" icon="scan-face">
+    Live photo matching and liveness detection can be performed independently for additional security.
+  </Step>
+</Steps>
+
+## API integration steps
+
+The integration workflow includes:
+
+1. **Initiate Session** — Prepare the verification flow and establish a session
+2. **Generate OTP** — Request an OTP to be sent to the Aadhaar-linked mobile number
+3. **Verify OTP** — Validate the OTP and retrieve the offline Aadhaar data
+4. **Reload Captcha** — Restart the session if the captcha expires or needs refreshing
+
+<Callout kind="alert">
+  As per UIDAI requirements, sharing and storage of Aadhaar numbers is prohibited. Service providers must not share, publish, or display Aadhaar numbers, Share Codes, XML files, or their contents with third parties. Non-compliance may result in actions under The Aadhaar Act, 2016. Companies must mandatorily store consent documentation before proceeding with verification.
+</Callout>

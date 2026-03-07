@@ -1,7 +1,39 @@
 ---
-title: Digilocker Introduction
+title: DigiLocker
+description: Integrate with DigiLocker to access and share verified electronic documents including e-Aadhaar and government-issued files.
 ---
 
 ## Overview
 
-This section provides an overview of the Digilocker APIs.
+DigiLocker is a Digital India Programme initiative designed to eliminate reliance on physical documents by facilitating the secure sharing of verified electronic documents among authorized entities.
+
+## Key advantages
+
+- **Online access** — Share documents from any location, at any time
+- **Legally valid** — Digital authentication is comparable to original documents
+- **User-friendly** — Simple interface for document access and sharing
+- **Direct issuance** — Documents issued by registered authorities including government departments and educational bodies
+
+## Integration workflow
+
+<Steps>
+  <Step title="Initiate Session" icon="link">
+    Establish the foundational connection for the DigiLocker interaction.
+  </Step>
+
+  <Step title="Get Access Token" icon="key">
+    Obtain user credentials using the authorization code provided by DigiLocker.
+  </Step>
+
+  <Step title="Download e-Aadhaar" icon="file-down">
+    Retrieve the Aadhaar XML file from the platform.
+  </Step>
+
+  <Step title="Get Issued Files" icon="folder-open">
+    Access the inventory of documents issued to the user.
+  </Step>
+
+  <Step title="Download File" icon="download">
+    Obtain specific documents using their document identifiers.
+  </Step>
+</Steps>

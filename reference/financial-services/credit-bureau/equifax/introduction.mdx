@@ -1,7 +1,32 @@
 ---
-title: Equifax Introduction
+title: Equifax Credit Bureau
+description: Programmatically obtain consolidated credit reports from Equifax for retail segments through a secure, consent-based redirection workflow.
 ---
 
 ## Overview
 
-This section provides an overview of the Equifax APIs.
+The Equifax Credit Bureau API enables fintech platforms to programmatically obtain consolidated credit reports from Equifax for retail segments through a secure, consent-based redirection workflow.
+
+## Integration workflow
+
+<Steps>
+  <Step title="Initiate Session" icon="play">
+    Your platform starts the process via the [Initiate Session](/reference/financial-services/credit-bureau/equifax/initiate-session) API endpoint.
+  </Step>
+
+  <Step title="User consent and authentication" icon="shield-check">
+    The user is directed to Deepvue's hosted authentication page where they review the purpose, provide consent, and authenticate using supported ID methods.
+  </Step>
+
+  <Step title="Return to your application" icon="arrow-right">
+    After granting consent, the user is redirected back to your platform using your specified `redirect_uri`.
+  </Step>
+
+  <Step title="Download report" icon="download">
+    Your system uses the `transaction_id` received during redirection to fetch the credit report through the [Download Report](/reference/financial-services/credit-bureau/equifax/download-report) API endpoint.
+  </Step>
+</Steps>
+
+<Callout kind="info">
+  This architecture prioritizes compliance with data privacy regulations and explicit user consent requirements while enabling automated credit report retrieval within onboarding and underwriting processes.
+</Callout>

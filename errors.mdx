@@ -1,223 +1,107 @@
 ---
 title: Error Handling
-description: Understand Deepvue API error codes, response formats, and troubleshooting steps for common issues.
+description: Understand Deepvue API error codes, HTTP status codes, and how to handle common errors in your integration.
 ---
 
 ## Overview
 
-Deepvue APIs return standard HTTP status codes to indicate the success or failure of requests. Errors include detailed information in JSON format to help you identify and resolve issues quickly. Always check the response body for specific error messages, codes, and details.
+Deepvue APIs return standard HTTP status codes to indicate the success or failure of requests. Error responses include a `detail` field with a human-readable message describing the issue.
 
-<Callout kind="tip">
-Review your request parameters and authentication before debugging. Most issues stem from invalid tokens or malformed payloads.
-</Callout>
-
-## HTTP Status Codes
-
-Deepvue uses conventional HTTP response codes to communicate status and errors.
+## HTTP status codes
 
 | Status Code | Meaning | Description |
 |-------------|---------|-------------|
-| `200` | OK | Successful request. |
-| `201` | Created | Resource created successfully. |
-| `400` | Bad Request | Invalid request parameters or body. |
-| `401` | Unauthorized | Authentication failed. Check your API key. |
-| `403` | Forbidden | Access denied due to insufficient permissions. |
-| `404` | Not Found | Endpoint or resource does not exist. |
-| `429` | Too Many Requests | Rate limit exceeded. |
-| `500` | Internal Server Error | Server-side issue. Contact support if persistent. |
-| `502` | Bad Gateway | Upstream service unavailable. |
+| `200` | OK | Request completed successfully |
+| `400` | Bad Request | Invalid request parameters or inactive client |
+| `401` | Unauthorized | Authentication failed or missing credentials |
+| `403` | Forbidden | Valid credentials but insufficient access |
+| `422` | Validation Error | Request parameters failed validation |
+| `500` | Internal Server Error | Server-side issue — retry or contact support |
+| `503` | Service Unavailable | Upstream data source is temporarily unavailable |
 
-## Error Response Structure
+## Error response format
 
-All error responses follow a consistent JSON structure:
+Error responses include a `detail` field explaining the issue:
 
-<Response tabs="400,401,429" show-lines="false">
-```json
-{
-  "error": {
-    "code": "INVALID_PARAMETER",
-    "message": "The 'account_id' parameter is required.",
-    "details": {
-      "field": "account_id",
-      "value": null
-    }
+<Response tabs="400,401,403,422,503">
+  ```json
+  {
+    "detail": "Inactive client_id"
   }
-}
-```
+  ```
 
-```json
-{
-  "error": {
-    "code": "AUTH_FAILED",
-    "message": "Invalid API key provided.",
-    "details": {}
+  ```json
+  {
+    "detail": "Not authenticated"
   }
-}
-```
+  ```
 
-```json
-{
-  "error": {
-    "code": "RATE_LIMIT_EXCEEDED",
-    "message": "Too many requests. Retry after 60 seconds.",
-    "details": {
-      "retry_after": 60,
-      "limit": 100
-    }
+  ```json
+  {
+    "detail": "Not a valid token"
   }
-}
-```
+  ```
+
+  ```json
+  {
+    "detail": "Invalid Pan pattern"
+  }
+  ```
+
+  ```json
+  {
+    "detail": "Source Unavailable"
+  }
+  ```
 </Response>
 
-<ResponseField name="error.code" field-type="string">
-Unique error identifier for programmatic handling.
-</ResponseField>
+## Common errors and solutions
 
-<ResponseField name="error.message" field-type="string">
-Human-readable description of the error.
-</ResponseField>
+<ExpandableGroup>
+  <Expandable title="400 — Inactive client_id" default-open="true">
+    Your `client_id` is inactive or has been disabled.
 
-<ResponseField name="error.details" field-type="object">
-Additional context, such as invalid fields or retry timing.
-</ResponseField>
+    - Verify your credentials in the [Deepvue Dashboard](https://dashboard.deepvue.tech)
+    - Check if your account is active and in good standing
+    - Contact support if the issue persists
+  </Expandable>
 
-## Common Errors and Fixes
+  <Expandable title="401 — Not authenticated" default-open="false">
+    The request is missing valid authentication credentials.
 
-<Columns cols={2}>
-  <Card title="Authentication Errors" icon="lock" horizontal>
-    Verify your API key from the [Deepvue Dashboard](https://dashboard.deepvue.tech/). Ensure the `Authorization` header uses `Bearer {YOUR_API_KEY}`.
-  </Card>
-  <Card title="Rate Limiting" icon="zap" horizontal>
-    Exceeded request limits. Implement exponential backoff and check response `retry_after`.
-  </Card>
-</Columns>
+    - Include the `Authorization: Bearer YOUR_ACCESS_TOKEN` header
+    - Include the `x-api-key: YOUR_CLIENT_SECRET` header
+    - Ensure your access token has not expired (tokens are valid for 24 hours)
+    - Generate a new token via the [Authorize](/reference/auth/authorization) endpoint
+  </Expandable>
 
-## Handling Rate Limits
+  <Expandable title="403 — Not a valid token" default-open="false">
+    Your access token is invalid or expired.
 
-Deepvue enforces rate limits to ensure fair usage. Limits vary by endpoint and plan.
+    - Generate a new token via `POST /v1/authorize`
+    - Verify that you are using the correct `client_secret` as the `x-api-key` header
+  </Expandable>
 
-<CodeGroup tabs="Node.js,Python">
-```javascript
-const axios = require('axios');
+  <Expandable title="422 — Validation Error" default-open="false">
+    The request parameters failed validation.
 
-async function makeRequest() {
-  try {
-    const response = await axios.get('https://production.deepvue.tech/v1/accounts', {
-      headers: { Authorization: `Bearer ${YOUR_API_KEY}` }
-    });
-    return response.data;
-  } catch (error) {
-    if (error.response?.status === 429) {
-      const retryAfter = error.response.data.error.details.retry_after;
-      console.log(`Rate limited. Retry after ${retryAfter}s`);
-      await new Promise(resolve => setTimeout(resolve, retryAfter * 1000));
-      return makeRequest(); // Retry
-    }
-    throw error;
-  }
-}
-```
+    - Check the format of input parameters (e.g., PAN must match `[A-Z]{5}[0-9]{4}[A-Z]`)
+    - Ensure all required parameters are included
+    - Review the API reference for the specific endpoint's parameter requirements
+  </Expandable>
 
-```python
-import requests
-import time
+  <Expandable title="503 — Source Unavailable" default-open="false">
+    The upstream data source is temporarily unavailable.
 
-def make_request():
-    try:
-        response = requests.get(
-            'https://production.deepvue.tech/v1/accounts',
-            headers={'Authorization': f'Bearer {YOUR_API_KEY}'}
-        )
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.HTTPError as e:
-        if e.response.status_code == 429:
-            retry_after = e.response.json()['error']['details']['retry_after']
-            print(f"Rate limited. Retry after {retry_after}s")
-            time.sleep(retry_after)
-            return make_request()  # Retry
-        raise
-```
-</CodeGroup>
+    - This is a transient error — retry the request after a short delay
+    - If the issue persists, check the [Deepvue status page](https://dashboard.deepvue.tech) or contact support
+  </Expandable>
+</ExpandableGroup>
 
-## Debugging Integration Failures
+## Best practices
 
-Follow these steps to diagnose issues systematically.
-
-<Steps>
-  <Step title="Verify Authentication" icon="shield">
-    Test your API key with a simple GET request to `https://production.deepvue.tech/v1/ping`.
-  </Step>
-  <Step title="Check Logs" icon="file-text">
-    Enable verbose logging in your client library to capture full request/response details.
-  </Step>
-  <Step title="Validate Payload" icon="check-circle">
-    Use tools like Postman or the [Deepvue Postman collection](https://hi.deepvue.tech/postman) to replicate the request.
-  </Step>
-  <Step title="Contact Support" icon="mail">
-    If unresolved, provide error code, request ID, and payload to support@deepvue.tech.
-  </Step>
-</Steps>
-
-<Expandable title="Advanced Debugging Tips" default-open="false">
-
-- Enable request tracing in your environment.
-- Compare against successful requests from the dashboard.
-- Use network inspectors to confirm headers and payloads.
-
-</Expandable>
-
-## Best Practices for Error Logging
-
-<Tabs>
-  <Tab title="Node.js" icon="nodejs">
-````javascript
-const winston = require('winston');
-
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  transports: [new winston.transports.File({ filename: 'errors.log' })]
-});
-
-try {
-  // API call
-} catch (error) {
-  logger.error('Deepvue API Error', {
-    code: error.response?.data?.error?.code,
-    message: error.response?.data?.error?.message,
-    status: error.response?.status,
-    requestId: error.response?.headers?.['x-request-id']
-  });
-}
-````
-  </Tab>
-  <Tab title="Python" icon="python">
-````python
-import logging
-import json
-
-logging.basicConfig(filename='errors.log', level=logging.ERROR)
-logger = logging.getLogger(__name__)
-
-try:
-    # API call
-    pass
-except Exception as e:
-    error_data = e.response.json() if hasattr(e, 'response') else {}
-    logger.error(
-        'Deepvue API Error',
-        extra={
-            'code': error_data.get('error', {}).get('code'),
-            'message': error_data.get('error', {}).get('message'),
-            'status': getattr(e.response, 'status_code', None),
-            'request_id': e.response.headers.get('x-request-id')
-        }
-    )
-````
-  </Tab>
-</Tabs>
-
-<Callout kind="success">
-Implement structured logging with error codes to speed up issue resolution during production incidents.
-</Callout>
+- Always check the HTTP status code before parsing the response body
+- Implement retry logic with exponential backoff for `500` and `503` errors
+- Log the `transaction_id` from successful responses for debugging and support requests
+- Monitor your API usage through the dashboard's logging section
+- Handle token expiration gracefully by refreshing before the 24-hour window expires

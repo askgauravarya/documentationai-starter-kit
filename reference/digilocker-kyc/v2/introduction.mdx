@@ -1,7 +1,26 @@
 ---
-title: Aadhaar eKYC V2 Introduction
+title: Aadhaar eKYC V2
+description: V2 of Deepvue's Offline Aadhaar Verification with faster processing, no captcha, higher success rates, and improved error handling.
 ---
 
 ## Overview
 
-This section provides an overview of the Aadhaar eKYC V2 APIs.
+V2 of Deepvue's Offline Aadhaar Verification delivers faster processing, higher success rates, and a smoother integration experience for developers.
+
+## What's new in V2
+
+| Feature | Description |
+|---------|-------------|
+| **No Captcha Required** | A simplified, low-friction flow with reduced user input |
+| **Higher Success Rates** | Backend enhancements improve reliability and consistency across offline data processing |
+| **Improved Error Handling** | Clear, customer-friendly responses with detailed `sub_code` values to support easier backend debugging |
+| **Automated Document Generation** | Automatically generate downloadable PDF summaries of the offline Aadhaar data for compliance and record-keeping |
+
+## API integration steps
+
+1. **Generate OTP** — Request an OTP sent to the Aadhaar-linked mobile number
+2. **Verify OTP** — Validate the OTP and retrieve the offline Aadhaar data with auto-generated PDF
+
+<Callout kind="alert">
+  As per UIDAI requirements, sharing and storage of Aadhaar numbers is prohibited. Service providers must not share, publish, or display Share Codes, XML files, or their contents with third parties. Non-compliance may result in actions under Sections 17 and 25 of The Aadhaar (Authentication) Regulation, 2016; Sections 4 and 6 of The Aadhaar (Sharing of Information) Regulation, 2016; and Sections 29(2), 29(3), and 37 of The Aadhaar Act, 2016. Companies must mandatorily store consent documentation before proceeding with verification.
+</Callout>

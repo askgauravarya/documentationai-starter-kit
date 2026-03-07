@@ -1,129 +1,82 @@
 ---
-title: Introduction to Deepvue
-description: Discover Deepvue's REST API infrastructure for financial integrations, including identity verification, banking, and credit services to accelerate product launches.
+title: Introduction
+description: Deepvue provides API infrastructure for financial integrations and insights, covering identity verification, banking, credit, and more.
 ---
-
-<Callout kind="info" title="Starter Kit Template">
-  This documentation was generated as a starter kit template based on your brand. Please review and customize the content to accurately reflect your product's features, APIs, and capabilities.
-</Callout>
 
 ## Overview
 
-Deepvue provides a robust REST API infrastructure designed for financial integrations and insights. You can launch financial products 10x faster with APIs covering identity verification, banking, credit scoring, and more. These APIs follow REST conventions with predictable, resource-oriented URLs, JSON responses, standard HTTP status codes, and secure authentication.
+Deepvue provides API infrastructure for financial integrations and insights. You can launch financial products faster with APIs covering identity verification, banking, credit scoring, and more.
 
-Whether you build fintech apps, compliance tools, or banking platforms, Deepvue handles the heavy lifting. Start with your [dashboard](https://dashboard.example.com) to generate API keys—no code required initially.
+The Deepvue APIs follow REST conventions with resource-oriented URLs, support for query parameters and form-encoded requests, JSON responses, and standard HTTP status codes and authentication methods.
 
-<Callout kind="tip">
-  New to APIs? Check our [Postman collection](https://www.postman.com/your-workspace/collection/your-collection) for ready-to-use requests.
-</Callout>
+**Base URL:**
 
-## Key Features
-
-Deepvue offers specialized APIs to meet diverse financial needs. Explore these core capabilities:
-
-<Columns cols={3}>
-  <Card title="Identity Verification" icon="shield" href="/authentication">
-    Perform KYC checks with document and biometric verification for secure onboarding.
-  </Card>
-  <Card title="Banking APIs" icon="credit-card" href="/banking">
-    Access account balances, transactions, and payment initiation across global banks.
-  </Card>
-  <Card title="Credit Insights" icon="trending-up" href="/credit">
-    Retrieve credit scores, reports, and risk assessments to inform lending decisions.
-  </Card>
-</Columns>
-
-## REST API Conventions
-
-All endpoints use HTTPS and return JSON. Use standard HTTP methods: `GET` for reads, `POST` for creates, `PUT`/`PATCH` for updates, `DELETE` for removals.
-
-**Base URL:** `https://api.example.com/v1`
-
-Authentication requires a Bearer token in the `Authorization` header. Responses include consistent error formats:
-
-```json
-{
-  "error": {
-    "code": "invalid_request",
-    "message": "Invalid API key"
-  }
-}
+```
+https://production.deepvue.tech
 ```
 
-## First API Call
-
-Test connectivity with a simple health check. Replace `{YOUR_API_KEY}` with your key from the dashboard.
-
-<CodeGroup tabs="cURL,Python,Node.js">
-  ```bash
-  curl -X GET https://api.example.com/v1/health \
-    -H "Authorization: Bearer YOUR_API_KEY"
-  ```
-
-  ```python
-  import requests
-
-  headers = {
-      "Authorization": "Bearer YOUR_API_KEY"
-  }
-  response = requests.get("https://api.example.com/v1/health", headers=headers)
-  print(response.json())
-  ```
-
-  ```javascript
-  const response = await fetch("https://api.example.com/v1/health", {
-    headers: {
-      "Authorization": "Bearer YOUR_API_KEY"
-    }
-  });
-  const data = await response.json();
-  console.log(data);
-  ```
-</CodeGroup>
-
-Expected response:
-
-```json
-{
-  "status": "healthy",
-  "version": "1.0.0"
-}
-```
-
-## Quick Start Steps
-
-Get up and running in minutes:
+## Get started
 
 <Steps>
-  <Step title="Create Account" icon="user-plus">
-    Sign up at [https://dashboard.example.com](https://dashboard.example.com) and verify your email.
+  <Step title="Access the API Dashboard" icon="layout-dashboard">
+    Sign up or log in to the [Deepvue Dashboard](https://dashboard.deepvue.tech) to get your API credentials. No code required to get started.
   </Step>
-  <Step title="Generate API Key" icon="key">
-    Navigate to API settings and create a new key. Copy it securely.
+
+  <Step title="Get your API keys" icon="key">
+    Navigate to the credentials section in your dashboard. Trial account keys have the prefix **free_tier** and live account keys have the **live** prefix followed by your organization ID.
   </Step>
-  <Step title="Make First Request" icon="play">
-    Use the example above or import our Postman collection.
+
+  <Step title="Authenticate" icon="lock">
+    Use your `client_id` and `client_secret` to generate an access token via the [Authorization](/reference/auth/authorization) endpoint. Include the token in subsequent API calls.
   </Step>
-  <Step title="Explore Endpoints" icon="book-open">
-    Review [authentication](/authentication) and dive into specific APIs.
+
+  <Step title="Make your first API call" icon="play">
+    Try a simple verification like [PAN Basic](/reference/kyc/pan/pan-verification-basic) to confirm your integration is working.
   </Step>
 </Steps>
 
-## Next Steps
+<Callout kind="tip">
+  Use our [Postman collection](https://www.postman.com) for ready-to-use requests, or fetch the complete documentation index at [docs.deepvue.ai/llms.txt](https://docs.deepvue.ai/llms.txt).
+</Callout>
 
-<Columns cols={2}>
-  <Card title="Quickstart Guide" icon="rocket" href="/quickstart">
-    Build your first integration end-to-end.
+## Supported languages
+
+Deepvue API supports integration with any language that can make HTTP requests. Code examples are available in:
+
+- cURL
+- Ruby
+- Python
+- PHP
+- Java
+- Node.js
+- Go
+
+## Explore the API
+
+<Columns cols="3">
+  <Card title="KYC Verification" icon="shield" href="/reference/kyc/pan/pan-verification-basic">
+    Verify identities with PAN, Aadhaar, bank account, voter ID, passport, and more.
   </Card>
-  <Card title="Authentication" icon="lock" href="/authentication">
-    Secure your API calls properly.
+
+  <Card title="Document OCR" icon="file-text" href="/reference/document-ocr/introduction">
+    Extract structured data from identity documents like Aadhaar, PAN, driving license, and passport.
   </Card>
-  <Card title="API Reference" icon="code" href="/api-reference">
-    Full endpoint documentation.
-  </Card>
-  <Card title="Changelog" icon="git-branch" href="/changelog">
-    Stay updated with releases.
+
+  <Card title="Forensics" icon="search" href="/reference/forensics/introduction">
+    Face matching, liveness detection, and Aadhaar masking for fraud prevention.
   </Card>
 </Columns>
 
-Ready to integrate? Head to the [quickstart](/quickstart) or browse the full docs.
+<Columns cols="3">
+  <Card title="KYB" icon="building" href="/reference/kyb/gst/gst-basic">
+    Business verification with GST, MCA, MSME, TAN, and FSSAI checks.
+  </Card>
+
+  <Card title="Financial Services" icon="credit-card" href="/reference/financial-services/introduction">
+    Credit bureau reports from Equifax and bank statement analysis.
+  </Card>
+
+  <Card title="Mobile Intelligence" icon="smartphone" href="/reference/mobile-number-intelligence/introduction">
+    Find, verify, and fetch data points associated with a mobile number.
+  </Card>
+</Columns>
