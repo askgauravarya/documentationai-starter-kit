@@ -21,92 +21,6 @@ Deepvue provides 150+ REST APIs for identity verification, business compliance, 
   </Card>
 </Columns>
 
-## Make your first API call
-
-<Steps>
-  <Step title="Get your API credentials" icon="key" titleType="h3">
-    Sign up on the [Deepvue Dashboard](https://dashboard.deepvue.tech) and copy your `client_id` and `client_secret` from the credentials section.
-
-    <Callout kind="info">
-      Trial keys are prefixed with **free_tier**. Live keys are prefixed with **live** followed by your organization ID.
-    </Callout>
-  </Step>
-
-  <Step title="Generate an access token" icon="lock" titleType="h3">
-    Authenticate with your credentials to get a bearer token valid for 24 hours.
-
-    <CodeGroup tabs="cURL,Python,Node.js">
-      ```bash
-      curl -X POST https://production.deepvue.tech/v1/authorize \
-        -d "client_id=YOUR_CLIENT_ID" \
-        -d "client_secret=YOUR_CLIENT_SECRET"
-      ```
-
-      ```python
-      import requests
-
-      response = requests.post(
-          "https://production.deepvue.tech/v1/authorize",
-          data={
-              "client_id": "YOUR_CLIENT_ID",
-              "client_secret": "YOUR_CLIENT_SECRET"
-          }
-      )
-      token = response.json()["access_token"]
-      ```
-
-      ```javascript
-      const response = await fetch("https://production.deepvue.tech/v1/authorize", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          client_id: "YOUR_CLIENT_ID",
-          client_secret: "YOUR_CLIENT_SECRET"
-        })
-      });
-      const { access_token } = await response.json();
-      ```
-    </CodeGroup>
-  </Step>
-
-  <Step title="Verify a PAN number" icon="shield" titleType="h3">
-    Use your token to make a real API call — here we verify a PAN number.
-
-    <CodeGroup tabs="cURL,Python,Node.js">
-      ```bash
-      curl -X GET "https://production.deepvue.tech/v1/verification/panbasic?pan_number=AXXPX1234X&consent=Y&reason=KYC" \
-        -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-        -H "x-api-key: YOUR_CLIENT_SECRET"
-      ```
-
-      ```python
-      response = requests.get(
-          "https://production.deepvue.tech/v1/verification/panbasic",
-          params={"pan_number": "AXXPX1234X", "consent": "Y", "reason": "KYC"},
-          headers={
-              "Authorization": f"Bearer {token}",
-              "x-api-key": "YOUR_CLIENT_SECRET"
-          }
-      )
-      print(response.json())
-      ```
-
-      ```javascript
-      const result = await fetch(
-        "https://production.deepvue.tech/v1/verification/panbasic?pan_number=AXXPX1234X&consent=Y&reason=KYC",
-        {
-          headers: {
-            "Authorization": `Bearer ${access_token}`,
-            "x-api-key": "YOUR_CLIENT_SECRET"
-          }
-        }
-      );
-      console.log(await result.json());
-      ```
-    </CodeGroup>
-  </Step>
-</Steps>
-
 ## Explore by product
 
 <Columns cols="3">
@@ -118,7 +32,7 @@ Deepvue provides 150+ REST APIs for identity verification, business compliance, 
     GST, MCA, MSME, TAN, FSSAI, and shop establishment checks.
   </Card>
 
-  <Card title="Aadhaar eKYC" icon="fingerprint" href="/reference/digilocker-kyc/introduction">
+  <Card title="Aadhaar eKYC" icon="fingerprint" href="/reference/digilocker-kyc/v1/introduction">
     OTP-based Aadhaar verification and DigiLocker document retrieval.
   </Card>
 </Columns>

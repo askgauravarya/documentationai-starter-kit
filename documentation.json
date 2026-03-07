@@ -106,10 +106,6 @@
             "icon": "folder",
             "pages": [
               {
-                "title": "Introduction",
-                "path": "reference/digilocker-kyc/introduction"
-              },
-              {
                 "group": "V1",
                 "pages": [
                   {
