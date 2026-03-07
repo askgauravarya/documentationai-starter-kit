@@ -1,5 +1,6 @@
 {
   "name": "Deepvue",
+  "initialRoute": "introduction",
   "navbar": {
     "actions": {
       "primary": {
