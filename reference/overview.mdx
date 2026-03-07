@@ -73,27 +73,4 @@ All API requests require authentication via a bearer token and your API key. Gen
 
 ## Getting started
 
-<Steps>
-  <Step title="Get your credentials" icon="key" titleType="p">
-    Sign up on the [Deepvue dashboard](https://dashboard.deepvue.tech) and retrieve your `client_id` and `client_secret` from the API settings page.
-  </Step>
-
-  <Step title="Generate an access token" icon="lock" titleType="p">
-    Make a `POST` request to `/v1/authorize` with your credentials to receive a bearer token.
-
-    ```bash
-    curl -X POST https://production.deepvue.tech/v1/authorize \
-      -H "Content-Type: application/json" \
-      -d '{
-        "client_id": "YOUR_CLIENT_ID",
-        "client_secret": "YOUR_CLIENT_SECRET"
-      }'
-    ```
-  </Step>
-
-  <Step title="Make your first API call" icon="play" titleType="p">
-    Include the bearer token in the `Authorization` header of subsequent requests and start verifying identities, businesses, and documents.
-
-    For a complete walkthrough, see the [Quickstart guide](/quickstart).
-  </Step>
-</Steps>
+New to Deepvue? Follow the [Quickstart guide](/quickstart) to make your first API call in under 5 minutes.

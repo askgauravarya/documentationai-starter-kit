@@ -1,0 +1,106 @@
+---
+title: Consent & Compliance
+description: Understand consent requirements, valid reason codes, and regulatory compliance when using Deepvue's identity verification APIs.
+---
+
+## Overview
+
+Deepvue APIs that access personal data require explicit user consent before processing. This is mandated by Indian data protection regulations and the terms of upstream government data sources. Every API call that retrieves or verifies personal information must include consent parameters.
+
+## Consent parameters
+
+Most Deepvue verification endpoints require two parameters:
+
+<ParamField query="consent" param-type="string" required="true" deprecated="false">
+  Must be set to `Y` to indicate that the end user has provided explicit consent for this verification. Requests with `consent` set to any other value or missing will be rejected.
+</ParamField>
+
+<ParamField query="reason" param-type="string" required="true" deprecated="false">
+  A short string indicating the purpose of the verification. This value is logged for audit purposes.
+</ParamField>
+
+### Accepted reason values
+
+| Reason | Use case |
+|--------|----------|
+| `KYC` | Know Your Customer — identity verification during onboarding |
+| `KYB` | Know Your Business — business entity verification |
+| `Credit Check` | Evaluating creditworthiness for lending decisions |
+| `Employment Verification` | Verifying employment history for hiring or lending |
+| `Background Check` | Pre-employment or pre-lending background screening |
+
+<Callout kind="alert">
+  Always pass the actual reason for the verification. Using incorrect or generic reason codes may result in account suspension.
+</Callout>
+
+## What you must do
+
+<Steps>
+  <Step title="Collect consent before calling the API" icon="user-check" titleType="h3">
+    Obtain explicit, informed consent from the individual whose data is being verified **before** making the API call. This means:
+
+    - Clearly inform the user what data will be accessed
+    - Explain the purpose of the verification
+    - Obtain an affirmative action (checkbox, button click, signed form)
+    - Record the timestamp and method of consent collection
+  </Step>
+
+  <Step title="Pass consent parameters in every request" icon="send" titleType="h3">
+    Include `consent=Y` and the appropriate `reason` value in every API request that accesses personal data.
+
+    ```bash
+    curl -X GET "https://production.deepvue.tech/v1/verification/panbasic?pan_number=AXXPX1234X&consent=Y&reason=KYC" \
+      -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+      -H "x-api-key: YOUR_CLIENT_SECRET"
+    ```
+  </Step>
+
+  <Step title="Maintain consent records" icon="archive" titleType="h3">
+    Store proof of consent for each verification request, including:
+
+    - Who gave consent (user identifier)
+    - When consent was given (timestamp)
+    - What they consented to (data type and purpose)
+    - The Deepvue `transaction_id` from the API response
+
+    <Callout kind="info">
+      Retain consent records for the duration required by your applicable regulations — typically a minimum of 5 years for financial services.
+    </Callout>
+  </Step>
+</Steps>
+
+## Regulatory context
+
+Deepvue's consent requirements align with the following Indian regulations:
+
+| Regulation | Relevance |
+|-----------|-----------|
+| **Digital Personal Data Protection Act, 2023 (DPDPA)** | Requires explicit consent before processing personal data, with clear purpose limitation |
+| **RBI KYC Master Direction** | Mandates customer consent for identity verification in regulated financial services |
+| **UIDAI Aadhaar Regulations** | Requires informed consent before Aadhaar-based authentication or eKYC |
+| **IT Act, 2000 (Section 43A)** | Requires reasonable security practices when handling sensitive personal data |
+
+## Data handling guidelines
+
+- **Purpose limitation** — Only use verification data for the stated purpose. Do not repurpose KYC data for marketing or unrelated activities.
+- **Data minimization** — Only request the data fields you actually need. If you only need to verify a PAN number's validity, use PAN Basic instead of PAN Plus.
+- **Storage security** — Encrypt personal data at rest and in transit. Restrict access to verification results on a need-to-know basis.
+- **Retention limits** — Do not retain personal data longer than necessary for the stated purpose, unless required by regulation.
+- **Aadhaar data restrictions** — Aadhaar numbers and eKYC data have specific storage restrictions under UIDAI guidelines. Mask or redact Aadhaar numbers after verification using the [Aadhaar Masking](/reference/forensics/document/aadhaar-masking) API.
+
+## Compliance checklist
+
+Use this checklist to ensure your integration meets compliance requirements before going live:
+
+- [ ] Consent collection UI implemented with clear language
+- [ ] `consent` and `reason` parameters included in all API calls
+- [ ] Consent records stored with timestamps and user identifiers
+- [ ] Personal data encrypted at rest and in transit
+- [ ] Data retention policy defined and enforced
+- [ ] Aadhaar numbers masked in storage and logs
+- [ ] Access controls in place for verification data
+- [ ] Audit trail maintained for all verification requests
+
+<Callout kind="tip">
+  Need help with compliance for your specific use case? Contact [support@deepvue.tech](mailto:support@deepvue.tech) for guidance on regulatory requirements.
+</Callout>

@@ -59,6 +59,11 @@
                 "icon": "lock"
               },
               {
+                "title": "Response Format",
+                "path": "response-format",
+                "icon": "braces"
+              },
+              {
                 "title": "Errors",
                 "path": "errors",
                 "icon": "alert-circle"
@@ -67,6 +72,16 @@
                 "title": "Rate Limits",
                 "path": "rate-limits",
                 "icon": "gauge"
+              },
+              {
+                "title": "Async Endpoints",
+                "path": "async-endpoints",
+                "icon": "refresh-cw"
+              },
+              {
+                "title": "Consent & Compliance",
+                "path": "consent-and-compliance",
+                "icon": "shield-check"
               }
             ]
           }

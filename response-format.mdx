@@ -1,0 +1,136 @@
+---
+title: Response Format
+description: Understand the standard response structure returned by all Deepvue APIs, including success responses, error responses, and common fields.
+---
+
+## Overview
+
+All Deepvue APIs return JSON responses with a consistent structure. Understanding this format helps you parse responses reliably across all 150+ endpoints.
+
+## Success response
+
+Every successful API response includes these standard fields:
+
+```json
+{
+  "code": 200,
+  "timestamp": 1738040933033,
+  "transaction_id": "ece94d5e2749482faa10184962e9e34a",
+  "data": {
+    // Endpoint-specific response data
+  }
+}
+```
+
+<ResponseField name="code" field-type="integer" required="true" deprecated="false">
+  HTTP status code mirrored in the response body. Always `200` for successful requests.
+</ResponseField>
+
+<ResponseField name="timestamp" field-type="integer" required="true" deprecated="false">
+  Unix timestamp (in milliseconds) indicating when the response was generated.
+</ResponseField>
+
+<ResponseField name="transaction_id" field-type="string" required="true" deprecated="false">
+  Unique identifier for this API call. Use this for debugging, support requests, and audit trails.
+</ResponseField>
+
+<ResponseField name="data" field-type="object" required="true" deprecated="false">
+  The verification result or resource data. Structure varies by endpoint — refer to the specific API reference for field details.
+</ResponseField>
+
+## Error response
+
+Error responses return a `detail` field with a human-readable message:
+
+```json
+{
+  "detail": "Not authenticated"
+}
+```
+
+<ResponseField name="detail" field-type="string" required="true" deprecated="false">
+  Human-readable error message describing what went wrong. See [Error Handling](/errors) for all error codes and messages.
+</ResponseField>
+
+<Callout kind="info">
+  Error responses do not include `code`, `timestamp`, or `transaction_id` fields. Use the HTTP status code from the response header to determine the error type.
+</Callout>
+
+## Example responses by category
+
+<ExpandableGroup>
+  <Expandable title="KYC Verification (PAN Basic)" default-open="true">
+    ```json
+    {
+      "code": 200,
+      "timestamp": 1738040933033,
+      "transaction_id": "ece94d5e2749482faa10184962e9e34a",
+      "data": {
+        "@entity": "pan",
+        "pan": "AAAPT0002F",
+        "full_name": "RATAN NAVAL TATA",
+        "status": "VALID",
+        "category": "Individual",
+        "name_information": {
+          "pan_name_cleaned": "Ratan Naval Tata"
+        }
+      }
+    }
+    ```
+  </Expandable>
+
+  <Expandable title="Document OCR (Aadhaar)" default-open="false">
+    ```json
+    {
+      "code": 200,
+      "timestamp": 1738040933033,
+      "transaction_id": "f7a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5",
+      "data": {
+        "@entity": "ind_aadhaar",
+        "aadhaar_number": "XXXX XXXX 1234",
+        "full_name": "John Doe",
+        "dob": "01/01/1990",
+        "gender": "Male",
+        "address": "123 Main Street, City, State - 123456"
+      }
+    }
+    ```
+  </Expandable>
+
+  <Expandable title="Async Endpoint (Create)" default-open="false">
+    ```json
+    {
+      "code": 200,
+      "transaction_id": "abc123def456",
+      "message": "Request accepted"
+    }
+    ```
+
+    Async create responses may include a `message` field instead of `data`. Use the `transaction_id` to [poll for results](/async-endpoints).
+  </Expandable>
+
+  <Expandable title="Bulk Validation" default-open="false">
+    ```json
+    {
+      "code": 200,
+      "transaction_id": "batch_abc123",
+      "data": {
+        "batch_id": "batch_abc123",
+        "status": "processing",
+        "total_records": 100,
+        "processed_records": 0
+      }
+    }
+    ```
+
+    Bulk responses include batch-level metadata. Poll the [Batch Result](/reference/bulk-verification/result) endpoint for individual record results.
+  </Expandable>
+</ExpandableGroup>
+
+## Parsing best practices
+
+- **Always check `code` first** — Verify the response `code` is `200` before accessing the `data` field.
+- **Store `transaction_id`** — Log this value for every request. It's required when contacting support and useful for audit trails.
+- **Handle missing fields gracefully** — Not all fields are guaranteed in every response. Some fields may be `null` or absent depending on the data source.
+- **Use `timestamp` for ordering** — When processing multiple responses, use the `timestamp` field to determine the order of events.
+- **Don't hardcode field names** — The `data` object structure varies by endpoint. Parse responses based on the specific API you're calling.
