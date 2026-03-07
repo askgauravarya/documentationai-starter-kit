@@ -1,5 +1,13 @@
 {
   "name": "Deepvue",
+  "navbar": {
+    "actions": {
+      "primary": {
+        "title": "Dashboard",
+        "link": "https://dashboard.deepvue.ai/sign-in"
+      }
+    }
+  },
   "colors": {
     "light": {
       "brand": "#e84278",
@@ -840,57 +848,13 @@
         ]
       },
       {
-        "tab": "Help Center",
-        "icon": "help-circle",
+        "tab": "Status",
+        "icon": "activity",
         "pages": [
           {
-            "title": "Help Center",
-            "path": "help-center",
-            "icon": "home"
-          },
-          {
-            "group": "FAQs",
-            "icon": "help-circle",
-            "expandable": false,
-            "pages": [
-              {
-                "title": "Getting Started FAQ",
-                "path": "help-center/faq/getting-started"
-              }
-            ]
-          },
-          {
-            "group": "Troubleshooting",
-            "icon": "alert-triangle",
-            "expandable": false,
-            "pages": [
-              {
-                "title": "Cannot Login",
-                "path": "help-center/troubleshooting/cannot-login"
-              }
-            ]
-          },
-          {
-            "group": "Guides",
-            "icon": "book-open",
-            "expandable": false,
-            "pages": [
-              {
-                "title": "Create a Project",
-                "path": "help-center/guides/create-project"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Changelog",
-        "icon": "clock",
-        "pages": [
-          {
-            "title": "Release History",
-            "path": "changelog",
-            "icon": "history"
+            "title": "API Status",
+            "path": "status",
+            "icon": "activity"
           }
         ]
       }
