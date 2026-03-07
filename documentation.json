@@ -5,7 +5,13 @@
       "primary": {
         "title": "Dashboard",
         "link": "https://dashboard.deepvue.ai/sign-in"
-      }
+      },
+      "links": [
+        {
+          "title": "Status",
+          "link": "https://status.deepvue.ai"
+        }
+      ]
     }
   },
   "colors": {
@@ -844,17 +850,6 @@
                 "openapi": "api-reference/openapi.json GET /v1/internal/wallet-balance"
               }
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Status",
-        "icon": "activity",
-        "pages": [
-          {
-            "title": "API Status",
-            "path": "status",
-            "icon": "activity"
           }
         ]
       }
